@@ -3,7 +3,8 @@ services:
     name: skin-risk-app-1
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    runtime: python3
-    pythonVersion: 3.10.13
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
