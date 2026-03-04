@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | DermaAI</title>
+    <title>Login | Skin_Risk</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -18,7 +18,7 @@
         <div class="auth-card-alt animate-slide-up">
             <h1 class="auth-title-alt">Login Account</h1>
             <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">
-                Enter your DermaAI email and password.
+                Enter your Skin_Risk email and password.
             </p>
 
             {% with messages = get_flashed_messages() %}
@@ -55,13 +55,25 @@
 
             <a href="/login/google" class="btn-google"
                 style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: white; color: #555; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" alt="Google"
-                    style="width: 18px; margin-right: 10px;">
+                <svg width="18" height="18" viewBox="0 0 18 18" style="margin-right: 10px;">
+                    <path
+                        d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"
+                        fill="#4285F4" />
+                    <path
+                        d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z"
+                        fill="#34A853" />
+                    <path
+                        d="M3.964 10.712c-.18-.54-.282-1.117-.282-1.712s.102-1.173.282-1.712V4.956H.957a8.996 8.996 0 000 8.088l3.007-2.332z"
+                        fill="#FBBC05" />
+                    <path
+                        d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.443 2.043.957 4.956L3.964 7.288c.708-2.127 2.692-3.708 5.036-3.708z"
+                        fill="#EA4335" />
+                </svg>
                 Sign in with Google
             </a>
 
             <div class="auth-link-alt">
-                Don't have an account? <a href="/">Sign Up</a>
+                Don't have an account? <a href="/signup">Sign Up</a>
             </div>
         </div>
     </div>

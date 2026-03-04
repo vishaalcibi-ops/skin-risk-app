@@ -1,4 +1,4 @@
-# Skin Disease Identifier
+# Skin_Risk - AI Skin Disease Identifier
 
 A Flask-based web application that uses a deep learning model to identify skin diseases from uploaded images.
 
