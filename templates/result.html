@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result | DermaAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="result-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Derma<span class="text-gradient">AI</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
+                <a href="/" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-content animate-slide-up">
+            <a href="/dashboard" class="back-link"><i class="fa-solid fa-arrow-left"></i> Analyze Another Image</a>
+
+            <div class="result-grid">
+                <!-- Image Side -->
+                <div class="result-image-card glass-panel">
+                    <h3>Uploaded Image</h3>
+                    <div class="image-wrapper">
+                        <img src="{{ image_url }}" alt="Uploaded Skin Image" class="analyzed-image">
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+
+                <!-- Analysis Side -->
+                <div class="result-data-card glass-panel">
+                    <div class="risk-badge badge-{{ risk_level | lower }}">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        {{ risk_level }} Risk
+                    </div>
+
+                    <h2 class="disease-title">{{ disease }}</h2>
+
+                    <div class="confidence-meter">
+                        <div class="meter-header">
+                            <span>Primary Identification Confidence</span>
+                            <span class="confidence-value">{{ confidence }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-confidence="{{ confidence }}"></div>
+                        </div>
+                    </div>
+
+                    <div class="visual-analysis glass-panel-nested mt-3 animate-fade-in">
+                        <h4><i class="fa-solid fa-eye text-primary"></i> Visual Analysis Identifiers</h4>
+                        <div class="visual-tags">
+                            {% for feature in visual_features %}
+                            <span class="v-tag"><i class="fa-solid fa-check"></i> {{ feature }}</span>
+                            {% endfor %}
+                        </div>
+                        <p class="small text-muted mt-2">The AI identified these specific visual traits in your image.
+                        </p>
+                    </div>
+
+                    <div class="top-candidates mt-3 glass-panel-nested">
+                        <h4><i class="fa-solid fa-layer-group text-info"></i> Differential Analysis (Top 3)</h4>
+                        <div class="candidate-list">
+                            {% for candidate in top_3 %}
+                            <div class="candidate-item">
+                                <span class="c-name">{{ candidate.disease }}</span>
+                                <div class="c-bar-container">
+                                    <div class="c-bar" data-confidence="{{ candidate.confidence }}"></div>
+                                </div>
+                                <span class="c-val">{{ candidate.confidence }}%</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="advice-section">
+                        <h4><i class="fa-solid fa-user-doctor"></i> Preventive Advice</h4>
+                        <p class="advice-text">{{ advice }}</p>
+                    </div>
+
+                    <div class="caution-section glass-panel-nested">
+                        <h4><i class="fa-solid fa-triangle-exclamation text-warning"></i> Important Cautions</h4>
+                        <p class="caution-text">{{ cautions }}</p>
+                    </div>
+
+                    <div class="info-grid mt-4">
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-bolt-lightning text-warning"></i> Immediate Personal Actions</h4>
+                            <p>{{ immediate_actions }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-house-chimney-medical text-info"></i> Lifestyle & Long-term Care
+                            </h4>
+                            <p>{{ lifestyle }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-list-check text-warning"></i> Key Symptoms</h4>
+                            <p>{{ symptoms }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-umbrella text-info"></i> Long-term Prevention</h4>
+                            <p>{{ prevention }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-location-dot text-danger"></i> Common Locations</h4>
+                            <p>{{ locations }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-magnifying-glass-chart text-primary"></i> Professional Diagnosis
+                            </h4>
+                            <p>{{ diagnosis }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-circle-nodes text-danger"></i> Possible Complications</h4>
+                            <p>{{ complications }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-kit-medical text-success"></i> Recommended Solutions</h4>
+                            <p>{{ solutions }}</p>
+                        </div>
+                        <div class="info-item glass-panel-nested">
+                            <h4><i class="fa-solid fa-stethoscope text-primary"></i> When to See a Doctor</h4>
+                            <p>{{ doctor_advice }}</p>
+                        </div>
+                    </div>
+
+                    {% if risk_level == 'High' or risk_level == 'Medium' %}
+                    <div class="action-section">
+                        <a href="https://www.google.com/search?q=dermatologist+near+me" target="_blank"
+                            class="btn-primary danger-btn">
+                            <i class="fa-solid fa-calendar-check"></i> Find a Dermatologist
+                        </a>
+                        <p class="disclaimer"><i class="fa-solid fa-circle-info"></i> This tool provides an AI
+                            estimation, not a medical diagnosis. Please consult a healthcare professional.</p>
+                    </div>
+                    {% else %}
+                    <div class="action-section">
+                        <p class="disclaimer"><i class="fa-solid fa-circle-info"></i> Monitor your skin regularly. If
+                            symptoms persist or change, consult a healthcare professional.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Set progress bar widths on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.progress-fill, .c-bar');
+            bars.forEach((bar, index) => {
+                const conf = bar.getAttribute('data-confidence');
+                if (conf) {
+                    // Stagger the animations slightly
+                    setTimeout(() => {
+                        bar.style.width = conf + '%';
+                    }, 100 + (index * 50));
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

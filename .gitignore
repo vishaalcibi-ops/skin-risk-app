@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Secrets
+.env
+
+# Database
+instance/
+*.db
+
+# App Specific
+uploads/
+scans_history.json
+static/uploads/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary scripts
+verify_*.py
+test_*.py
+generate_*.py
+train.py

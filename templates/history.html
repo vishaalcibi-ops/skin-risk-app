@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan History | DermaAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Derma<span class="text-gradient">AI</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history" class="active"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
+                <a href="/" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-container animate-slide-up">
+            <a href="/dashboard" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to Scanner
+            </a>
+
+            <div class="glass-panel p-4 mb-4 text-center">
+                <h1 class="disease-title mb-2">Scan <span class="text-gradient">History</span></h1>
+                <p class="text-muted">Review your past dermatological analysis results.</p>
+            </div>
+
+            <div class="history-grid mt-4">
+                {% if scans %}
+                {% for scan in scans %}
+                <div class="glass-panel info-item history-card">
+                    <div class="history-content">
+                        <div class="history-img-wrapper">
+                            <img src="{{ scan.image_url }}" alt="Scan Image" class="history-thumb">
+                        </div>
+                        <div class="history-details">
+                            <div class="history-header">
+                                <span class="risk-badge badge-{{ scan.risk_level.lower() }}">{{ scan.risk_level }}
+                                    Risk</span>
+                                <span class="history-date">{{ scan.timestamp }}</span>
+                            </div>
+                            <h3>{{ scan.disease }}</h3>
+                            <div class="history-stats">
+                                <span>Confidence: <strong>{{ scan.confidence }}%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="glass-panel p-5 text-center">
+                    <i class="fa-solid fa-folder-open text-muted mb-3" style="font-size: 3rem;"></i>
+                    <h3>No scan history yet</h3>
+                    <p class="text-muted">Upload your first image to see your history here.</p>
+                    <a href="/dashboard" class="btn-primary mt-3" style="width: auto; display: inline-flex;">Start
+                        Scanning</a>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .history-card {
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .history-card:hover {
+            transform: translateX(10px);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .history-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .history-img-wrapper {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .history-details {
+            flex-grow: 1;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .history-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .history-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .history-stats {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .active {
+            color: white !important;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .history-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .history-img-wrapper {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</body>
+
+</html>

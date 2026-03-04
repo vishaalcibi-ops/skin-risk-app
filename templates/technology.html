@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology | DermaAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Derma<span class="text-gradient">AI</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
+                <a href="/" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-container animate-slide-up">
+            <div class="glass-panel p-5 mb-5 text-center">
+                <h1 class="disease-title mb-2">Our <span class="text-gradient">Technology</span></h1>
+                <p class="text-muted">Exploring the AI architecture behind DermaAI's advanced analysis.</p>
+            </div>
+
+            <div class="tech-content">
+                <div class="glass-panel p-4 mb-4">
+                    <div class="tech-header">
+                        <i class="fa-solid fa-brain text-gradient"></i>
+                        <h2>MobileNetV2 Architecture</h2>
+                    </div>
+                    <p class="mt-3">DermaAI is powered by <strong>MobileNetV2</strong>, a revolutionary light-weight
+                        convolutional neural network. It is specifically designed for mobile and embedded vision
+                        applications, making it incredibly fast without sacrificing identification accuracy.</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="glass-panel info-item">
+                        <h4><i class="fa-solid fa-arrows-to-circle text-primary"></i> Transfer Learning</h4>
+                        <p>We leverage Transfer Learning, initializing our model with weights from ImageNet. This allows
+                            the AI to recognize complex patterns and textures in skin images with significantly less
+                            training data than traditional methods.</p>
+                    </div>
+
+                    <div class="glass-panel info-item">
+                        <h4><i class="fa-solid fa-microchip text-secondary"></i> Efficient Inversion</h4>
+                        <p>MobileNetV2 uses "inverted residuals" and "linear bottlenecks," which allow the model to
+                            process high-dimensional features while remaining computationally efficient on server-side
+                            and mobile environments.</p>
+                    </div>
+
+                    <div class="glass-panel info-item">
+                        <h4><i class="fa-solid fa-dna text-warning"></i> Feature Extraction</h4>
+                        <p>The model analyzes spatial hierarchies, identifying everything from macroscopic lesion shapes
+                            to microscopic texture irregularities and color distribution patterns.</p>
+                    </div>
+
+                    <div class="glass-panel info-item">
+                        <h4><i class="fa-solid fa-shield-check text-success"></i> Deterministic Logic</h4>
+                        <p>Our analysis pipeline includes a deterministic verification layer that ensures consistency
+                            and variety, providing bespoke feedback for every unique image uploaded.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel mt-4 p-4 text-center">
+                    <h3>Project Stack</h3>
+                    <div class="tech-stack mt-3">
+                        <span class="v-tag"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="v-tag"><i class="fa-solid fa-gears"></i> TensorFlow</span>
+                        <span class="v-tag"><i class="fa-solid fa-flask"></i> Flask</span>
+                        <span class="v-tag"><i class="fa-brands fa-js"></i> Vanilla JS</span>
+                        <span class="v-tag"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .tech-header i {
+            font-size: 3rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .v-tag {
+            padding: 0.75rem 1.25rem !important;
+            font-size: 1rem !important;
+        }
+    </style>
+</body>
+
+</html>

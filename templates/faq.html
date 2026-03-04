@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | DermaAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="app-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Derma<span class="text-gradient">AI</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/faq" class="active"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
+                <a href="/" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-container animate-slide-up">
+            <div class="glass-panel p-4 mb-4 text-center">
+                <h1 class="disease-title mb-2">Frequently Asked <span class="text-gradient">Questions</span></h1>
+                <p class="text-muted">Common questions about DermaAI and skin health.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="glass-panel faq-item mb-3">
+                    <div class="faq-question">
+                        <span>How accurate is the AI identification?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>DermaAI uses MobileNetV2, a state-of-the-art neural network trained on thousands of clinical
+                            images. While highly accurate in detecting common traits, it is intended as a screening tool
+                            and should never replace a professional medical diagnosis.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel faq-item mb-3">
+                    <div class="faq-question">
+                        <span>Is my data private?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Your images are processed securely and stored only in your private scan history. We use
+                            industry-standard encryption and do not share your medical data with third parties.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel faq-item mb-3">
+                    <div class="faq-question">
+                        <span>What should I do if the AI identifies a high-risk condition?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If the AI flags a "High Risk" condition (like Melanoma), you should consult a certified
+                            dermatologist immediately. The AI provides a "Doctor Advice" section with specific questions
+                            you should ask during your appointment.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel faq-item mb-3">
+                    <div class="faq-question">
+                        <span>Can I scan any part of my body?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The AI is trained for common skin surfaces. For best results, ensure the image is clear,
+                            well-lit, and focused directly on the area of concern. Avoid blurry or extremely close-up
+                            "macro" shots without context.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .faq-item {
+            padding: 0;
+            overflow: hidden;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-item.open .faq-answer {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--secondary);
+        }
+
+        .active {
+            color: white !important;
+            border-bottom: 2px solid var(--secondary);
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

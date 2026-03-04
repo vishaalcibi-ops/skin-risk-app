@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dermatologist AI | Skin Disease Risk Identifier</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Derma<span class="text-gradient">AI</span></span>
+            </div>
+            <nav class="nav-links">
+                {% if current_user.is_authenticated %}
+                <span class="user-welcome"><i class="fa-solid fa-circle-user"></i> Hi, {{ current_user.name or
+                    current_user.email.split('@')[0] }}</span>
+                <a href="/dashboard"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
+                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                {% else %}
+                <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                <a href="/"><i class="fa-solid fa-user-plus"></i> Signup</a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="hero-section">
+            <div class="hero-content">
+                <h1 class="auth-title-alt">Create Account</h1>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="flashes-auth">
+                    {% for message in messages %}
+                    <p class="flash-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                <h1 class="hero-title">Early Detection for <br /><span class="text-gradient">Healthier Skin</span></h1>
+                <p class="hero-subtitle">Upload an image of your skin concern. Our advanced AI will analyze it to
+                    identify potential diseases and estimate your risk level instantly.</p>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                    <li class="flash-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+
+                <div class="upload-card">
+                    <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
+                        <div class="drop-zone" id="dropZone">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <span class="drop-zone__prompt">Drag & Drop your skin image here or click to browse</span>
+                            <input type="file" name="file" class="drop-zone__input" id="fileInput"
+                                accept="image/png, image/jpeg, image/jpg" required>
+                        </div>
+
+                        <!-- Image Preview Area -->
+                        <div class="preview-container" id="previewContainer" style="display: none;">
+                            <img id="imagePreview" src="" alt="Image Preview" class="image-preview__image">
+                            <span class="remove-image" id="removeImage"><i class="fa-solid fa-xmark"></i></span>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="analyzeBtn" disabled>
+                            <span>Analyze Skin Image</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="indicator">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>100% Secure & Private</span>
+                    </div>
+                    <div class="indicator">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Instant Results</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic side element -->
+            <div class="hero-graphic">
+                <div class="glass-orb orb-1"></div>
+                <div class="glass-orb orb-2"></div>
+                <a href="/technology" class="floating-card metric-card" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-brain text-gradient"></i>
+                    <div class="metric-info">
+                        <h4>MobileNetV2</h4>
+                        <p>Powered by Transfer Learning</p>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Frontend interactivity -->
+    <script>
+        document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+            const dropZoneElement = inputElement.closest(".drop-zone");
+            const previewContainer = document.getElementById("previewContainer");
+            const imagePreview = document.getElementById("imagePreview");
+            const removeImageBtn = document.getElementById("removeImage");
+            const analyzeBtn = document.getElementById("analyzeBtn");
+
+            dropZoneElement.addEventListener("click", (e) => {
+                inputElement.click();
+            });
+
+            inputElement.addEventListener("change", (e) => {
+                if (inputElement.files.length) {
+                    updateThumbnail(dropZoneElement, inputElement.files[0]);
+                }
+            });
+
+            dropZoneElement.addEventListener("dragover", (e) => {
+                e.preventDefault();
+                dropZoneElement.classList.add("drop-zone--over");
+            });
+
+            ["dragleave", "dragend"].forEach((type) => {
+                dropZoneElement.addEventListener(type, (e) => {
+                    dropZoneElement.classList.remove("drop-zone--over");
+                });
+            });
+
+            dropZoneElement.addEventListener("drop", (e) => {
+                e.preventDefault();
+
+                if (e.dataTransfer.files.length) {
+                    inputElement.files = e.dataTransfer.files;
+                    updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
+                }
+
+                dropZoneElement.classList.remove("drop-zone--over");
+            });
+
+            removeImageBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                inputElement.value = "";
+                previewContainer.style.display = "none";
+                dropZoneElement.style.display = "flex";
+                analyzeBtn.disabled = true;
+            });
+
+            function updateThumbnail(dropZoneElement, file) {
+                // First, show the preview area and hide the prompt
+                dropZoneElement.style.display = "none";
+                previewContainer.style.display = "block";
+
+                // Read the image file and show preview
+                const reader = new FileReader();
+
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    imagePreview.src = reader.result;
+                    analyzeBtn.disabled = false;
+                };
+            }
+        });
+
+        // Form submission animation
+        document.getElementById("uploadForm").addEventListener("submit", function () {
+            const btn = document.getElementById("analyzeBtn");
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing...';
+            btn.classList.add("loading");
+        });
+    </script>
+</body>
+
+</html>

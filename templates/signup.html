@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | DermaAI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="auth-page-bg">
+    <div class="auth-container-alt">
+        <div class="auth-card-alt animate-slide-up">
+            <h1 class="auth-title-alt">Create Account</h1>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">
+                Enter your DermaAI email and password.
+            </p>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">
+                This will create a <strong>new</strong> account for DermaAI.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flashes-auth">
+                {% for message in messages %}
+                <p class="flash-msg-auth" style="color: #ff4b2b; margin-bottom: 20px; font-size: 0.9rem;"><i
+                        class="fa-solid fa-triangle-exclamation"></i> {{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form action="/signup" method="POST" class="auth-form-alt">
+                <div class="auth-icon-input-group">
+                    <i class="fa-solid fa-user auth-icon"></i>
+                    <input type="text" id="name" name="name" class="auth-input-alt" placeholder="Username" required>
+                </div>
+
+                <div class="auth-icon-input-group">
+                    <i class="fa-solid fa-envelope auth-icon"></i>
+                    <input type="email" id="email" name="email" class="auth-input-alt" placeholder="Email" required>
+                </div>
+
+                <div class="auth-icon-input-group">
+                    <i class="fa-solid fa-lock auth-icon"></i>
+                    <input type="password" id="password" name="password" class="auth-input-alt" placeholder="Password"
+                        required>
+                </div>
+
+                <button type="submit" class="auth-submit-alt">Sign Up</button>
+            </form>
+
+            <div class="google-auth-separator"
+                style="margin: 20px 0; text-align: center; color: #888; position: relative;">
+                <span style="background: white; padding: 0 10px; position: relative; z-index: 1;">OR</span>
+                <hr style="position: absolute; top: 50%; left: 0; right: 0; border: none; border-top: 1px solid #eee;">
+            </div>
+
+            <a href="/login/google" class="btn-google"
+                style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: white; color: #555; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" alt="Google"
+                    style="width: 18px; margin-right: 10px;">
+                Sign in with Google
+            </a>
+
+            <div class="auth-link-alt">
+                Already have an account? <a href="/login">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
