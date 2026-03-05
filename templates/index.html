@@ -27,6 +27,7 @@
                     current_user.email.split('@')[0] }}</span>
                 <a href="/dashboard"><i class="fa-solid fa-house"></i> Home</a>
                 <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/appointments"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
                 <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
                 <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
                 <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
@@ -97,6 +98,39 @@
                         <span>Instant Results</span>
                     </div>
                 </div>
+
+                {% if current_user.is_authenticated %}
+                <!-- NEW: Premium Feature Shortcuts (FRONT & CENTER) -->
+                <div class="glass-panel p-4 mt-5 animate-slide-up"
+                    style="border: 1px solid var(--secondary); background: rgba(6, 182, 212, 0.05);">
+                    <h2 class="mb-4 text-center"><i class="fa-solid fa-star text-gradient"></i> Premium Care Suite</h2>
+                    <div class="feature-grid-dashboard">
+                        <div class="glass-panel p-4 feature-card-mini"
+                            style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fa-solid fa-chart-line text-primary mb-3" style="font-size: 2.5rem;"></i>
+                            <h3 style="color: white; font-size: 1.5rem;">Visual Progress Graphs</h3>
+                            <p class="text-muted mb-4">Track improvement trends and compare scans side-by-side.</p>
+                            <a href="/history" class="btn-primary"
+                                style="margin-top: auto; box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);">Open Progress
+                                Lab</a>
+                        </div>
+                        <div class="glass-panel p-4 feature-card-mini"
+                            style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255,255,255,0.1);">
+                            <i class="fa-solid fa-comments text-info mb-3" style="font-size: 2.5rem;"></i>
+                            <h3 style="color: white; font-size: 1.5rem;">Live Dermatologist Chat</h3>
+                            <p class="text-muted mb-4">Connect instantly with our specialists for a digital check-up.
+                            </p>
+                            <div class="d-flex gap-2" style="margin-top: auto;">
+                                <a href="/quick-chat" class="btn-primary"
+                                    style="flex: 2; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">Start Chat Now</a>
+                                <a href="/booking" class="btn-secondary"
+                                    style="flex: 1; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;">Book
+                                    Slot</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
             <!-- Graphic side element -->

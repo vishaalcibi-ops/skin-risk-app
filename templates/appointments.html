@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments | Skin_Risk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="app-container">
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Skin_<span class="text-gradient">Risk</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/booking" class="active"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
+                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-container animate-slide-up">
+            <div class="glass-panel p-4 mb-4 d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="disease-title mb-1">My <span class="text-gradient">Appointments</span></h1>
+                    <p class="text-muted">Manage your scheduled sessions with specialists.</p>
+                </div>
+                <a href="/booking" class="btn-primary">Book New Session</a>
+            </div>
+
+            <div class="appointment-list">
+                {% if appointments %}
+                {% for apt in appointments %}
+                <div class="glass-panel p-4 mb-3 appointment-card">
+                    <div class="apt-info">
+                        <div class="apt-header">
+                            <span class="apt-type badge-{{ apt.type.lower() }}">{{ apt.type }}</span>
+                            <span class="apt-status status-{{ apt.status.lower() }}">{{ apt.status }}</span>
+                        </div>
+                        <h3 class="mt-2"><i class="fa-solid fa-calendar"></i> {{ apt.date_time.strftime('%b %d, %Y') }}
+                            at {{ apt.date_time.strftime('%I:%M %p') }}</h3>
+                        <p class="text-muted mt-1">{{ apt.notes or 'No notes provided.' }}</p>
+                    </div>
+                    <div class="apt-actions">
+                        {% if apt.type == 'Chat' %}
+                        <a href="/chat" class="btn-primary btn-sm"><i class="fa-solid fa-comments"></i> Enter Chat</a>
+                        {% elif apt.type == 'Video' %}
+                        <a href="/video-call" class="btn-primary btn-sm"><i class="fa-solid fa-video"></i> Join Video
+                            Call</a>
+                        {% else %}
+                        <button class="btn-secondary btn-sm" disabled>View Details</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="glass-panel p-5 text-center">
+                    <i class="fa-solid fa-calendar-xmark text-muted mb-3" style="font-size: 3rem;"></i>
+                    <h3>No appointments yet</h3>
+                    <p class="text-muted">Need professional advice? Book your first session today.</p>
+                    <a href="/booking" class="btn-primary mt-3">Book Consultation</a>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .appointment-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .apt-header {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .apt-type {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .apt-status {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</body>
+
+</html>

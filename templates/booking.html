@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Consultation | Skin_Risk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="result-page">
+    <div class="app-container">
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <a href="/dashboard" style="color: inherit;">Skin_<span class="text-gradient">Risk</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/booking" class="active"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
+                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </nav>
+        </header>
+
+        <main class="result-container animate-slide-up">
+            <div class="glass-panel p-4 mb-4 text-center">
+                <h1 class="disease-title mb-2">Book a <span class="text-gradient">Dermatologist</span></h1>
+                <p class="text-muted">Expert advice from the comfort of your home.</p>
+            </div>
+
+            <div class="booking-grid">
+                <div class="glass-panel p-4">
+                    <form action="/booking" method="POST">
+                        <div class="form-group mb-4">
+                            <label><i class="fa-solid fa-stethoscope"></i> Consultation Type</label>
+                            <select name="type" class="form-control mt-2" required>
+                                <option value="Video">Video Consultation (30 mins)</option>
+                                <option value="Chat">Live Chat Session (1 hour)</option>
+                                <option value="Follow-up">Follow-up Session</option>
+                            </select>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <label><i class="fa-solid fa-calendar"></i> Date</label>
+                                <input type="date" name="date" class="form-control mt-2" required min="{{ today }}">
+                            </div>
+                            <div class="col-6">
+                                <label><i class="fa-solid fa-clock"></i> Time</label>
+                                <input type="time" name="time" class="form-control mt-2" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label><i class="fa-solid fa-note-sticky"></i> Additional Notes (Symptoms, History)</label>
+                            <textarea name="notes" class="form-control mt-2" rows="3"
+                                placeholder="Describe your concern..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-100">
+                            <span>Confirm Booking</span>
+                            <i class="fa-solid fa-check-double"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="glass-panel p-4">
+                    <h3>Why book with us?</h3>
+                    <ul class="benefit-list mt-3">
+                        <li><i class="fa-solid fa-user-doctor text-primary"></i> Certified Dermatologists</li>
+                        <li><i class="fa-solid fa-shield-check text-success"></i> Private & Encrypted calls</li>
+                        <li><i class="fa-solid fa-file-medical text-info"></i> Integrated Scan Results</li>
+                        <li><i class="fa-solid fa-clock text-warning"></i> Next-day availability</li>
+                    </ul>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="/appointments" class="btn-secondary btn-sm">View My Appointments</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group label {
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #cbd5e1;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+
+</html>

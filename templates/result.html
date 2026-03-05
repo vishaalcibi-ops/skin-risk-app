@@ -23,6 +23,7 @@
             </div>
             <nav class="nav-links">
                 <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/appointments"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
                 <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
                 <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
                 <a href="/" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
@@ -140,8 +141,8 @@
 
                     {% if risk_level == 'High' or risk_level == 'Medium' %}
                     <div class="action-section">
-                        <a href="https://www.google.com/search?q=dermatologist+near+me" target="_blank"
-                            class="btn-primary danger-btn">
+                        <a href="https://maps.google.com/?q=dermatologist+clinics+for+{{ disease | urlencode }}+near+me"
+                            target="_blank" class="btn-primary danger-btn">
                             <i class="fa-solid fa-calendar-check"></i> Find a Dermatologist
                         </a>
                         <p class="disclaimer"><i class="fa-solid fa-circle-info"></i> This tool provides an AI

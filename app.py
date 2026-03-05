@@ -48,12 +48,33 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(100), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    scans = db.relationship('Scan', backref='user', lazy=True)
+    appointments = db.relationship('Appointment', backref='user', lazy=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+# Scan Model
+class Scan(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    disease = db.Column(db.String(100), nullable=False)
+    confidence = db.Column(db.Float, nullable=False)
+    risk_level = db.Column(db.String(20), nullable=False)
+    image_url = db.Column(db.String(255), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+# Appointment Model
+class Appointment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(50), nullable=False) # 'Video', 'Chat', 'Follow-up'
+    status = db.Column(db.String(20), default='Scheduled') # 'Scheduled', 'Completed', 'Cancelled'
+    date_time = db.Column(db.DateTime, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    notes = db.Column(db.Text, nullable=True)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -78,25 +99,17 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def save_scan_to_history(scan_data):
-    """Saves a new scan record to the JSON history file."""
-    history = []
-    if os.path.exists(HISTORY_FILE):
-        try:
-            with open(HISTORY_FILE, 'r') as f:
-                history = json.load(f)
-        except:
-            history = []
-    
-    # Add timestamp
-    scan_data['timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    history.insert(0, scan_data) # Newest first
-    
-    # Keep only last 50 scans for performance
-    history = history[:50]
-    
-    with open(HISTORY_FILE, 'w') as f:
-        json.dump(history, f, indent=4)
+def save_scan_to_history(scan_data, user_id):
+    """Saves a new scan record to the database."""
+    new_scan = Scan(
+        disease=scan_data['disease'],
+        confidence=scan_data['confidence'],
+        risk_level=scan_data['risk_level'],
+        image_url=scan_data['image_url'],
+        user_id=user_id
+    )
+    db.session.add(new_scan)
+    db.session.commit()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -193,11 +206,20 @@ def dashboard():
 @app.route('/history', methods=['GET'])
 @login_required
 def history():
-    history_data = []
-    if os.path.exists(HISTORY_FILE):
-        with open(HISTORY_FILE, 'r') as f:
-            history_data = json.load(f)
-    return render_template('history.html', scans=history_data)
+    user_scans = Scan.query.filter_by(user_id=current_user.id).order_by(Scan.timestamp.desc()).all()
+    
+    # Prepare data for Chart.js
+    labels = [scan.timestamp.strftime("%b %d") for scan in reversed(user_scans)]
+    confidence_data = [scan.confidence for scan in reversed(user_scans)]
+    
+    # Simple risk score mapping: High=3, Medium=2, Low=1
+    risk_map = {'High': 3, 'Medium': 2, 'Low': 1}
+    risk_data = [risk_map.get(scan.risk_level, 1) for scan in reversed(user_scans)]
+
+    return render_template('history.html', scans=user_scans, 
+                           labels=json.dumps(labels), 
+                           confidence_data=json.dumps(confidence_data),
+                           risk_data=json.dumps(risk_data))
 
 @app.route('/faq', methods=['GET'])
 def faq():
@@ -226,7 +248,69 @@ def support():
 def technology():
     return render_template('technology.html')
 
+@app.route('/booking', methods=['GET', 'POST'])
+@login_required
+def booking():
+    if request.method == 'POST':
+        apt_type = request.form.get('type')
+        date_str = request.form.get('date')
+        time_str = request.form.get('time')
+        notes = request.form.get('notes')
+        
+        try:
+            # Combine date and time
+            dt_str = f"{date_str} {time_str}"
+            dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+            
+            new_apt = Appointment(
+                type=apt_type,
+                date_time=dt,
+                user_id=current_user.id,
+                notes=notes
+            )
+            db.session.add(new_apt)
+            db.session.commit()
+            flash(f'Your {apt_type} consultation has been scheduled successfully!')
+            return redirect(url_for('appointments'))
+        except Exception as e:
+            flash(f'Error booking appointment: {e}')
+            return redirect(url_for('booking'))
+            
+    return render_template('booking.html', today=datetime.now().strftime('%Y-%m-%d'))
+
+@app.route('/appointments', methods=['GET'])
+@login_required
+def appointments():
+    user_apts = Appointment.query.filter_by(user_id=current_user.id).order_by(Appointment.date_time.asc()).all()
+    return render_template('appointments.html', appointments=user_apts)
+
+@app.route('/chat', methods=['GET'])
+@login_required
+def chat():
+    return render_template('chat.html', now=datetime.now().strftime("%I:%M %p"))
+
+@app.route('/quick-chat', methods=['GET'])
+@login_required
+def quick_chat():
+    # Create or find a 'Chat' appointment for today
+    # to mock a real scenario where a chat is available
+    new_apt = Appointment(
+        type='Chat',
+        date_time=datetime.now(),
+        user_id=current_user.id,
+        notes='Quick Direct Chat'
+    )
+    db.session.add(new_apt)
+    db.session.commit()
+    return redirect(url_for('chat'))
+
+@app.route('/video-call', methods=['GET'])
+@login_required
+def video_call():
+    return render_template('video_call.html')
+
 @app.route('/predict', methods=['POST'])
+@login_required
 def predict():
     # Check if the post request has the file part
     if 'file' not in request.files:
@@ -264,7 +348,7 @@ def predict():
                 'risk_level': result['risk_level'],
                 'image_url': image_url
             }
-            save_scan_to_history(history_record)
+            save_scan_to_history(history_record, current_user.id)
             
             return render_template('result.html', 
                                    image_url=image_url,
