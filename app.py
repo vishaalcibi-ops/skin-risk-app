@@ -67,6 +67,14 @@ class Scan(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+# Chat Message Model
+class ChatMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text, nullable=False)
+    sender = db.Column(db.String(20), nullable=False) # 'User' or 'Doctor'
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 # Appointment Model
 class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -287,7 +295,54 @@ def appointments():
 @app.route('/chat', methods=['GET'])
 @login_required
 def chat():
-    return render_template('chat.html', now=datetime.now().strftime("%I:%M %p"))
+    # Fetch chat history for the current user
+    messages = ChatMessage.query.filter_by(user_id=current_user.id).order_by(ChatMessage.timestamp.asc()).all()
+    
+    # If no messages exist, create the initial doctor greeting
+    if not messages:
+        initial_msg = ChatMessage(
+            content="Hello! I'm Dr. Sarah. I've reviewed your recent scans. How can I help you today?",
+            sender='Doctor',
+            user_id=current_user.id
+        )
+        db.session.add(initial_msg)
+        db.session.commit()
+        messages = [initial_msg]
+        
+    return render_template('chat.html', messages=messages, now=datetime.now().strftime("%I:%M %p"))
+
+@app.route('/chat/send', methods=['POST'])
+@login_required
+def send_message():
+    content = request.form.get('message')
+    if not content:
+        return json.dumps({'status': 'error', 'message': 'No content'}), 400
+        
+    # Save user message
+    user_msg = ChatMessage(content=content, sender='User', user_id=current_user.id)
+    db.session.add(user_msg)
+    
+    # Simple deterministic "Doctor" response logic
+    bot_responses = [
+        "I understand. Looking at your data, I recommend monitoring that area for another week.",
+        "That's a valid concern. Have you noticed any itching or redness in that specific spot?",
+        "I've updated your care plan based on this. Please check the 'Advice' section in your latest scan.",
+        "It's good that you're tracking this. Consistency is key for early detection."
+    ]
+    
+    import random
+    response_content = random.choice(bot_responses)
+    
+    doctor_msg = ChatMessage(content=response_content, sender='Doctor', user_id=current_user.id)
+    db.session.add(doctor_msg)
+    db.session.commit()
+    
+    return json.dumps({
+        'status': 'success',
+        'user_message': user_msg.content,
+        'doctor_message': doctor_msg.content,
+        'timestamp': doctor_msg.timestamp.strftime("%I:%M %p")
+    })
 
 @app.route('/quick-chat', methods=['GET'])
 @login_required

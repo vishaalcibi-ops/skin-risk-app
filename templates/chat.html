@@ -36,9 +36,9 @@
             </div>
 
             <div class="chat-messages" id="chatMessages">
-                <div class="msg system">Consultation started at {{ now }}</div>
-                <div class="msg doctor">Hello! I'm Dr. Sarah. I've reviewed your recent scans. How can I help you today?
-                </div>
+                {% for msg in messages %}
+                <div class="msg {{ msg.sender.lower() }} animate-fade-in">{{ msg.content }}</div>
+                {% endfor %}
             </div>
 
             <div class="chat-input-area">
@@ -172,24 +172,42 @@
         const container = document.getElementById('chatMessages');
 
         function send() {
-            if (!input.value) return;
+            const val = input.value;
+            if (!val) return;
+
+            // Optimistically add user message to UI
             const userMsg = document.createElement('div');
             userMsg.className = 'msg user animate-fade-in';
-            userMsg.textContent = input.value;
+            userMsg.textContent = val;
             container.appendChild(userMsg);
 
-            const val = input.value;
             input.value = '';
             container.scrollTop = container.scrollHeight;
 
-            // Mock response
-            setTimeout(() => {
-                const drMsg = document.createElement('div');
-                drMsg.className = 'msg doctor animate-fade-in';
-                drMsg.textContent = "I understand. Looking at your data, I recommend monitoring that area for another week. I've sent a detailed care plan to your email.";
-                container.appendChild(drMsg);
-                container.scrollTop = container.scrollHeight;
-            }, 1000);
+            // Send to backend
+            const formData = new FormData();
+            formData.append('message', val);
+
+            fetch('/chat/send', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Add doctor response to UI
+                        const drMsg = document.createElement('div');
+                        drMsg.className = 'msg doctor animate-fade-in';
+                        drMsg.textContent = data.doctor_message;
+                        container.appendChild(drMsg);
+                        container.scrollTop = container.scrollHeight;
+                    } else {
+                        console.error('Error sending message:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
         }
 
         btn.addEventListener('click', send);

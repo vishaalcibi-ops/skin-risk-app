@@ -32,3 +32,13 @@ Open your browser and go to:
 - **Image Upload:** Upload photos of skin conditions.
 - **AI Prediction:** Get instant disease identification and risk levels.
 - **Advice:** Receive basic care advice based on the results.
+- **Visual Progress (NEW):** Track skin health trends with interactive charts.
+- **Live Specialist Chat (NEW):** Functional consultation portal with persistent history.
+
+---
+
+## Production Persistence Note
+
+> [!WARNING]
+> This app uses SQLite and local file storage. On Render's Free Tier, data is **ephemeral** and will be reset on every restart/deploy.
+> For production, use **Render Managed PostgreSQL** and an external image host like **Cloudinary**.
