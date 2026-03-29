@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>User Profile | Skin_Risk</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+            <div class="top-actions">
+                <a href="/logout" style="color: var(--risk-high); font-size: 1.2rem;"><i
+                        class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="profile-container animate-slide-up">
+                <div class="glass-panel p-5">
+                    <div class="profile-header text-center mb-5">
+                        <div class="profile-avatar mb-3">
+                            <i class="fa-solid fa-circle-user gradient-icon" style="font-size: 5rem;"></i>
+                        </div>
+                        <h1 class="hero-title-small">User <span class="text-gradient">Profile</span></h1>
+                        <p class="text-muted">Manage your personal skin health details</p>
+                    </div>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="flashes mb-4">
+                        {% for message in messages %}
+                        <div class="flash-msg success"><i class="fa-solid fa-circle-check"></i> {{ message }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+                    <form action="/profile/update" method="POST" class="auth-form">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="name">Full Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" id="name" name="name" value="{{ user.name or '' }}"
+                                        placeholder="Enter your name">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="email">Email Address</label>
+                                <div class="input-wrapper disabled">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input type="email" id="email" value="{{ user.email }}" disabled>
+                                </div>
+                                <small class="text-muted">Email cannot be changed</small>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="age">Age</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                    <input type="number" id="age" name="age" value="{{ user.age or '' }}"
+                                        placeholder="E.g. 25">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="skin_type">Skin Type</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <select id="skin_type" name="skin_type">
+                                        <option value="" disabled {{ 'selected' if not user.skin_type }}>Select your
+                                            skin type</option>
+                                        <option value="Dry" {{ 'selected' if user.skin_type=='Dry' }}>Dry</option>
+                                        <option value="Oily" {{ 'selected' if user.skin_type=='Oily' }}>Oily</option>
+                                        <option value="Combination" {{ 'selected' if user.skin_type=='Combination' }}>
+                                            Combination</option>
+                                        <option value="Normal" {{ 'selected' if user.skin_type=='Normal' }}>Normal
+                                        </option>
+                                        <option value="Sensitive" {{ 'selected' if user.skin_type=='Sensitive' }}>
+                                            Sensitive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="location">Location</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <input type="text" id="location" name="location" value="{{ user.location or '' }}"
+                                        placeholder="City, Country">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group mt-4">
+                            <label for="bio">Short Bio / Skin Concerns</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-pen"></i>
+                                <textarea id="bio" name="bio" rows="3"
+                                    placeholder="Describe your skin history or general concerns...">{{ user.bio or '' }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="input-group mt-4">
+                            <label>Appearance</label>
+                            <div class="glass-panel p-3 d-flex justify-content-between align-items-center"
+                                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <i class="fa-solid fa-moon" style="color: var(--secondary);"></i>
+                                    <span>Dark mode</span>
+                                </div>
+                                <label class="switch"
+                                    style="position: relative; display: inline-block; width: 44px; height: 24px;">
+                                    <input type="checkbox" id="theme-toggle" style="opacity: 0; width: 0; height: 0;">
+                                    <span class="slider round"
+                                        style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 34px;"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions mt-5">
+                            <button type="submit" class="btn-primary w-100">
+                                <span>Save Profile Changes</span>
+                                <i class="fa-solid fa-floppy-disk"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Android Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="/dashboard" class="bottom-nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/diary" class="bottom-nav-item">
+                    <i class="fa-solid fa-book-medical"></i>
+                    <span>Diary</span>
+                </a>
+                <a href="/routine" class="bottom-nav-item">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/history" class="bottom-nav-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>History</span>
+                </a>
+                <a href="/profile" class="bottom-nav-item active">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.checked = false; // Checked means Dark in our UI
+        } else {
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener('change', () => {
+            if (!themeToggle.checked) {
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+
+</html>

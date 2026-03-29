@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Skin Diary | Skin_Risk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .mood-selector { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; }
+        .mood-btn { 
+            width: 50px; height: 50px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(30, 41, 59, 0.6); color: #94a3b8; font-size: 1.5rem; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s;
+        }
+        .mood-btn.active { background: var(--primary); color: white; transform: scale(1.1); box-shadow: 0 0 15px rgba(79, 70, 229, 0.4); }
+        .stat-input { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; padding: 12px; width: 100%; margin-top: 5px; }
+        .diary-entry-card { border-left: 3px solid var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-book-medical text-gradient"></i>
+                <span>Daily <span class="text-gradient">Diary</span></span>
+            </div>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i class="fa-solid fa-circle-user"></i></a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- New Entry Form -->
+            <div class="glass-panel p-4 mb-5 animate-slide-up">
+                <h2 style="font-size: 1.25rem; color: white;"><i class="fa-solid fa-pen-to-square text-primary"></i> Today's Log</h2>
+                <form action="/diary" method="POST" id="diaryForm">
+                    <p class="text-muted small mt-3">How does your skin feel today?</p>
+                    <div class="mood-selector">
+                        <div class="mood-btn" onclick="setMood('Sad', this)"><i class="fa-solid fa-face-frown"></i></div>
+                        <div class="mood-btn" onclick="setMood('Neutral', this)"><i class="fa-solid fa-face-meh"></i></div>
+                        <div class="mood-btn active" onclick="setMood('Happy', this)"><i class="fa-solid fa-face-smile"></i></div>
+                        <input type="hidden" name="mood" id="moodInput" value="Happy">
+                    </div>
+
+                    <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label class="text-muted small">Water (Glasses)</label>
+                            <input type="number" name="water" class="stat-input" value="8" min="0">
+                        </div>
+                        <div>
+                            <label class="text-muted small">Sleep (Hours)</label>
+                            <input type="number" name="sleep" class="stat-input" value="7" min="0">
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="text-muted small">Any new symptoms?</label>
+                        <input type="text" name="symptoms" class="stat-input" placeholder="e.g. Redness, Itching...">
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="text-muted small">Notes</label>
+                        <textarea name="notes" class="stat-input" style="height: 80px;" placeholder="Optional details..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-100 mt-4">Save Entry</button>
+                </form>
+            </div>
+
+            <!-- History -->
+            <h2 class="mb-3" style="font-size: 1.1rem; color: var(--text-muted);">Past Entries</h2>
+            {% for entry in entries %}
+            <div class="glass-panel p-3 mb-3 diary-entry-card animate-fade-up">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <span style="font-size: 1.2rem; margin-right: 5px;">
+                            {% if entry.mood == 'Happy' %}😊{% elif entry.mood == 'Neutral' %}😐{% else %}😟{% endif %}
+                        </span>
+                        <span style="color: white; font-weight: 600;">{{ entry.timestamp.strftime('%B %d, %Y') }}</span>
+                    </div>
+                    <span class="text-muted small">{{ entry.timestamp.strftime('%I:%M %p') }}</span>
+                </div>
+                <div class="d-flex gap-3 mt-2 text-muted small">
+                    <span><i class="fa-solid fa-droplet text-info"></i> {{ entry.water_intake }} glasses</span>
+                    <span><i class="fa-solid fa-moon text-warning"></i> {{ entry.sleep_hours }}h sleep</span>
+                </div>
+                {% if entry.symptoms %}
+                <p class="mt-2 mb-1 small" style="color: var(--risk-medium);"><i class="fa-solid fa-circle-exclamation"></i> {{ entry.symptoms }}</p>
+                {% endif %}
+                {% if entry.notes %}
+                <p class="text-muted small mt-1" style="font-style: italic;">"{{ entry.notes }}"</p>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="glass-panel p-5 text-center text-muted">No entries yet. Start tracking today!</div>
+            {% endfor %}
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="/dashboard" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="/history" class="bottom-nav-item"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a>
+            <a href="/diary" class="bottom-nav-item active"><i class="fa-solid fa-book-medical"></i><span>Diary</span></a>
+            <a href="/routine" class="bottom-nav-item"><i class="fa-solid fa-sparkles"></i><span>Routine</span></a>
+            <a href="/profile" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+        </nav>
+    </div>
+
+    <script>
+        function setMood(mood, el) {
+            document.getElementById('moodInput').value = mood;
+            document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
+</body>
+</html>

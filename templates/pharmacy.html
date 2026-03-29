@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Skin Pharmacy | Skin_Risk</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i
+                        class="fa-solid fa-circle-user"></i></a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="pharmacy-header text-center mb-5 animate-slide-up">
+                <i class="fa-solid fa-capsules text-gradient" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <h1 class="hero-title-small">Integrated <span class="text-gradient">Skin Pharmacy</span></h1>
+                <p class="text-muted">Recommended OTC treatments based on your recent scans</p>
+
+                <div class="medical-disclaimer glass-panel p-3 mt-4"
+                    style="border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.05);">
+                    <p style="color: #f59e0b; font-size: 0.85rem; margin: 0;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <strong>Medical Disclaimer:</strong> These
+                        suggestions are for informational purposes only. Always consult with a doctor or licensed
+                        pharmacist before starting any new medication. Do not use if you have known allergies to these
+                        ingredients.
+                    </p>
+                </div>
+            </div>
+
+            {% if recommendations %}
+            <div class="recommendations-grid">
+                {% for rec in recommendations %}
+                <div class="glass-panel p-4 mb-4 animate-slide-up">
+                    <h3 class="mb-3"
+                        style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                        For <span class="text-info">{{ rec.condition }}</span>
+                    </h3>
+                    <div class="product-list">
+                        {% for product in rec.products %}
+                        <div
+                            class="product-card glass-panel-nested p-3 mb-3 d-flex align-items-center justify-content-between">
+                            <div class="product-info">
+                                <h4 style="color: white; margin-bottom: 0.2rem;">{{ product.name }}</h4>
+                                <p class="text-muted" style="font-size: 0.8rem; margin: 0;">Brand: {{ product.brand }} |
+                                    Type: {{ product.type }}</p>
+                            </div>
+                            <button class="btn-primary btn-sm"
+                                onclick="alert('In a real app, this would redirect to an e-commerce partner like Amazon or a local pharmacy.')">
+                                <i class="fa-solid fa-cart-shopping"></i> View Price
+                            </button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="glass-panel p-5 text-center animate-slide-up">
+                <i class="fa-solid fa-clipboard-question text-muted mb-3" style="font-size: 3rem;"></i>
+                <h3>No Recent Scans Found</h3>
+                <p class="text-muted">Perform a scan on the dashboard to see personalized medicine recommendations.</p>
+                <a href="/dashboard" class="btn-primary mt-3">Go to Dashboard</a>
+            </div>
+            {% endif %}
+
+            <div class="pharmacy-footer mt-5 text-center text-muted">
+                <p style="font-size: 0.8rem;">Powered by Skin_Risk Clinical Database & Verified OTC Lists</p>
+            </div>
+            <!-- Android Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="/dashboard" class="bottom-nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/diary" class="bottom-nav-item">
+                    <i class="fa-solid fa-book-medical"></i>
+                    <span>Diary</span>
+                </a>
+                <a href="/routine" class="bottom-nav-item">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/history" class="bottom-nav-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>History</span>
+                </a>
+                <a href="/profile" class="bottom-nav-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+    </div>
+</body>
+
+</html>

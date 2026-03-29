@@ -3,8 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skin_Risk | Skin Disease Risk Identifier</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Skin_Risk | AI Skin Disease Identifier</title>
+    <!-- PWA -->
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description"
+        content="AI-powered skin disease risk identifier with 100 conditions. Fast, private, and clinical-grade metadata.">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -14,29 +21,33 @@
 </head>
 
 <body>
+    <script>
+        // Initialize Theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
     <div class="app-container">
-        <!-- Header -->
-        <header class="navbar">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
             <div class="logo">
                 <i class="fa-solid fa-microscope text-gradient"></i>
-                <span>Skin_<span class="text-gradient">Risk</span> <small
-                        style="font-size: 0.6rem; opacity: 0.5;">v1.2</small></span>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
-            <nav class="nav-links">
-                {% if current_user.is_authenticated %}
-                <span class="user-welcome"><i class="fa-solid fa-circle-user"></i> Hi, {{ current_user.name or
-                    current_user.email.split('@')[0] }}</span>
-                <a href="/dashboard"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-                <a href="/appointments"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
-                <a href="/faq"><i class="fa-solid fa-circle-question"></i> FAQ</a>
-                <a href="/support"><i class="fa-solid fa-headset"></i> Support</a>
-                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-                {% else %}
-                <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                <a href="/"><i class="fa-solid fa-user-plus"></i> Signup</a>
-                {% endif %}
-            </nav>
+            <div class="header-search">
+                <form action="/search" method="GET" style="display: flex; width: 100%;">
+                    <input type="text" name="q" placeholder="Search..." class="search-input">
+                    <button type="submit" class="search-sub-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="top-actions" style="display: flex; gap: 1rem; align-items: center;">
+                <a href="/notifications" style="color: var(--text-main); font-size: 1.2rem; position: relative;">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notification-badge"></span>
+                </a>
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i
+                        class="fa-solid fa-circle-user"></i></a>
+            </div>
         </header>
 
         <!-- Main Content -->
@@ -57,15 +68,22 @@
                 <p class="hero-subtitle">Upload an image of your skin concern. Our advanced AI will analyze it to
                     identify potential diseases and estimate your risk level instantly.</p>
 
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul class="flashes">
-                    {% for message in messages %}
-                    <li class="flash-msg"><i class="fa-solid fa-triangle-exclamation"></i> {{ message }}</li>
-                    {% endfor %}
-                </ul>
+                {% if current_user.is_authenticated and weather %}
+                <div class="weather-tracker-card glass-panel mb-4 animate-slide-up"
+                    style="display: flex; align-items: center; gap: 1.5rem; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.05);">
+                    <div class="uv-info text-center" style="flex: 1; border-right: 1px solid rgba(255,255,255,0.1);">
+                        <div class="uv-value text-gradient" style="font-size: 2.5rem; font-weight: 700;">{{
+                            weather.uv_index }}</div>
+                        <div style="font-size: 0.7rem; color: #a5b4fc; text-transform: uppercase; letter-spacing: 1px;">
+                            UV Index</div>
+                    </div>
+                    <div class="weather-tips" style="flex: 3;">
+                        <h4 style="color: white; margin-bottom: 0.3rem;"><i class="fa-solid fa-sun text-warning"></i>
+                            Skin Protection Alert for {{ weather.location }}</h4>
+                        <p class="text-muted small" style="margin: 0;">{{ weather.risk_tip }}</p>
+                    </div>
+                </div>
                 {% endif %}
-                {% endwith %}
 
                 <div class="upload-card">
                     <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
@@ -89,6 +107,38 @@
                     </form>
                 </div>
 
+                <!-- AI Symptom Checker Quiz -->
+                <div class="glass-panel p-4 mt-5 animate-slide-up" id="symptomQuizCard"
+                    style="border: 1px solid var(--secondary); background: rgba(6, 182, 212, 0.05);">
+                    <div id="quiz-intro">
+                        <h2 class="mb-3"><i class="fa-solid fa-notes-medical text-gradient"></i> AI Symptom Checker</h2>
+                        <p class="text-muted mb-4">Not ready for a scan? Answer 3 quick questions about your skin
+                            concern for an initial assessment.</p>
+                        <button class="btn-primary" onclick="startQuiz()"
+                            style="box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">Start Quick Quiz</button>
+                    </div>
+
+                    <div id="quiz-content" style="display: none;">
+                        <div class="progress-bar mb-4" style="height: 6px;">
+                            <div id="quiz-progress" class="progress-fill" style="width: 33%;"></div>
+                        </div>
+                        <h3 id="quiz-question" style="color: white; margin-bottom: 1.5rem;">How long has the concern
+                            been present?</h3>
+                        <div id="quiz-options" class="d-flex flex-direction-column gap-2">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+
+                    <div id="quiz-result" style="display: none; text-align: center;">
+                        <i class="fa-solid fa-circle-check text-low"
+                            style="font-size: 3rem; margin-bottom: 1rem; color: var(--risk-low);"></i>
+                        <h3 style="color: white; margin-bottom: 1rem;">Initial Assessment Ready</h3>
+                        <p id="assessment-text" class="text-muted mb-4"></p>
+                        <button class="btn-primary" onclick="location.href='#uploadForm'">Clear & Upload Photo for
+                            Accuracy</button>
+                    </div>
+                </div>
+
                 <div class="trust-indicators">
                     <div class="indicator">
                         <i class="fa-solid fa-shield-halved"></i>
@@ -100,38 +150,108 @@
                     </div>
                 </div>
 
-                {% if current_user.is_authenticated %}
-                <!-- NEW: Premium Feature Shortcuts (FRONT & CENTER) -->
+                <!-- NEW: Premium Care Suite (Bento Grid) -->
                 <div class="glass-panel p-4 mt-5 animate-slide-up"
-                    style="border: 1px solid var(--secondary); background: rgba(6, 182, 212, 0.05);">
-                    <h2 class="mb-4 text-center"><i class="fa-solid fa-star text-gradient"></i> Premium Care Suite</h2>
-                    <div class="feature-grid-dashboard">
-                        <div class="glass-panel p-4 feature-card-mini"
-                            style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255,255,255,0.1);">
-                            <i class="fa-solid fa-chart-line text-primary mb-3" style="font-size: 2.5rem;"></i>
-                            <h3 style="color: white; font-size: 1.5rem;">Visual Progress Graphs</h3>
-                            <p class="text-muted mb-4">Track improvement trends and compare scans side-by-side.</p>
-                            <a href="/history" class="btn-primary"
-                                style="margin-top: auto; box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);">Open Progress
-                                Lab</a>
-                        </div>
-                        <div class="glass-panel p-4 feature-card-mini"
-                            style="background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255,255,255,0.1);">
-                            <i class="fa-solid fa-comments text-info mb-3" style="font-size: 2.5rem;"></i>
-                            <h3 style="color: white; font-size: 1.5rem;">Live Dermatologist Chat</h3>
-                            <p class="text-muted mb-4">Connect instantly with our specialists for a digital check-up.
-                            </p>
-                            <div class="d-flex gap-2" style="margin-top: auto;">
-                                <a href="/quick-chat" class="btn-primary"
-                                    style="flex: 2; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">Start Chat Now</a>
-                                <a href="/booking" class="btn-secondary"
-                                    style="flex: 1; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;">Book
-                                    Slot</a>
+                    style="border: 1px solid rgba(99, 102, 241, 0.2); background: rgba(99, 102, 241, 0.03);">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 style="margin: 0;"><i class="fa-solid fa-crown text-gradient"></i> Premium Suite</h2>
+                        <span class="badge-low" style="font-size: 0.7rem; padding: 4px 10px;">PRO ACTIVE</span>
+                    </div>
+
+                    <div class="bento-grid">
+                        <!-- Main Feature: Progress Lab -->
+                        <div class="glass-panel p-4 bento-item bento-main">
+                            <div class="feature-mini-icon">
+                                <i class="fa-solid fa-chart-line text-gradient"></i>
                             </div>
+                            <h3 style="color: white; font-size: 1.4rem; margin-bottom: 0.5rem;">Visual Progress Lab</h3>
+                            <p class="text-muted small mb-4">Monitor your skin's improvement journey with AI-powered trend analysis and side-by-side scan comparisons.</p>
+                            <a href="{% if current_user.is_authenticated %}/history{% else %}/login{% endif %}" class="btn-primary" style="margin-top: auto; padding: 12px; font-size: 0.9rem;">
+                                Launch Progress Lab <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Secondary: Chat -->
+                        <div class="glass-panel p-4 bento-item">
+                            <div class="feature-mini-icon" style="color: #6366f1;">
+                                <i class="fa-solid fa-comments-medical"></i>
+                            </div>
+                            <h4 style="color: white; margin-bottom: 0.5rem;">Live Consult</h4>
+                            <p class="text-muted small mb-3">Instant specialist chat.</p>
+                            <a href="{% if current_user.is_authenticated %}/quick-chat{% else %}/login{% endif %}" class="btn-primary" style="margin-top: auto; padding: 10px; font-size: 0.8rem; background: var(--msg-user-bg);">
+                                Start Chat
+                            </a>
+                        </div>
+
+                        <!-- Secondary: Booking -->
+                        <div class="glass-panel p-4 bento-item">
+                            <div class="feature-mini-icon" style="color: var(--secondary);">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <h4 style="color: white; margin-bottom: 0.5rem;">Book Slot</h4>
+                            <p class="text-muted small mb-3">Schedule a session.</p>
+                            <a href="{% if current_user.is_authenticated %}/booking{% else %}/login{% endif %}" class="btn-secondary" style="margin-top: auto; padding: 10px; font-size: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; text-align: center;">
+                                Reserve
+                            </a>
+                        </div>
+                        <!-- NEW: Diary shortcut -->
+                        <div class="glass-panel p-4 bento-item">
+                            <div class="feature-mini-icon" style="color: #10b981;">
+                                <i class="fa-solid fa-book-medical"></i>
+                            </div>
+                            <h4 style="color: white; margin-bottom: 0.5rem;">Daily Diary</h4>
+                            <p class="text-muted small mb-3">Log your progress.</p>
+                            <a href="{% if current_user.is_authenticated %}/diary{% else %}/login{% endif %}" class="btn-primary" style="margin-top: auto; padding: 10px; font-size: 0.8rem; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                Open Log
+                            </a>
+                        </div>
+
+                        <!-- NEW: Routine shortcut -->
+                        <div class="glass-panel p-4 bento-item">
+                            <div class="feature-mini-icon" style="color: #f59e0b;">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <h4 style="color: white; margin-bottom: 0.5rem;">My Routine</h4>
+                            <p class="text-muted small mb-3">Daily skin health guide.</p>
+                            <a href="{% if current_user.is_authenticated %}/routine{% else %}/login{% endif %}" class="btn-primary" style="margin-top: auto; padding: 10px; font-size: 0.8rem; background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.3);">
+                                View Guide
+                            </a>
                         </div>
                     </div>
                 </div>
-                {% endif %}
+
+                <!-- HOW IT WORKS SECTION -->
+                <div class="glass-panel p-4 mt-5 animate-slide-up" style="border: 1px solid rgba(79,70,229,0.3);">
+                    <h2 class="mb-4 text-center"><i class="fa-solid fa-wand-magic-sparkles text-gradient"></i> How It
+                        Works</h2>
+                    <div
+                        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
+                        <div class="glass-panel-nested p-3" style="text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:.5rem;">📸</div>
+                            <h4 style="color:white; margin-bottom:.4rem;">1. Upload</h4>
+                            <p class="text-muted" style="font-size:.85rem;">Take or upload a clear photo of your skin
+                                concern.</p>
+                        </div>
+                        <div class="glass-panel-nested p-3" style="text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:.5rem;">🤖</div>
+                            <h4 style="color:white; margin-bottom:.4rem;">2. AI Analysis</h4>
+                            <p class="text-muted" style="font-size:.85rem;">Our EfficientNet AI analyzes color, texture,
+                                and shape.</p>
+                        </div>
+                        <div class="glass-panel-nested p-3" style="text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:.5rem;">📋</div>
+                            <h4 style="color:white; margin-bottom:.4rem;">3. Get Results</h4>
+                            <p class="text-muted" style="font-size:.85rem;">Receive a full clinical report — symptoms,
+                                advice, risk level.</p>
+                        </div>
+                        <div class="glass-panel-nested p-3" style="text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:.5rem;">👨‍⚕️</div>
+                            <h4 style="color:white; margin-bottom:.4rem;">4. Consult</h4>
+                            <p class="text-muted" style="font-size:.85rem;">Chat with a doctor or book an appointment if
+                                needed.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Graphic side element -->
@@ -147,6 +267,30 @@
                 </a>
             </div>
         </main>
+
+        <!-- Android Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="/dashboard" class="bottom-nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="/diary" class="bottom-nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Diary</span>
+            </a>
+            <a href="/routine" class="bottom-nav-item">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Routine</span>
+            </a>
+            <a href="/history" class="bottom-nav-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+            <a href="/profile" class="bottom-nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
     </div>
 
     <!-- Frontend interactivity -->
@@ -213,6 +357,70 @@
                 };
             }
         });
+
+        // Symptom Checker Logic
+        const quizData = [
+            {
+                q: "How long has the concern been present?",
+                options: ["Less than a week", "1-4 weeks", "More than a month"],
+                assess: ["New concerns should be monitored closely.", "Sub-acute conditions might need professional review.", "Chronic issues require clinical diagnosis."]
+            },
+            {
+                q: "Is there any itching or pain?",
+                options: ["None", "Mild Itch", "Painful/Severe Itch"],
+                assess: ["Absence of pain is good, but observe for changes.", "Itching often indicates inflammation or allergy.", "Pain or severe itching warrants early consultation."]
+            },
+            {
+                q: "Is it spreading or changing shape?",
+                options: ["No", "Slowly", "Rapidly"],
+                assess: ["Stable lesions are often lower risk.", "Slow changes are common in many skin conditions.", "Rapid changes require immediate medical attention."]
+            }
+        ];
+
+        let currentStep = 0;
+        let findings = [];
+
+        window.startQuiz = function () {
+            document.getElementById('quiz-intro').style.display = 'none';
+            document.getElementById('quiz-content').style.display = 'block';
+            showQuestion();
+        };
+
+        function showQuestion() {
+            const quiz = quizData[currentStep];
+            document.getElementById('quiz-question').innerText = quiz.q;
+            document.getElementById('quiz-progress').style.width = ((currentStep + 1) / quizData.length * 100) + '%';
+
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+            quiz.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'glass-panel p-3 mb-2 w-100 text-left';
+                btn.style.background = 'rgba(255,255,255,0.05)';
+                btn.style.border = '1px solid rgba(255,255,255,0.1)';
+                btn.style.color = 'white';
+                btn.style.textAlign = 'left';
+                btn.innerText = opt;
+                btn.onclick = () => handleOption(idx);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function handleOption(idx) {
+            findings.push(quizData[currentStep].assess[idx]);
+            currentStep++;
+            if (currentStep < quizData.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('assessment-text').innerText = findings.join(' ');
+        }
 
         // Form submission animation
         document.getElementById("uploadForm").addEventListener("submit", function () {

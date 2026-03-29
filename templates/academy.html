@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Skin Academy | Skin_Risk</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i
+                        class="fa-solid fa-circle-user"></i></a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="academy-header text-center mb-5 animate-slide-up">
+                <i class="fa-solid fa-graduation-cap text-gradient" style="font-size: 3.5rem; margin-bottom: 1rem;"></i>
+                <h1 class="hero-title-small">Skin_<span class="text-gradient">Academy</span></h1>
+                <p class="text-muted">Evidence-based educational resources for your skin health</p>
+            </div>
+
+            <div class="articles-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                {% for article in articles %}
+                <article class="glass-panel p-4 animate-slide-up hover-tilt"
+                    style="display: flex; flex-direction: column;">
+                    <div class="article-meta mb-3 d-flex justify-content-between align-items-center">
+                        <span class="category-tag small"
+                            style="background: rgba(79, 70, 229, 0.1); color: #a5b4fc; padding: 0.2rem 0.6rem; border-radius: 4px;">{{
+                            article.category }}</span>
+                        <span class="read-time text-muted small"><i class="fa-regular fa-clock"></i> {{
+                            article.read_time }} read</span>
+                    </div>
+                    <h2 class="h4 mb-3" style="color: white;">{{ article.title }}</h2>
+                    <p class="text-muted small mb-4" style="flex: 1;">{{ article.summary }}</p>
+                    <button class="btn-secondary btn-sm"
+                        onclick="alert('In a real app, this would open the full article page.')"
+                        style="border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: white;">
+                        Read Full Article <i class="fa-solid fa-book-open ms-2"></i>
+                    </button>
+                </article>
+                {% endfor %}
+            </div>
+
+            <div class="academy-cta glass-panel p-5 mt-5 text-center animate-slide-up"
+                style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.1)); border: 1px solid rgba(79, 70, 229, 0.2);">
+                <h3 style="color: white; margin-bottom: 1rem;">Want to learn more about a specific condition?</h3>
+                <p class="text-muted mb-4">Check our comprehensive FAQ or contact a specialist today.</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <a href="/faq" class="btn-secondary">View FAQ</a>
+                    <a href="/support" class="btn-primary">Contact Support</a>
+                </div>
+            </div>
+            <!-- Android Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="/dashboard" class="bottom-nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/diary" class="bottom-nav-item">
+                    <i class="fa-solid fa-book-medical"></i>
+                    <span>Diary</span>
+                </a>
+                <a href="/routine" class="bottom-nav-item">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/history" class="bottom-nav-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>History</span>
+                </a>
+                <a href="/profile" class="bottom-nav-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+    </div>
+</body>
+
+</html>

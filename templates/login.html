@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Login | Skin_Risk</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +15,19 @@
 </head>
 
 <body class="auth-page-bg">
-    <div class="auth-container-alt">
-        <div class="auth-card-alt animate-slide-up">
-            <h1 class="auth-title-alt">Login Account <small style="font-size: 0.6rem; opacity: 0.5;">v1.2</small></h1>
-            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;">
-                Enter your Skin_Risk email and password.
+    <div class="app-container">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+        </header>
+
+        <div class="auth-card-alt animate-slide-up" style="margin-top: 2rem;">
+            <h1 class="auth-title-alt">Login <span class="text-gradient">Account</span></h1>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
+                Enter your credentials to continue.
             </p>
 
             {% with messages = get_flashed_messages() %}

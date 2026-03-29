@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>My Appointments | Skin_Risk</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,107 +13,262 @@
 
 <body class="result-page">
     <div class="app-container">
-        <header class="navbar">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
             <div class="logo">
                 <i class="fa-solid fa-microscope text-gradient"></i>
-                <a href="/dashboard" style="color: inherit;">Skin_<span class="text-gradient">Risk</span></a>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
-            <nav class="nav-links">
-                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-                <a href="/booking" class="active"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
-                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </nav>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i
+                        class="fa-solid fa-circle-user"></i></a>
+            </div>
         </header>
 
         <main class="result-container animate-slide-up">
-            <div class="glass-panel p-4 mb-4 d-flex justify-content-between align-items-center">
+            <div class="glass-panel p-4 mb-4 d-flex justify-content-between align-items-center" style="border-radius: 24px;">
                 <div>
-                    <h1 class="disease-title mb-1">My <span class="text-gradient">Appointments</span></h1>
-                    <p class="text-muted">Manage your scheduled sessions with specialists.</p>
+                    <h1 class="disease-title mb-1" style="font-size: 1.8rem; margin: 0;">My <span class="text-gradient">Appointments</span></h1>
+                    <p class="text-muted" style="font-size: 0.9rem;">Manage your sessions with specialists.</p>
                 </div>
-                <a href="/booking" class="btn-primary">Book New Session</a>
+                <a href="/booking" class="btn-primary" style="width: auto; padding: 10px 15px; font-size: 0.8rem; margin: 0;">
+                    <i class="fa-solid fa-plus"></i> New
+                </a>
             </div>
 
-            <div class="appointment-list">
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('upcoming')">Upcoming</button>
+                <button class="tab-btn" onclick="switchTab('past')">Past</button>
+            </div>
+
+            <div id="upcoming-list" class="appointment-list">
                 {% if appointments %}
-                {% for apt in appointments %}
-                <div class="glass-panel p-4 mb-3 appointment-card">
-                    <div class="apt-info">
-                        <div class="apt-header">
-                            <span class="apt-type badge-{{ apt.type.lower() }}">{{ apt.type }}</span>
-                            <span class="apt-status status-{{ apt.status.lower() }}">{{ apt.status }}</span>
-                        </div>
-                        <h3 class="mt-2"><i class="fa-solid fa-calendar"></i> {{ apt.date_time.strftime('%b %d, %Y') }}
-                            at {{ apt.date_time.strftime('%I:%M %p') }}</h3>
-                        <p class="text-muted mt-1">{{ apt.notes or 'No notes provided.' }}</p>
-                    </div>
-                    <div class="apt-actions">
-                        {% if apt.type == 'Chat' %}
-                        <a href="/chat" class="btn-primary btn-sm"><i class="fa-solid fa-comments"></i> Enter Chat</a>
-                        {% elif apt.type == 'Video' %}
-                        <a href="/video-call" class="btn-primary btn-sm"><i class="fa-solid fa-video"></i> Join Video
-                            Call</a>
-                        {% else %}
-                        <button class="btn-secondary btn-sm" disabled>View Details</button>
+                    {% set has_upcoming = false %}
+                    {% for apt in appointments %}
+                        {% if apt.status.lower() != 'completed' and apt.status.lower() != 'cancelled' %}
+                            {% set has_upcoming = true %}
+                            <div class="glass-panel p-4 mb-4 appointment-card animate-fade-up" style="border-left: 4px solid var(--primary); background: rgba(30, 41, 59, 0.4);">
+                                <div class="apt-content-wrapper" style="width: 100%;">
+                                    <div class="apt-header" style="justify-content: space-between;">
+                                        <div class="d-flex gap-2">
+                                            <span class="apt-type-badge">{{ apt.type }}</span>
+                                            <span class="apt-status-badge {{ apt.status.lower() }}">{{ apt.status }}</span>
+                                        </div>
+                                        <span class="text-muted" style="font-size: 0.8rem;"><i class="fa-solid fa-bell"></i></span>
+                                    </div>
+                                    <div class="apt-body mt-3">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="date-box">
+                                                <span class="day">{{ apt.date_time.strftime('%d') }}</span>
+                                                <span class="month">{{ apt.date_time.strftime('%b') }}</span>
+                                            </div>
+                                            <div>
+                                                <h3 style="font-size: 1.1rem; margin: 0;">{{ apt.type }} Consultation</h3>
+                                                <p class="text-muted" style="font-size: 0.85rem; margin-top: 2px;">
+                                                    <i class="fa-regular fa-clock"></i> {{ apt.date_time.strftime('%I:%M %p') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="apt-footer mt-4 d-flex gap-2">
+                                        {% if apt.type == 'Chat' %}
+                                        <a href="/chat" class="btn-primary w-100" style="margin: 0; padding: 12px; font-size: 0.9rem;">
+                                            <i class="fa-solid fa-comments"></i> Enter Chat
+                                        </a>
+                                        {% elif apt.type == 'Video' %}
+                                        <a href="/video-call" class="btn-primary w-100" style="margin: 0; padding: 12px; font-size: 0.9rem;">
+                                            <i class="fa-solid fa-video"></i> Join Video
+                                        </a>
+                                        {% else %}
+                                        <button class="btn-secondary w-100" style="padding: 12px; font-size: 0.9rem;">View Details</button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
-                    </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                    
+                    {% if not has_upcoming %}
+                        <div class="glass-panel p-5 text-center animate-fade-up">
+                            <div class="empty-icon-wrapper mb-3">
+                                <i class="fa-solid fa-calendar-check text-muted" style="font-size: 2.5rem; opacity: 0.5;"></i>
+                            </div>
+                            <h3>All caught up!</h3>
+                            <p class="text-muted">You have no upcoming appointments.</p>
+                            <a href="/booking" class="btn-primary mt-3" style="width: auto; margin: 15px auto 0;">Book Consultation</a>
+                        </div>
+                    {% endif %}
                 {% else %}
-                <div class="glass-panel p-5 text-center">
-                    <i class="fa-solid fa-calendar-xmark text-muted mb-3" style="font-size: 3rem;"></i>
-                    <h3>No appointments yet</h3>
-                    <p class="text-muted">Need professional advice? Book your first session today.</p>
-                    <a href="/booking" class="btn-primary mt-3">Book Consultation</a>
-                </div>
+                    <div class="glass-panel p-5 text-center animate-fade-up">
+                        <i class="fa-solid fa-calendar-xmark text-muted mb-3" style="font-size: 3rem; opacity: 0.5;"></i>
+                        <h3>No appointments yet</h3>
+                        <p class="text-muted">Need professional advice? Book your first session today.</p>
+                        <a href="/booking" class="btn-primary mt-3" style="width: auto; margin: 15px auto 0;">Book Consultation</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div id="past-list" class="appointment-list" style="display: none;">
+                {% if appointments %}
+                    {% set has_past = false %}
+                    {% for apt in appointments %}
+                        {% if apt.status.lower() == 'completed' or apt.status.lower() == 'cancelled' %}
+                            {% set has_past = true %}
+                            <div class="glass-panel p-4 mb-4 appointment-card animate-fade-up" style="border-left: 4px solid var(--text-muted); opacity: 0.7;">
+                                <div class="apt-content-wrapper" style="width: 100%;">
+                                    <div class="apt-header" style="justify-content: space-between;">
+                                        <div class="d-flex gap-2">
+                                            <span class="apt-type-badge" style="background: rgba(148, 163, 184, 0.1); color: var(--text-muted); border-color: rgba(148, 163, 184, 0.2);">{{ apt.type }}</span>
+                                            <span class="apt-status-badge">{{ apt.status }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="apt-body mt-3">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="date-box" style="opacity: 0.6;">
+                                                <span class="day">{{ apt.date_time.strftime('%d') }}</span>
+                                                <span class="month">{{ apt.date_time.strftime('%b') }}</span>
+                                            </div>
+                                            <div>
+                                                <h3 style="font-size: 1.1rem; margin: 0; color: var(--text-muted);">{{ apt.type }} Consultation</h3>
+                                                <p class="text-muted" style="font-size: 0.85rem; margin-top: 2px;">
+                                                    Completed on {{ apt.date_time.strftime('%b %d, %Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if not has_past %}
+                        <div class="glass-panel p-5 text-center animate-fade-up">
+                            <p class="text-muted">No past appointments found.</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="glass-panel p-5 text-center animate-fade-up">
+                        <p class="text-muted">No past appointments found.</p>
+                    </div>
                 {% endif %}
             </div>
         </main>
+
+        <!-- Android Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="/dashboard" class="bottom-nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="/diary" class="bottom-nav-item">
+                <i class="fa-solid fa-book-medical"></i>
+                <span>Diary</span>
+            </a>
+            <a href="/routine" class="bottom-nav-item">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Routine</span>
+            </a>
+            <a href="/history" class="bottom-nav-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+            <a href="/profile" class="bottom-nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
     </div>
 
     <style>
-        .appointment-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid var(--primary);
-        }
-
-        .apt-header {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .apt-type {
-            background: rgba(99, 102, 241, 0.2);
+        .apt-type-badge {
+            background: rgba(99, 102, 241, 0.15);
             color: #818cf8;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        .apt-status {
-            background: rgba(34, 197, 94, 0.2);
+        .apt-status-badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .apt-status-badge.scheduled {
+            background: rgba(34, 197, 94, 0.15);
             color: #4ade80;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
 
-        .btn-sm {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+        .date-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @media (max-width: 768px) {
-            .appointment-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
+        .date-box .day {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .date-box .month {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .empty-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .w-100 { width: 100%; }
+        .d-flex { display: flex; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 1rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .align-items-center { align-items: center; }
+        .justify-content-between { justify-content: space-between; }
+        .text-center { text-align: center; }
+    </style>
+
+    <script>
+        function switchTab(tab) {
+            const btns = document.querySelectorAll('.tab-btn');
+            const upcomingList = document.getElementById('upcoming-list');
+            const pastList = document.getElementById('past-list');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            if (tab === 'upcoming') {
+                btns[0].classList.add('active');
+                upcomingList.style.display = 'block';
+                pastList.style.display = 'none';
+            } else {
+                btns[1].classList.add('active');
+                upcomingList.style.display = 'none';
+                pastList.style.display = 'block';
             }
         }
-    </style>
+    </script>
 </body>
 
 </html>

@@ -48,8 +48,17 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(100), nullable=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    
+    # New Profile Fields
+    age = db.Column(db.Integer, nullable=True)
+    skin_type = db.Column(db.String(50), nullable=True)
+    location = db.Column(db.String(100), nullable=True)
+    bio = db.Column(db.Text, nullable=True)
+    
     scans = db.relationship('Scan', backref='user', lazy=True)
     appointments = db.relationship('Appointment', backref='user', lazy=True)
+    notifications = db.relationship('Notification', backref='user', lazy=True)
+    diary_entries = db.relationship('DiaryEntry', backref='user', lazy=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -83,6 +92,26 @@ class Appointment(db.Model):
     date_time = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     notes = db.Column(db.Text, nullable=True)
+
+# Notification Model
+class Notification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    is_read = db.Column(db.Boolean, default=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+# Diary Entry Model
+class DiaryEntry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    mood = db.Column(db.String(20), nullable=False) # e.g., 'Happy', 'Neutral', 'Sad'
+    water_intake = db.Column(db.Integer, default=0) # Glasses of water
+    sleep_hours = db.Column(db.Integer, nullable=True)
+    symptoms = db.Column(db.String(255), nullable=True)
+    notes = db.Column(db.Text, nullable=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -123,7 +152,7 @@ def save_scan_to_history(scan_data, user_id):
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
-    return redirect(url_for('login'))
+    return render_template('index.html', weather=None)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -209,7 +238,33 @@ def logout():
 @app.route('/dashboard', methods=['GET'])
 @login_required
 def dashboard():
-    return render_template('index.html')
+    # Simulate current environmental data
+    # In a real app, you would fetch this from OpenWeatherMap API using current_user.location
+    weather_data = {
+        'uv_index': 6.2, # Moderate-High
+        'temp': 28,
+        'location': current_user.location or 'Global',
+        'risk_tip': 'High UV today. Seek shade and wear protective clothing between 11 AM - 4 PM.'
+    }
+    return render_template('index.html', weather=weather_data)
+
+@app.route('/profile', methods=['GET'])
+@login_required
+def profile():
+    return render_template('profile.html', user=current_user)
+
+@app.route('/profile/update', methods=['POST'])
+@login_required
+def update_profile():
+    current_user.name = request.form.get('name')
+    current_user.age = request.form.get('age')
+    current_user.skin_type = request.form.get('skin_type')
+    current_user.location = request.form.get('location')
+    current_user.bio = request.form.get('bio')
+    
+    db.session.commit()
+    flash('Profile updated successfully!')
+    return redirect(url_for('profile'))
 
 @app.route('/history', methods=['GET'])
 @login_required
@@ -228,6 +283,63 @@ def history():
                            labels=json.dumps(labels), 
                            confidence_data=json.dumps(confidence_data),
                            risk_data=json.dumps(risk_data))
+
+@app.route('/pharmacy', methods=['GET'])
+@login_required
+def pharmacy():
+    # ... (existing pharmacy logic) ...
+    latest_scans = Scan.query.filter_by(user_id=current_user.id).order_by(Scan.timestamp.desc()).limit(3).all()
+    # product_database mapping...
+    product_database = {
+        'Acne': [
+            {'name': 'Benzoyl Peroxide Gel', 'brand': 'ClearSkin', 'type': 'Topical'},
+            {'name': 'Salicylic Acid Cleanser', 'brand': 'DermaPure', 'type': 'Cleanser'}
+        ],
+        'Athlete\'s Foot': [
+            {'name': 'Terbinafine Cream', 'brand': 'FungiStop', 'type': 'Antifungal'},
+            {'name': 'Antifungal Powder', 'brand': 'SwiftRelief', 'type': 'Powder'}
+        ],
+        'Eczema': [
+            {'name': 'Hydrocortisone 1%', 'brand': 'EczemaCare', 'type': 'Steroid Cream'},
+            {'name': 'Colloidal Oatmeal Lotion', 'brand': 'SoothIt', 'type': 'Moisturizer'}
+        ],
+        'Dry Skin': [
+            {'name': 'Ceramide Moisturizer', 'brand': 'HydraSoft', 'type': 'Cream'},
+            {'name': 'Hyaluronic Acid Serum', 'brand': 'GlowUp', 'type': 'Serum'}
+        ]
+    }
+    recommendations = []
+    for scan in latest_scans:
+        if scan.disease in product_database:
+            recommendations.append({'condition': scan.disease, 'products': product_database[scan.disease]})
+    return render_template('pharmacy.html', recommendations=recommendations)
+
+@app.route('/academy', methods=['GET'])
+def academy():
+    articles = [
+        {
+            'id': 1,
+            'title': 'The Science of Sun Protection',
+            'summary': 'Understanding SPF, UV Index, and how to choose the right sunscreen for your skin type.',
+            'category': 'Prevention',
+            'read_time': '5 min'
+        },
+        {
+            'id': 2,
+            'title': 'Managing Adult Acne',
+            'summary': 'Hormonal triggers, diet, and advanced topical treatments for persistent breakouts.',
+            'category': 'Treatment',
+            'read_time': '7 min'
+        },
+        {
+            'id': 3,
+            'title': 'Eczema: More than just Dry Skin',
+            'summary': 'Exploring the autoimmune roots of atopic dermatitis and new biological therapies.',
+            'category': 'Research',
+            'read_time': '6 min'
+        }
+    ]
+    return render_template('academy.html', articles=articles)
 
 @app.route('/faq', methods=['GET'])
 def faq():
@@ -255,6 +367,55 @@ def support():
 @app.route('/technology', methods=['GET'])
 def technology():
     return render_template('technology.html')
+
+@app.route('/search', methods=['GET'])
+@login_required
+def search():
+    query = request.args.get('q', '').lower()
+    results = []
+    
+    if query:
+        # Mock Article Search
+        articles = [
+            {'title': 'The Science of Sun Protection', 'url': '/academy#1', 'type': 'Academy'},
+            {'title': 'Managing Adult Acne', 'url': '/academy#2', 'type': 'Academy'},
+            {'title': 'Eczema: More than just Dry Skin', 'url': '/academy#3', 'type': 'Academy'}
+        ]
+        results.extend([a for a in articles if query in a['title'].lower()])
+        
+        # Mock Product Search
+        products = [
+            {'title': 'Benzoyl Peroxide Gel', 'url': '/pharmacy', 'type': 'Pharmacy'},
+            {'title': 'Salicylic Acid Cleanser', 'url': '/pharmacy', 'type': 'Pharmacy'},
+            {'title': 'Terbinafine Cream', 'url': '/pharmacy', 'type': 'Pharmacy'}
+        ]
+        results.extend([p for p in products if query in p['title'].lower()])
+        
+    return render_template('search_results.html', results=results, query=query)
+
+@app.route('/notifications', methods=['GET'])
+@login_required
+def get_notifications():
+    notifs = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.timestamp.desc()).all()
+    # If no notifications, create a welcome one
+    if not notifs:
+        welcome_notif = Notification(
+            title="Welcome to Skin Risk AI",
+            content="Thank you for joining our platform. Start your first scan today!",
+            user_id=current_user.id
+        )
+        db.session.add(welcome_notif)
+        db.session.commit()
+        notifs = [welcome_notif]
+    
+    return render_template('notifications.html', notifications=notifs)
+
+@app.route('/notifications/read/all', methods=['POST'])
+@login_required
+def mark_all_read():
+    Notification.query.filter_by(user_id=current_user.id, is_read=False).update({Notification.is_read: True})
+    db.session.commit()
+    return redirect(url_for('get_notifications'))
 
 @app.route('/booking', methods=['GET', 'POST'])
 @login_required
@@ -364,6 +525,76 @@ def quick_chat():
 def video_call():
     return render_template('video_call.html')
 
+@app.route('/diary', methods=['GET', 'POST'])
+@login_required
+def diary():
+    if request.method == 'POST':
+        mood = request.form.get('mood')
+        water = int(request.form.get('water', 0))
+        sleep = int(request.form.get('sleep', 0))
+        symptoms = request.form.get('symptoms')
+        notes = request.form.get('notes')
+        
+        new_entry = DiaryEntry(
+            mood=mood,
+            water_intake=water,
+            sleep_hours=sleep,
+            symptoms=symptoms,
+            notes=notes,
+            user_id=current_user.id
+        )
+        db.session.add(new_entry)
+        db.session.commit()
+        flash('Daily log saved successfully!')
+        return redirect(url_for('diary'))
+        
+    entries = DiaryEntry.query.filter_by(user_id=current_user.id).order_by(DiaryEntry.timestamp.desc()).all()
+    return render_template('diary.html', entries=entries)
+
+@app.route('/routine', methods=['GET'])
+@login_required
+def routine():
+    # Predefined routine templates
+    routines = {
+        'Acne': {
+            'morning': ['Gentle Cleanser', 'Topical Antibiotic', 'SPF 30+'],
+            'evening': ['Salicylic Acid Cleanser', 'Retinol / Adapalene', 'Light Moisturizer']
+        },
+        'Eczema': {
+            'morning': ['Lukewarm Shower', 'Thick Emollient', 'Ceramide Cream'],
+            'evening': ['Colloidal Oatmeal Soak', 'Hydrating Ointment', 'Soft Cotton Clothes']
+        },
+        'Dry Skin': {
+            'morning': ['Hydrating Cleanser', 'Hyaluronic Acid', 'Rich Moisturizer'],
+            'evening': ['Oil Cleaser', 'Face Oil', 'Night Mask']
+        }
+    }
+    
+    # Get user's latest scan condition
+    latest_scan = Scan.query.filter_by(user_id=current_user.id).order_by(Scan.timestamp.desc()).first()
+    condition = latest_scan.disease if latest_scan and latest_scan.disease in routines else 'General'
+    
+    selected_routine = routines.get(condition, {
+        'morning': ['Cleanse', 'Hydrate', 'Protect'],
+        'evening': ['Cleanse', 'Treat', 'Moisturize']
+    })
+    
+    return render_template('routine.html', routine=selected_routine, condition=condition)
+
+@app.route('/debug/db', methods=['GET'])
+def debug_db():
+    users = User.query.all()
+    scans = Scan.query.all()
+    chats = ChatMessage.query.all()
+    appointments = Appointment.query.all()
+    notifications = Notification.query.all()
+    return render_template('debug_db.html', 
+                           users=users, 
+                           scans=scans, 
+                           chats=chats, 
+                           appointments=appointments, 
+                           notifications=notifications)
+
 @app.route('/predict', methods=['POST'])
 @login_required
 def predict():
@@ -405,11 +636,15 @@ def predict():
             }
             save_scan_to_history(history_record, current_user.id)
             
+            # Add recommendation info for the template
+            has_recommendations = result['disease'] in ['Acne', 'Athlete\'s Foot', 'Eczema', 'Dry Skin']
+            
             return render_template('result.html', 
                                    image_url=image_url,
                                    disease=result['disease'],
                                    confidence=result['confidence'],
                                    risk_level=result['risk_level'],
+                                   has_recommendations=has_recommendations,
                                    advice=result['advice'],
                                    cautions=result['cautions'],
                                    complications=result['complications'],
@@ -431,10 +666,13 @@ def predict():
         return redirect(request.url)
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+        
     # Generating dummy model if it doesn't exist
     if not os.path.exists('models/skin_disease_model.h5'):
         print("Model not found. Running generate_dummy_model.py...")
         import generate_dummy_model
         generate_dummy_model.create_model().save('models/skin_disease_model.h5')
         
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

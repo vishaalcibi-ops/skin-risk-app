@@ -1,0 +1,2021 @@
+{
+    "classes": [
+        "Acne",
+        "Actinic Keratosis",
+        "Age Spots",
+        "Alopecia Areata",
+        "Athlete's Foot",
+        "Atopic Dermatitis",
+        "Basal Cell Carcinoma",
+        "Bed Sores",
+        "Boils",
+        "Bullous Pemphigoid",
+        "Burns",
+        "Calluses and Corns",
+        "Candidiasis",
+        "Carbuncles",
+        "Cellulitis",
+        "Chafing",
+        "Chickenpox",
+        "Cold Sores",
+        "Contact Dermatitis",
+        "Cradle Cap",
+        "Cysts",
+        "Dandruff",
+        "Dermatofibroma",
+        "Dermatomyositis",
+        "Diaper Rash",
+        "Dry Skin",
+        "Dyshidrosis",
+        "Ecthyma",
+        "Eczema",
+        "Epidermolysis Bullosa",
+        "Erysipelas",
+        "Erythema Multiforme",
+        "Erythema Nodosum",
+        "Folliculitis",
+        "Fungal Infections",
+        "Fungal Nail Infection",
+        "Granuloma Annulare",
+        "Hand, Foot, and Mouth Disease",
+        "Heat Rash",
+        "Hemangioma",
+        "Herpes Simplex",
+        "Hidradenitis Suppurativa",
+        "Hives",
+        "Hyperhidrosis",
+        "Ichthyosis Vulgaris",
+        "Impetigo",
+        "Insect Bites",
+        "Intertrigo",
+        "Jock Itch",
+        "Keloids",
+        "Keratoacanthoma",
+        "Keratosis Pilaris",
+        "Lamellar Ichthyosis",
+        "Lichen Planus",
+        "Lichen Simplex Chronicus",
+        "Lipomas",
+        "Livedo Reticularis",
+        "Lupus",
+        "Melanoma",
+        "Melasma",
+        "Milia",
+        "Moles (Nevi)",
+        "Molluscum Contagiosum",
+        "Nummular Dermatitis",
+        "Paronychia",
+        "Pediculosis",
+        "Pemphigus Vulgaris",
+        "Perioral Dermatitis",
+        "Photoaging",
+        "Pityriasis Rosea",
+        "Poison Ivy",
+        "Polymorphic Light Eruption",
+        "Psoriasis",
+        "Psoriatic Arthritis",
+        "Purpura",
+        "Pyogenic Granuloma",
+        "Rashes",
+        "Raynaud's Phenomenon",
+        "Ringworm",
+        "Rosacea",
+        "Scabies",
+        "Scales",
+        "Scars",
+        "Scleroderma",
+        "Seborrheic Dermatitis",
+        "Seborrheic Keratosis",
+        "Shingles",
+        "Skin Abscess",
+        "Skin Cancer",
+        "Skin Tags",
+        "Spider Angioma",
+        "Squamous Cell Carcinoma",
+        "Sunburn",
+        "Telangiectasia",
+        "Tinea Versicolor",
+        "Ulcers",
+        "Urticaria Pigmentosa",
+        "Vesicles",
+        "Vitiligo",
+        "Warts"
+    ],
+    "metadata": {
+        "Acne": {
+            "risk_level": "Common",
+            "advice": "Common skin condition caused by hair follicles plugging with oil and dead skin cells. Treatment is tailored to severity.",
+            "cautions": "Avoid squeezing or picking, which can lead to scarring. Be patient as treatments often take 4-8 weeks to show results.",
+            "complications": "Pemanent scarring (pitted or raised), post-inflammatory hyperpigmentation, and psychological distress.",
+            "solutions": "Topical retinoids, benzoyl peroxide, antibiotics (topical or oral), and in severe cases, isotretinoin.",
+            "doctor_advice": "Consult a dermatologist for severe, painful deep cysts or if OTC treatments fail after 2 months.",
+            "symptoms": "Whiteheads, blackheads, small red tender bumps (papules), pimples (pustules), and painful lumps (nodules/cysts).",
+            "prevention": "Wash face twice daily with mild cleanser, choose 'non-comedogenic' products, and avoid greasy hair/skin products.",
+            "locations": "Face, forehead, chest, upper back, and shoulders.",
+            "diagnosis": "Primarily clinical examination; occasionally hormonal testing if suspecting underlying conditions like PCOS.",
+            "immediate_actions": "Stop using harsh scrubs. Switch to a gentle cleanser and non-oily moisturizer.",
+            "lifestyle": "Maintain a low-glycemic diet and manage stress levels. Wash pillowcases frequently.",
+            "visual_features": [
+                "Red inflammatory papules",
+                "Comedones (blackheads/whiteheads)",
+                "Pus-filled pustules",
+                "Deep-seated nodules"
+            ]
+        },
+        "Actinic Keratosis": {
+            "risk_level": "Moderate",
+            "advice": "A precancerous skin growth caused by years of sun exposure. Early treatment can prevent it from turning into skin cancer.",
+            "cautions": "Protect your skin from the sun. If left untreated, some AKs can develop into squamous cell carcinoma.",
+            "complications": "Transformation into invasive squamous cell carcinoma (SCC) or secondary infection.",
+            "solutions": "Cryotherapy (freezing), topical creams (fluorouracil, imiquimod), or photodynamic therapy.",
+            "doctor_advice": "Consult a dermatologist for any rough, scaly patches that persist or bleed.",
+            "symptoms": "Rough, dry, scaly patches of skin; often feels like sandpaper. May itch or sting.",
+            "prevention": "Strict sun protection: SPF 30+, protective clothing, and avoiding peak sun hours.",
+            "locations": "Sun-exposed areas: face, scalp (in bald men), ears, neck, and back of hands.",
+            "diagnosis": "Clinical examination by a dermatologist; skin biopsy if suspicious.",
+            "immediate_actions": "Take photos of the lesion and schedule a skin check with a dermatologist.",
+            "lifestyle": "Wear wide-brimmed hats and use daily broad-spectrum sunscreen.",
+            "visual_features": [
+                "Rough, sandpaper-textured surface",
+                "Red or skin-colored scaly papule",
+                "Cutaneous horn (hard, cone-shaped growth)"
+            ]
+        },
+        "Age Spots": {
+            "risk_level": "Low",
+            "advice": "This condition (Age Spots) should be monitored. Consult a healthcare professional for a precise diagnosis.",
+            "cautions": "Avoid self-medicating without a professional's advice. Do not scratch or irritate the affected area.",
+            "complications": "Secondary infections, scarring, or potential spread if not managed correctly.",
+            "solutions": "Treatment varies by case. Typically include topical creams, proper hygiene, or specialized medical procedures.",
+            "doctor_advice": "Schedule an appointment if you notice rapid growth, color changes, or persistent pain.",
+            "symptoms": "Variable depending on the stage; often involves redness, texture changes, or discomfort.",
+            "prevention": "Maintain good skin hygiene and protect yourself from environmental triggers.",
+            "locations": "Can occur on various parts of the body depending on the condition.",
+            "diagnosis": "Usually involves a clinical examination, sometimes supplemented by a biopsy or specific tests.",
+            "immediate_actions": "Clean the area with mild soap and water. Document any changes with photos.",
+            "lifestyle": "Maintain a healthy diet and skin-care routine. Avoid known allergens.",
+            "visual_features": [
+                "Texture changes",
+                "Color irregularity",
+                "Defined or blurred borders"
+            ]
+        },
+        "Alopecia Areata": {
+            "risk_level": "Moderate",
+            "advice": "An autoimmune condition where the immune system attacks hair follicles. Hair often regrows but may fall out again.",
+            "cautions": "Hair loss can be sudden. Consult a dermatologist for treatment options as early intervention is best.",
+            "complications": "Total scalp hair loss (alopecia totalis) or total body hair loss (alopecia universalis).",
+            "solutions": "Corticosteroid injections, topical immunotherapy, or Janus kinase (JAK) inhibitors.",
+            "doctor_advice": "See a specialist if you notice circular patches of hair loss or thinning on the scalp or body.",
+            "symptoms": "Patchy hair loss, 'exclamation point' hairs at patch edges, and occasional itching or pain.",
+            "prevention": "No known prevention as it is an autoimmune disorder.",
+            "locations": "Scalp, beard area, eyebrows, and eyelashes.",
+            "diagnosis": "Clinical examination and sometimes a skin biopsy or blood tests for other autoimmune diseases.",
+            "immediate_actions": "Protect the bald areas from sun exposure and avoid stress which may trigger flares.",
+            "lifestyle": "Manage stress through relaxation techniques; use cosmetic covers (wigs/hats) if desired.",
+            "visual_features": [
+                "Smooth, round patches of hair loss",
+                "Normal-looking skin without scarring",
+                "Exclamation point hairs (narrower at the base)"
+            ]
+        },
+        "Athlete's Foot": {
+            "risk_level": "Common",
+            "advice": "Fungal infection that thrives in warm, moist environments. Usually treated with topical antifungals.",
+            "cautions": "Highly contagious; avoid sharing towels or shoes. Don't go barefoot in public showers or locker rooms.",
+            "complications": "Spread to toenails (onychomycosis), secondary bacterial infections, or spread to hands (tinea manuum).",
+            "solutions": "Over-the-counter antifungal creams (terbinafine, clotrimazole), sprays, or powders.",
+            "doctor_advice": "See a doctor if the rash doesn't improve after 2 weeks of OTC treatment or if you have diabetes.",
+            "symptoms": "Itchy scaly rash, stinging or burning, cracked or peeling skin between toes.",
+            "prevention": "Keep feet dry (especially between toes), wear moisture-wicking socks, and use antifungal powder daily.",
+            "locations": "Between the toes, soles of the feet, and sides of the feet.",
+            "diagnosis": "Visual inspection; KOH skin scraping test if diagnosis is uncertain.",
+            "immediate_actions": "Apply an OTC antifungal cream and switch to clean, dry cotton socks.",
+            "lifestyle": "Alternate shoes daily to allow them to dry out. Wash socks in hot water.",
+            "visual_features": [
+                "Peeling or cracked skin",
+                "Redness and scaling",
+                "Moccasin-style distribution on soles",
+                "Tiny blisters (sometimes)"
+            ]
+        },
+        "Atopic Dermatitis": {
+            "risk_level": "Moderate",
+            "advice": "Chronic inflammatory condition (Eczema). Key is maintaining the skin barrier through consistent moisturization.",
+            "cautions": "Avoid harsh soaps and hot water. Don't scratch, as it damages the skin barrier and leads to infection.",
+            "complications": "Secondary bacterial (Staph) or viral (Herpes) infections, skin thickening (lichenification).",
+            "solutions": "Topical corticosteroids, calcineurin inhibitors, antihistamines for itch, and biologics for severe cases.",
+            "doctor_advice": "Seek medical help if skin looks infected (pus, yellow crusts) or if itching prevents sleep.",
+            "symptoms": "Intense itching, dry skin, red to brownish-gray patches, thickened or scaly skin.",
+            "prevention": "Identify and avoid triggers (specific foods, pollen, dust, stress). Use lukewarm water for baths.",
+            "locations": "Folds of elbows, behind knees, face, neck, and wrists.",
+            "diagnosis": "Clinical history and physical examination; occasionally allergy patch testing.",
+            "immediate_actions": "Apply a thick, fragrance-free moisturizer (ointment or cream) and use a cool compress.",
+            "lifestyle": "Wear soft cotton clothing, avoid synthetic fabrics, and use a humidifier in winter.",
+            "visual_features": [
+                "Ill-defined erythematous patches",
+                "Excoriations (scratch marks)",
+                "Lichenification (thickened skin)",
+                "Oozing and crusting in acute phases"
+            ]
+        },
+        "Basal Cell Carcinoma": {
+            "risk_level": "High",
+            "advice": "Most common skin cancer. Highly curable if caught early but can invade deep tissues if ignored.",
+            "cautions": "Do not attempt home remedies. Surgical intervention is usually necessary.",
+            "complications": "Local tissue destruction (skin, bone, cartilage), recurrence in same area, and risk of other skin cancers.",
+            "solutions": "Mohs surgery, surgical excision, cryosurgery, or topical chemotherapy.",
+            "doctor_advice": "Consult a dermatologist for any sore that bleeds, heals, and returns, or any new pearly bump.",
+            "symptoms": "Pearly or waxy bump, flat scarlike lesion, or a bleeding sore that doesn't heal.",
+            "prevention": "Strict sun protection, annual full-body skin exams, and avoidance of tanning beds.",
+            "locations": "Head, neck, and other sun-exposed areas like arms and legs.",
+            "diagnosis": "Visual skin exam followed by a shave or punch biopsy.",
+            "immediate_actions": "Take a photo for reference and schedule a dermatology appointment immediately.",
+            "lifestyle": "Avoid peak sun hours (10 AM - 4 PM) and wear UPF 50+ protective clothing.",
+            "visual_features": [
+                "Translucent or pearly border",
+                "Visible tiny blood vessels (telangiectasia)",
+                "Crater-like central ulceration",
+                "Rolled edges"
+            ]
+        },
+        "Bed Sores": {
+            "risk_level": "High",
+            "advice": "Pressure ulcers caused by prolonged pressure on the skin. Common in people with medical conditions that limit their ability to change positions.",
+            "cautions": "Can quickly progress to deep tissue damage. Prevent by repositioning every 2 hours.",
+            "complications": "Sepsis, bone and joint infections (osteomyelitis), and cellulitis.",
+            "solutions": "Pressure-relieving surfaces (special cushions/mattresses), wound cleaning, and sometimes surgical debridement.",
+            "doctor_advice": "Consult a wound care specialist immediately for any skin breakdown in immobile patients.",
+            "symptoms": "Unusual changes in skin color or texture, swelling, pus-like draining, and skin that feels cooler or warmer than other areas.",
+            "prevention": "Frequent repositioning, skin inspections, and maintaining good nutrition/hydration.",
+            "locations": "Bony areas such as heels, ankles, hips, and tailbone.",
+            "diagnosis": "Visual inspection by a healthcare provider; staging from Stage 1 (mild) to Stage 4 (deepest).",
+            "immediate_actions": "Relieve pressure from the affected area immediately and keep it clean and dry.",
+            "lifestyle": "Use pressure-redistributing cushions and maintain a high-protein diet for skin healing.",
+            "visual_features": [
+                "Non-blanchable erythema (redness that doesn't turn white when pressed)",
+                "Skin breakdown or craters",
+                "Necrotic (black) tissue in advanced stages"
+            ]
+        },
+        "Boils": {
+            "risk_level": "Moderate",
+            "advice": "A painful, pus-filled bump under the skin caused by infected hair follicles (Staph bacteria).",
+            "cautions": "Never squeeze or lance a boil yourself; this can push the infection deeper into the skin.",
+            "complications": "Carbuncles (cluster of boils), scarring, and blood poisoning (sepsis) in rare cases.",
+            "solutions": "Warm compresses to encourage drainage, and incision and drainage (I&D) by a professional.",
+            "doctor_advice": "See a doctor if the boil is on your face, is extremely painful, or causes a fever.",
+            "symptoms": "A red, painful lump that grows larger and develops a white or yellow tip (point).",
+            "prevention": "Wash hands regularly, keep wounds covered, and don't share personal items like towels.",
+            "locations": "Face, neck, armpits, thighs, and buttocks.",
+            "diagnosis": "Clinical examination; a culture of the pus may be taken if the infection is recurrent.",
+            "immediate_actions": "Apply a warm, moist compress for 10-15 minutes several times a day.",
+            "lifestyle": "Maintain good overall hygiene and use antibacterial soap if prone to recurrences.",
+            "visual_features": [
+                "Tender, erythematous nodule",
+                "Central fluctuance (softening) as pus builds",
+                "Presence of a central pustule or 'head'"
+            ]
+        },
+        "Bullous Pemphigoid": {
+            "risk_level": "High",
+            "advice": "A rare autoimmune condition causing large, fluid-filled blisters. Most common in elderly patients.",
+            "cautions": "Do not pop the blisters as it increases the risk of infection. Requires systemic treatment.",
+            "complications": "Sepsis from infected blisters, dehydration, and side effects from long-term steroid use.",
+            "solutions": "High-potency topical steroids, oral corticosteroids (prednisone), or steroid-sparing immunosuppressants.",
+            "doctor_advice": "Consult a dermatologist urgently if you develop large blisters on a red or normal skin base.",
+            "symptoms": "Intense itching followed by large, tense blisters that don't rupture easily.",
+            "prevention": "Not preventable; triggered by a malfunction in the immune system.",
+            "locations": "Lower abdomen, groin, upper thighs, and arms.",
+            "diagnosis": "Skin biopsy for histopathology and direct immunofluorescence (DIF).",
+            "immediate_actions": "Avoid irritating the skin and schedule a specialist appointment immediately.",
+            "lifestyle": "Maintain good nutrition and use non-adherent dressings for ruptured blisters.",
+            "visual_features": [
+                "Large, tense blisters (bullae)",
+                "Erythematous or urticarial base",
+                "Nikolsky sign is negative (skin doesn't peel when rubbed)"
+            ]
+        },
+        "Burns": {
+            "risk_level": "Low",
+            "advice": "This condition (Burns) should be monitored. Consult a healthcare professional for a precise diagnosis.",
+            "cautions": "Avoid self-medicating without a professional's advice. Do not scratch or irritate the affected area.",
+            "complications": "Secondary infections, scarring, or potential spread if not managed correctly.",
+            "solutions": "Treatment varies by case. Typically include topical creams, proper hygiene, or specialized medical procedures.",
+            "doctor_advice": "Schedule an appointment if you notice rapid growth, color changes, or persistent pain.",
+            "symptoms": "Variable depending on the stage; often involves redness, texture changes, or discomfort.",
+            "prevention": "Maintain good skin hygiene and protect yourself from environmental triggers.",
+            "locations": "Can occur on various parts of the body depending on the condition.",
+            "diagnosis": "Usually involves a clinical examination, sometimes supplemented by a biopsy or specific tests.",
+            "immediate_actions": "Clean the area with mild soap and water. Document any changes with photos.",
+            "lifestyle": "Maintain a healthy diet and skin-care routine. Avoid known allergens.",
+            "visual_features": [
+                "Texture changes",
+                "Color irregularity",
+                "Defined or blurred borders"
+            ]
+        },
+        "Calluses and Corns": {
+            "risk_level": "Low",
+            "advice": "This condition (Calluses and Corns) should be monitored. Consult a healthcare professional for a precise diagnosis.",
+            "cautions": "Avoid self-medicating without a professional's advice. Do not scratch or irritate the affected area.",
+            "complications": "Secondary infections, scarring, or potential spread if not managed correctly.",
+            "solutions": "Treatment varies by case. Typically include topical creams, proper hygiene, or specialized medical procedures.",
+            "doctor_advice": "Schedule an appointment if you notice rapid growth, color changes, or persistent pain.",
+            "symptoms": "Variable depending on the stage; often involves redness, texture changes, or discomfort.",
+            "prevention": "Maintain good skin hygiene and protect yourself from environmental triggers.",
+            "locations": "Can occur on various parts of the body depending on the condition.",
+            "diagnosis": "Usually involves a clinical examination, sometimes supplemented by a biopsy or specific tests.",
+            "immediate_actions": "Clean the area with mild soap and water. Document any changes with photos.",
+            "lifestyle": "Maintain a healthy diet and skin-care routine. Avoid known allergens.",
+            "visual_features": [
+                "Texture changes",
+                "Color irregularity",
+                "Defined or blurred borders"
+            ]
+        },
+        "Candidiasis": {
+            "risk_level": "Moderate",
+            "advice": "Treatment depends on the site. Oral thrush or vaginal yeast infections often require specific antifungal medications.",
+            "cautions": "Immune-compromised individuals are at higher risk for invasive candidiasis, which is a medical emergency.",
+            "complications": "Systemic infection (candidemia), endocarditis, or organ damage in severe cases.",
+            "solutions": "Topical antifungals for skin/mucosa; systemic antifungals (echinocandins) for invasive cases.",
+            "doctor_advice": "Seek medical help if you have a persistent fever, difficulty swallowing, or if you are at high risk for infection.",
+            "symptoms": "Creamy white patches (oral), intense itching and white discharge (vaginal), or itchy red rash in skin folds.",
+            "prevention": "Maintain good hygiene, keep skin folds dry, and manage underlying conditions like diabetes.",
+            "locations": "Mouth, vagina, skin folds (intertriginous areas), or systemic.",
+            "diagnosis": "Clinical examination, KOH prep, or fungal culture.",
+            "immediate_actions": "Keep the affected area dry. Avoid using irritants or scented products.",
+            "lifestyle": "Wear breathable cotton clothing and maintain a balanced diet.",
+            "visual_features": [
+                "Creamy white curd-like patches",
+                "Satellite lesions (small red spots near main rash)",
+                "Macerated (wet/peeling) skin in folds"
+            ]
+        },
+        "Carbuncles": {
+            "risk_level": "Low",
+            "advice": "This condition (Carbuncles) should be monitored. Consult a healthcare professional for a precise diagnosis.",
+            "cautions": "Avoid self-medicating without a professional's advice. Do not scratch or irritate the affected area.",
+            "complications": "Secondary infections, scarring, or potential spread if not managed correctly.",
+            "solutions": "Treatment varies by case. Typically include topical creams, proper hygiene, or specialized medical procedures.",
+            "doctor_advice": "Schedule an appointment if you notice rapid growth, color changes, or persistent pain.",
+            "symptoms": "Variable depending on the stage; often involves redness, texture changes, or discomfort.",
+            "prevention": "Maintain good skin hygiene and protect yourself from environmental triggers.",
+            "locations": "Can occur on various parts of the body depending on the condition.",
+            "diagnosis": "Usually involves a clinical examination, sometimes supplemented by a biopsy or specific tests.",
+            "immediate_actions": "Clean the area with mild soap and water. Document any changes with photos.",
+            "lifestyle": "Maintain a healthy diet and skin-care routine. Avoid known allergens.",
+            "visual_features": [
+                "Texture changes",
+                "Color irregularity",
+                "Defined or blurred borders"
+            ]
+        },
+        "Cellulitis": {
+            "risk_level": "High",
+            "advice": "Cellulitis is a serious bacterial infection that requires prompt antibiotic treatment to prevent complications.",
+            "cautions": "Do not delay treatment. If redness spreads rapidly or you develop a fever, seek emergency care.",
+            "complications": "Sepsis, necrotizing fasciitis, osteomyelitis, or permanent tissue damage.",
+            "solutions": "Oral or intravenous antibiotics are necessary. Elevate the affected limb to reduce swelling.",
+            "doctor_advice": "Go to an emergency room if you have a high fever, red streaks spreading from the area, or severe pain.",
+            "symptoms": "Rapidly spreading redness, warmth, swelling, pain, and sometimes fever or chills.",
+            "prevention": "Treat skin injuries promptly, maintain good hygiene, and moisturize dry/cracked skin.",
+            "locations": "Most common on the lower legs, but can occur anywhere.",
+            "diagnosis": "Clinical appearance and medical history; blood tests or cultures may be needed.",
+            "immediate_actions": "Keep the area clean. Mark the borders of redness with a pen to track spreading.",
+            "lifestyle": "Protect skin from injury and manage underlying conditions like lymphedema.",
+            "visual_features": [
+                "Expanding area of redness (erythema)",
+                "Pitted appearance (peau d'orange)",
+                "Warm and swollen skin (edema)"
+            ]
+        },
+        "Chafing": {
+            "risk_level": "Low",
+            "advice": "This condition (Chafing) should be monitored. Consult a healthcare professional for a precise diagnosis.",
+            "cautions": "Avoid self-medicating without a professional's advice. Do not scratch or irritate the affected area.",
+            "complications": "Secondary infections, scarring, or potential spread if not managed correctly.",
+            "solutions": "Treatment varies by case. Typically include topical creams, proper hygiene, or specialized medical procedures.",
+            "doctor_advice": "Schedule an appointment if you notice rapid growth, color changes, or persistent pain.",
+            "symptoms": "Variable depending on the stage; often involves redness, texture changes, or discomfort.",
+            "prevention": "Maintain good skin hygiene and protect yourself from environmental triggers.",
+            "locations": "Can occur on various parts of the body depending on the condition.",
+            "diagnosis": "Usually involves a clinical examination, sometimes supplemented by a biopsy or specific tests.",
+            "immediate_actions": "Clean the area with mild soap and water. Document any changes with photos.",
+            "lifestyle": "Maintain a healthy diet and skin-care routine. Avoid known allergens.",
+            "visual_features": [
+                "Texture changes",
+                "Color irregularity",
+                "Defined or blurred borders"
+            ]
+        },
+        "Chickenpox": {
+            "risk_level": "Moderate",
+            "advice": "Viral infection (Varicella) characterized by itchy blisters. Highly contagious until all blisters have scabbed.",
+            "cautions": "Do not give aspirin to children with chickenpox (risk of Reye's syndrome). Keep away from pregnant women.",
+            "complications": "Bacterial skin infections, pneumonia, encephalitis, and shingles (later in life).",
+            "solutions": "Calamine lotion, oatmeal baths, cool compresses, and antiviral meds for high-risk individuals.",
+            "doctor_advice": "Call doctor if fever lasts >4 days, is >102°F, or if child has trouble breathing or walking.",
+            "symptoms": "Fever, headache, fatigue, followed by crops of itchy fluid-filled blisters that scab over.",
+            "prevention": "Varicella vaccine is highly effective. Isolate from others to prevent spread.",
+            "locations": "Starts on chest, back and face, then spreads to the rest of the body.",
+            "diagnosis": "Clinical appearance of the rash; occasionally viral culture or PCR swab.",
+            "immediate_actions": "Isolate the patient. Use calamine lotion for itch. Trim fingernails to prevent scratch injury.",
+            "lifestyle": "Stay home from school/work. Rest and maintain fluid intake to prevent dehydration.",
+            "visual_features": [
+                "Red papules progressing to vesicles",
+                "'Dewdrop on a rose petal' appearance",
+                "Crusted lesions present alongside fresh blisters",
+                "Generalized distribution"
+            ]
+        },
+        "Cold Sores": {
+            "risk_level": "Common",
+            "advice": "Small fluid-filled blisters caused by Herpes Simplex Virus Type 1. Very contagious through direct contact.",
+            "cautions": "Avoid kissing or sharing utensils during an outbreak. Don't touch eyes after touching a sore.",
+            "complications": "Spread to eyes (herpetic keratitis), spread to other areas (whitlow on fingers), secondary infection.",
+            "solutions": "Antiviral creams (docosanol), prescription oral antivirals (acyclovir), and pain relief patches.",
+            "doctor_advice": "See a doctor if sores don't heal in 2 weeks, if you have frequent outbreaks, or if eyes become irritated.",
+            "symptoms": "Tingling/itching sensation before blisters appear, followed by a cluster of small painful blisters.",
+            "prevention": "Manage stress, avoid excessive sun, and don't share personal items with infected individuals.",
+            "locations": "On or around the lips, sometimes on the nose or cheeks.",
+            "diagnosis": "Physical examination; viral culture or PCR test from a blister swab.",
+            "immediate_actions": "Apply an antiviral cream at the first sign of tingling. Wash hands thoroughly.",
+            "lifestyle": "Use sunblock on lips if triggered by UV. Get adequate rest to support the immune system.",
+            "visual_features": [
+                "Clusters of small vesicles",
+                "Red inflammatory base",
+                "Yellowish crusting after bursting",
+                "Localized to perioral area"
+            ]
+        },
+        "Contact Dermatitis": {
+            "risk_level": "Common",
+            "advice": "Skin inflammation triggered by substance contact. Can be Irritant (soap/solvents) or Allergic (nickel/perfume).",
+            "cautions": "Stop using the suspected product immediately. Don't use hot water on the area as it increases inflammation.",
+            "complications": "Secondary bacterial infection, chronic skin thickening, and persistent itching.",
+            "solutions": "Identify/avoid toxin, topical steroid creams, oral antihistamines, and cool compresses.",
+            "doctor_advice": "See professional if rash is severe, involves eyes/genitals, or covers more than 25% of body.",
+            "symptoms": "Red itchy rash, dry scaly skin (irritant), or blisters and oozing (allergic).",
+            "prevention": "Use fragrance-free products, wear protective gloves, and wash skin quickly after contact with allergens.",
+            "locations": "Directly on the area that touched the substance (hands are most common).",
+            "diagnosis": "Clinical history; patch testing for persistent or chronic cases.",
+            "immediate_actions": "Wash the area with cool water and mild soap to remove any remaining triggers.",
+            "lifestyle": "Switch to hypoallergenic laundry detergents and soaps. Avoid cheap jewelry if nickel sensitive.",
+            "visual_features": [
+                "Erythematous scaly patches",
+                "Linear or geometric patterns (sometimes)",
+                "Vesicles in acute allergic reactions",
+                "Defined borders matching contact area"
+            ]
+        },
+        "Cradle Cap": {
+            "risk_level": "Low",
+            "advice": "A common, harmless skin condition in infants (infantile seborrheic dermatitis) causing crusty or oily scales.",
+            "cautions": "Do not pick or scrape the scales as it can cause irritation or infection.",
+            "complications": "Secondary bacterial or fungal infection in the skin folds.",
+            "solutions": "Frequent hair washing with mild baby shampoo and gentle brushing of the scales.",
+            "doctor_advice": "See a pediatrician if the rash spreads, becomes very red, or looks infected (oozing).",
+            "symptoms": "Thick, yellow, greasy scales or crusts on the scalp; sometimes mild redness.",
+            "prevention": "Regular hair washing and gentle scalp massage to prevent scale buildup.",
+            "locations": "Scalp is most common; can also appear on ears, eyelids, and nose.",
+            "diagnosis": "Diagnosed by its characteristic 'greasy' appearance on an infant's scalp.",
+            "immediate_actions": "Apply a small amount of baby oil to the scalp for 10 minutes to soften scales before washing.",
+            "lifestyle": "Maintain a gentle hygiene routine and use soft-bristled baby brushes.",
+            "visual_features": [
+                "Yellow, waxy, or greasy scales",
+                "Erythematous (red) underlying skin",
+                "Adherent crusts that may flake off"
+            ]
+        },
+        "Cysts": {
+            "risk_level": "Low",
+            "advice": "Fluid-filled sacs (epidermoid or sebaceous cysts) that are usually slow-growing and painless.",
+            "cautions": "Do not attempt to pop or drain them as they often return unless the entire sac is removed.",
+            "complications": "Rupture (causing inflammation), infection (abscess), and cosmetic concern.",
+            "solutions": "Monitoring, corticosteroid injections to reduce inflammation, or surgical excision.",
+            "doctor_advice": "Consult a doctor if the cyst becomes painful, red, or grows rapidly.",
+            "symptoms": "A small, round bump under the skin, sometimes with a tiny blackhead (pore) at the center.",
+            "prevention": "No reliable prevention; avoid trauma to the skin which can trigger their formation.",
+            "locations": "Face, neck, trunk, and behind the ears.",
+            "diagnosis": "Visual exam; ultrasound or biopsy if the diagnosis is uncertain.",
+            "immediate_actions": "Leave the bump alone; if it becomes red and painful, apply a warm compress.",
+            "lifestyle": "Avoid tight clothing over the area to prevent irritation and potential rupture.",
+            "visual_features": [
+                "Dome-shaped mobile nodule",
+                "Central punctum (opening)",
+                "Flesh-colored or slightly yellowish"
+            ]
+        },
+        "Dandruff": {
+            "risk_level": "Common",
+            "advice": "A mild form of seborrheic dermatitis. Involves flaking of skin on the scalp.",
+            "cautions": "Don't scratch the scalp as it can lead to bleeding or bacterial infection. Manage stress as it can flare up.",
+            "complications": "Scalp irritation, secondary infection if scratched, and social embarrassment.",
+            "solutions": "Anti-dandruff shampoos (zinc pyrithione, ketoconazole, selenium sulfide), and regular hair washing.",
+            "doctor_advice": "Consult a doctor if scalp is very red/swollen or if OTC dandruff shampoos don't help after 1 month.",
+            "symptoms": "White or yellowish flakes on scalp/shoulders, itchy scalp, scaly/crusty scalp.",
+            "prevention": "Regular shampooing, managing stress, and reducing hair product buildup.",
+            "locations": "Scalp, hairline, eyebrows, and behind the ears.",
+            "diagnosis": "Visual examination of the scalp and flakes.",
+            "immediate_actions": "Purchase a medicated anti-dandruff shampoo and use it as directed (leave on for 5 mins).",
+            "lifestyle": "Get a little sunlight (can help with Malassezia) and maintain good scalp hygiene.",
+            "visual_features": [
+                "Fine white/yellow scales",
+                "Non-inflammatory background (usually)",
+                "Oily flakes",
+                "Localized to scalp hair follicles"
+            ]
+        },
+        "Dermatofibroma": {
+            "risk_level": "Low",
+            "advice": "Common, benign (non-cancerous) fibrous growths that often feel like a firm nodule under the skin.",
+            "cautions": "Harmless; they usually don't need treatment unless they are itchy or cosmetically bothering.",
+            "complications": "Minor irritation from shaving or clothing; no malignant potential.",
+            "solutions": "Cryotherapy to flatten the lesion or surgical excision if necessary.",
+            "doctor_advice": "Consult a dermatologist if you notice a new, changing, or bleeding firm bump.",
+            "symptoms": "A firm, small, raised bump that may be itchy or tender. Often brownish or reddish.",
+            "prevention": "No prevention; thought to be a reaction to minor skin injuries like insect bites.",
+            "locations": "Most common on the lower legs.",
+            "diagnosis": "Clinical exam; the 'dimple sign' (lesion puckers when pinched) is characteristic.",
+            "immediate_actions": "Avoid picking at the bump; document if it changes in size or color.",
+            "lifestyle": "Be careful when shaving over the area; ignore it if it is stable and asymptomatic.",
+            "visual_features": [
+                "Firm, brownish-pink nodule",
+                "Positive 'dimple sign'",
+                "Stable, slow-growing appearance"
+            ]
+        },
+        "Dermatomyositis": {
+            "risk_level": "High",
+            "advice": "An inflammatory disease marked by muscle weakness and a distinctive skin rash.",
+            "cautions": "Requires whole-body evaluation. In adults, it can sometimes be associated with internal cancers.",
+            "complications": "Interstitial lung disease, calcinosis, and muscle permanent weakness.",
+            "solutions": "Corticosteroids, immunosuppressants (methotrexate), and physical therapy.",
+            "doctor_advice": "Consult a rheumatologist or dermatologist if you have a purple rash on eyelids and muscle fatigue.",
+            "symptoms": "Purple or red rash on eyelids, knuckles, and chest; difficulty climbing stairs or lifting objects.",
+            "prevention": "No known prevention; focus on management and early detection of complications.",
+            "locations": "Upper eyelids (heliotrope rash), knuckles (Gottron's papules), and upper back/shoulders (Shawl sign).",
+            "diagnosis": "Blood tests (CK levels), muscle biopsy, and skin biopsy.",
+            "immediate_actions": "Avoid sun exposure as it can flare the skin symptoms; rest weakened muscles.",
+            "lifestyle": "Sun protection is critical. Follow a gradual exercise program once inflammation is controlled.",
+            "visual_features": [
+                "Heliotrope rash (violaceous discoloration of eyelids)",
+                "Gottron's papules (red/purple bumps on knuckles)",
+                "Violaceous rash on sun-exposed areas"
+            ]
+        },
+        "Diaper Rash": {
+            "risk_level": "Low",
+            "advice": "An irritant contact dermatitis in the diaper area caused by moisture, friction, and urine/feces.",
+            "cautions": "If the rash has bright red spots or 'satellite' lesions, it may be a yeast infection (Candida).",
+            "complications": "Secondary yeast infection and skin erosions.",
+            "solutions": "Barrier creams (zinc oxide), frequent diaper changes, and 'air time' without a diaper.",
+            "doctor_advice": "See a pediatrician if the rash lasts more than 3 days, bleeds, or oozes pus.",
+            "symptoms": "Bright red, tender skin in the diaper area; baby may be fussy during diaper changes.",
+            "prevention": "Change diapers frequently, use fragrance-free wipes, and apply barrier cream at every change.",
+            "locations": "Buttocks, thighs, and genital area of infants.",
+            "diagnosis": "Visual inspection by a parent or healthcare provider.",
+            "immediate_actions": "Gently clean the area with plain water and pat dry. Apply a thick layer of zinc oxide cream.",
+            "lifestyle": "Use high-absorbency diapers and avoid overly tight diapering.",
+            "visual_features": [
+                "Confluent erythema (solid redness)",
+                "Scaling or peeling skin",
+                "Possible satellite papules if yeast is present"
+            ]
+        },
+        "Dry Skin": {
+            "risk_level": "Low",
+            "advice": "Also known as xerosis; it occurs when the skin lacks moisture in its outer layer.",
+            "cautions": "Extremely dry skin can crack, providing an entry point for bacteria and leading to infection.",
+            "complications": "Dermatitis (eczema) and secondary bacterial infections (cellulitis).",
+            "solutions": "Ceramide-rich moisturizers, urea-based creams, and avoidance of harsh soaps.",
+            "doctor_advice": "Consult a doctor if the skin is so dry that it bleeds or prevents you from sleeping.",
+            "symptoms": "Skin tightness, flaking, fine lines, and itching.",
+            "prevention": "Short, lukewarm showers; apply moisturizer to damp skin; use a humidifier.",
+            "locations": "Commonly legs, arms, and hands, but can occur anywhere.",
+            "diagnosis": "Clinical examination based on visual appearance and patient symptoms.",
+            "immediate_actions": "Switch to a gentle, soap-free cleanser and apply a thick ointment-based moisturizer.",
+            "lifestyle": "Keep hydrated and avoid environmental irritants like cold wind and low-humidity air.",
+            "visual_features": [
+                "Fine scales or flaking",
+                "Fissures (cracks)",
+                "Dull or ashy appearance"
+            ]
+        },
+        "Dyshidrosis": {
+            "risk_level": "Moderate",
+            "advice": "A type of eczema (dyshidrotic eczema) causing tiny, fluid-filled blisters on the palms and fingers.",
+            "cautions": "Blisters are often intensely itchy. Scratching can lead to painful cracks and infection.",
+            "complications": "Secondary bacterial infection (Staph) and significant hand discomfort.",
+            "solutions": "High-potency topical steroids, cool compresses, and avoiding contact with allergens/irritants.",
+            "doctor_advice": "See a dermatologist for recurrent episodes or if the blisters become infected (pus/pain).",
+            "symptoms": "Very small, deep-seated blisters ('tapioca-like'), burning sensation, and intense itching.",
+            "prevention": "Identify and avoid triggers such as nickel, cobalt, or excessive moisture/sweating.",
+            "locations": "Edges of fingers, palms of hands, and soles of feet.",
+            "diagnosis": "Diagnosed by clinical presentation; skin testing for allergies if chronic.",
+            "immediate_actions": "Apply a cool compress for 15 minutes and avoid use of irritating soaps/detergents.",
+            "lifestyle": "Wear cotton gloves under vinyl gloves for wet work; keep hands dry and well-moisturized.",
+            "visual_features": [
+                "Small 'tapioca-like' vesicles",
+                "Erythema and scaling in later stages",
+                "Deep fissures (cracks) as blisters resolve"
+            ]
+        },
+        "Ecthyma": {
+            "risk_level": "Moderate",
+            "advice": "A deep-seated bacterial skin infection that causes painful ulcers with thick crusts.",
+            "cautions": "A more severe form of impetigo; it penetrates into the lower layers of the skin.",
+            "complications": "Scarring (unlike superficial impetigo), cellulitis, and lymphangitis.",
+            "solutions": "Prescription oral antibiotics and topical antibiotic ointments (mupirocin).",
+            "doctor_advice": "Consult a doctor for any sore that turns into a deep, painful hole in the skin with a crust.",
+            "symptoms": "Sores that look like deep ulcers, often with a 'punched-out' appearance and a thick grayish-yellow crust.",
+            "prevention": "Prompt treatment of minor skin injuries and maintaining good personal hygiene.",
+            "locations": "Commonly on the shins and feet.",
+            "diagnosis": "Visual inspection; culture of the ulcer base may be needed to identify the bacteria.",
+            "immediate_actions": "Cover the area and see a doctor for prescription medication.",
+            "lifestyle": "Keep the area clean, avoid sharing towels, and finish the full course of antibiotics.",
+            "visual_features": [
+                "Punched-out ulcers",
+                "Thick, adherent greenish-yellow crust",
+                "Surrounding dusky erythema (redness)"
+            ]
+        },
+        "Eczema": {
+            "risk_level": "Moderate",
+            "advice": "A term for several types of skin inflammation (most commonly atopic dermatitis) causing dry, itchy skin.",
+            "cautions": "Scratching the 'itch that rashes' can break the skin and lead to bacterial infections.",
+            "complications": "Bacterial infections (Staph), eczema herpeticum (viral infection), and thickening of the skin.",
+            "solutions": "Topical corticosteroids, calcineurin inhibitors, and consistent use of fragrance-free emollients.",
+            "doctor_advice": "Consult a dermatologist for a personalized management plan and to identify potential triggers.",
+            "symptoms": "Intense itching, red to brownish-gray patches, and small raised bumps that may leak fluid.",
+            "prevention": "Identify and avoid triggers like harsh soaps, certain fabrics, and allergens.",
+            "locations": "Face, elbows, knees, and hands.",
+            "diagnosis": "Based on skin appearance and personal/family history of allergies or asthma.",
+            "immediate_actions": "Stop using scented products and apply a heavy cream after bathing.",
+            "lifestyle": "Take short, lukewarm baths; wear soft cotton clothing; and manage stress.",
+            "visual_features": [
+                "Erythematous (red) scaly patches",
+                "Ill-defined borders",
+                "Lichenification (thickened skin) in chronic cases"
+            ]
+        },
+        "Epidermolysis Bullosa": {
+            "risk_level": "Critical",
+            "advice": "A group of rare genetic conditions that cause the skin to be very fragile and to blister easily (often called 'butterfly skin').",
+            "cautions": "Blisters can form from minor friction, heat, or rubbing. Requires specialized wound care.",
+            "complications": "Sepsis, anemia, malnutrition (from mouth blisters), and skin cancer (SCC) at a young age.",
+            "solutions": "Protective dressings, pain management, and surgical release of contracted digits (pseudosyndactyly).",
+            "doctor_advice": "Requires lifelong care from a multidisciplinary team including dermatologists and wound care nurses.",
+            "symptoms": "Widespread blisters, fragile skin that shears easily, and thickening of the skin on palms and soles.",
+            "prevention": "Genetic condition; avoid skin trauma and keep the skin cool.",
+            "locations": "Anywhere on the skin and mucous membranes.",
+            "diagnosis": "Skin biopsy for immunofluorescence mapping or genetic testing.",
+            "immediate_actions": "Use non-adherent bandages and never pull at detached skin.",
+            "lifestyle": "Wear soft, seamless clothing and avoid activities with high risk of skin contact or friction.",
+            "visual_features": [
+                "Bullae (blisters) and erosions",
+                "Milia (small white bumps) at site of healed blisters",
+                "Scarring and fusion of digits in severe types"
+            ]
+        },
+        "Erysipelas": {
+            "risk_level": "High",
+            "advice": "A superficial bacterial skin infection (usually Strep) characterized by a fiery red, well-defined rash.",
+            "cautions": "Can quickly spread and lead to high fever and chills. Requires prompt antibiotic treatment.",
+            "complications": "Lymphedema, abscess formation, and necrotizing fasciitis if not treated.",
+            "solutions": "Oral or intravenous antibiotics (penicillin) and limb elevation.",
+            "doctor_advice": "Seek immediate medical attention for a fast-spreading, painful red rash with fever.",
+            "symptoms": "Intense redness, warmth, swelling, and a clear 'raised border' between infected and normal skin.",
+            "prevention": "Promptly clean and treat minor cuts, and manage underlying conditions like lymphedema or athlete's foot.",
+            "locations": "Most common on the legs and face.",
+            "diagnosis": "Clinical examination based on the sharp demarcation of the rash; blood cultures if severe.",
+            "immediate_actions": "See a doctor immediately; elevate the affected limb to reduce swelling.",
+            "lifestyle": "Maintain consistent skin hygiene and keep skin well-moisturized to prevent cracks.",
+            "visual_features": [
+                "Fiery red, indurated (hard) plaque",
+                "Sharply demarcated borders",
+                "Orange-peel texture (peau d'orange)"
+            ]
+        },
+        "Erythema Multiforme": {
+            "risk_level": "Moderate",
+            "advice": "A hypersensitivity reaction often triggered by infections, most commonly the herpes simplex virus.",
+            "cautions": "May be confused with more severe conditions like Stevens-Johnson Syndrome (SJS).",
+            "complications": "Recurrence (common) and potential for involvement of mucous membranes.",
+            "solutions": "Treating the underlying infection, topical steroids, and antihistamines for itching.",
+            "doctor_advice": "Consult a dermatologist if you develop target-like red spots on your hands or body.",
+            "symptoms": "Characteristic 'target' or 'bullseye' lesions with a dark center, a pale ring, and an outer red ring.",
+            "prevention": "Antiviral drugs (acyclovir) can prevent recurrences if HSV is the known trigger.",
+            "locations": "Hands, feet, and limbs; can sometimes affect the mouth.",
+            "diagnosis": "Diagnosed by the unique target appearance of the skin lesions.",
+            "immediate_actions": "Avoid triggers and use cool compresses for comfort; see a doctor for formal diagnosis.",
+            "lifestyle": "Document any new medications or recent infections that may have triggered the rash.",
+            "visual_features": [
+                "Target lesions (three concentric zones)",
+                "Dusky or blistered center",
+                "Symmetrical distribution"
+            ]
+        },
+        "Erythema Nodosum": {
+            "risk_level": "Moderate",
+            "advice": "An inflammatory condition characterized by painful, red nodules under the skin, usually on the shins.",
+            "cautions": "Often a sign of an underlying condition like infection (Strep), pregnancy, or drug reaction.",
+            "complications": "Chronic or recurrent nodules; underlying disease progression if not identified.",
+            "solutions": "Rest, NSAIDs for pain, and treating the underlying cause.",
+            "doctor_advice": "Consult a doctor to identify the trigger for the nodules.",
+            "symptoms": "Tender, warm, red bumps that feel like bruises. Often accompanied by fever or joint pain.",
+            "prevention": "Manage systemic health and promptly treat infections that could trigger inflammation.",
+            "locations": "Shins (front of the lower legs).",
+            "diagnosis": "Physical examination and blood tests/imaging to look for an underlying trigger.",
+            "immediate_actions": "Rest and elevate the legs to reduce pain and swelling.",
+            "lifestyle": "Avoid long periods of standing while nodules are active.",
+            "visual_features": [
+                "Deep-seated, tender red nodules",
+                "Bruise-like color changes as they heal (purple/green)",
+                "No ulceration or scarring"
+            ]
+        },
+        "Folliculitis": {
+            "risk_level": "Low",
+            "advice": "Most cases are mild and resolve with self-care. Persistent or severe cases may need medical attention.",
+            "cautions": "Avoid shaving the affected area and do not squeeze or pop the bumps.",
+            "complications": "Boils (furunculosis), permanent hair loss, or scarring (keloids).",
+            "solutions": "Warm compresses, antibacterial washes, or topical/oral antibiotics for severe cases.",
+            "doctor_advice": "Consult a doctor if the infection spreads, returns frequently, or causes significant pain.",
+            "symptoms": "Small red bumps or white-headed pimples around hair follicles, itching, or tenderness.",
+            "prevention": "Avoid tight clothing, shave carefully with a clean blade, and maintain hygiene in pools/hot tubs.",
+            "locations": "Anywhere hair grows, especially the beard area, scalp, and thighs.",
+            "diagnosis": "Based on skin appearance; a swab may be taken for bacterial or fungal testing.",
+            "immediate_actions": "Apply a warm, moist compress to the area. Stop hair removal temporarily.",
+            "lifestyle": "Wear loose clothing and use clean razors and shaving cream.",
+            "visual_features": [
+                "Clusters of small red papules",
+                "Pus-filled blisters around hair follicles",
+                "Crusting or yellow-scabbed skin"
+            ]
+        },
+        "Fungal Infections": {
+            "risk_level": "Low",
+            "advice": "Common infections caused by various fungi (dermatophytes or yeasts) that thrive in warm, moist areas.",
+            "cautions": "Often contagious; avoid sharing clothes or towels with infected individuals.",
+            "complications": "Secondary bacterial infection (cellulitis) from skin maceration or scratching.",
+            "solutions": "Topical antifungal creams (clotrimazole, terbinafine) and keeping the area dry.",
+            "doctor_advice": "Consult a doctor if the infection covers a large area or doesn't improve with OTC creams.",
+            "symptoms": "Red, itchy, scaly rash, sometimes with a clear center (ring-like) or small blisters.",
+            "prevention": "Keep skin clean and dry, wear breathable clothing, and use anti-fungal powder in shoes.",
+            "locations": "Groin (jock itch), feet (athlete's foot), and body (ringworm).",
+            "diagnosis": "Visual inspection; KOH prep skin scraping to see fungal elements under a microscope.",
+            "immediate_actions": "Keep the area dry and apply an over-the-counter antifungal cream.",
+            "lifestyle": "Change socks and underwear daily and use separate towels for infected areas.",
+            "visual_features": [
+                "Annular (ring-shaped) scaly patches",
+                "Active, raised red borders",
+                "Central clearing"
+            ]
+        },
+        "Fungal Nail Infection": {
+            "risk_level": "Low",
+            "advice": "A slow-growing infection (onychomycosis) that causes nails to become thickened, brittle, and discolored.",
+            "cautions": "Hard to treat with topical medications alone; often requires long-term oral treatment.",
+            "complications": "Total nail destruction, pain while walking, and spread to other nails.",
+            "solutions": "Oral antifungal tablets (terbinafine), medicated nail lacquers, or surgical nail removal.",
+            "doctor_advice": "See a doctor if the nail is painful, very thick, or if you have diabetes.",
+            "symptoms": "Thickened, yellow or brown nails, crumbly or brittle texture, and debris under the nail.",
+            "prevention": "Keep feet dry, wear flip-flops in shared showers, and use breathable footwear.",
+            "locations": "Toenails are most common, but can affect fingernails.",
+            "diagnosis": "Clinical appearance; confirmed by nail clipping culture or PAS stain.",
+            "immediate_actions": "Keep nails trimmed short and avoid using communal showers without footwear.",
+            "lifestyle": "Don't share nail clippers and use antifungal sprays in shoes.",
+            "visual_features": [
+                "Subungual hyperkeratosis (buildup under the nail)",
+                "Onycholysis (nail separating from the bed)",
+                "Yellow/white streaking in the nail plate"
+            ]
+        },
+        "Granuloma Annulare": {
+            "risk_level": "Low",
+            "advice": "A benign, chronic skin condition that causes raised, reddish or skin-colored bumps in a ring pattern.",
+            "cautions": "Harmless and not contagious; often mistaken for ringworm because of the ring shape.",
+            "complications": "Minor cosmetic concern; usually resolves on its own without scarring.",
+            "solutions": "Observation (often self-resolving), topical or intralesional steroids, and cryotherapy.",
+            "doctor_advice": "See a dermatologist for a firm diagnosis as it can resemble other skin conditions.",
+            "symptoms": "Small, firm, smooth bumps that expand into a ring with a sunken or clear center. No scaling.",
+            "prevention": "No known prevention; sometimes triggered by minor skin trauma or medications.",
+            "locations": "Backs of hands, feet, elbows, and knees.",
+            "diagnosis": "Visual inspection is often sufficient; skin biopsy can confirm for atypical cases.",
+            "immediate_actions": "Reassurance that it is benign; use a mild moisturizer if the area is dry.",
+            "lifestyle": "Avoid aggressive scrubbing of the area; wait for it to resolve naturally.",
+            "visual_features": [
+                "Annular (ring) arrangement of papules",
+                "No scaling (unlike ringworm)",
+                "Smooth, firm texture"
+            ]
+        },
+        "Hand, Foot, and Mouth Disease": {
+            "risk_level": "Low",
+            "advice": "A common viral illness in children characterized by fever, mouth sores, and a skin rash with blisters.",
+            "cautions": "Highly contagious through saliva, blister fluid, or feces. Keep child home while blisters are present.",
+            "complications": "Dehydration (if mouth sores make swallowing difficult) and rare viral meningitis.",
+            "solutions": "Pain relief (acetaminophen), hydration, and numbing mouth sprays.",
+            "doctor_advice": "Consult a pediatrician if your child stops drinking or if the fever lasts more than 3 days.",
+            "symptoms": "Small blisters on palms, soles, and buttocks; painful ulcers in the mouth and throat.",
+            "prevention": "Frequent hand washing and disinfecting shared toys/surfaces.",
+            "locations": "Hands, feet, and inside the mouth.",
+            "diagnosis": "Diagnosed by the unique distribution of blisters and clinical symptoms.",
+            "immediate_actions": "Encourage fluids (popsicles) and manage fever with weight-appropriate medication.",
+            "lifestyle": "Wait until sores have dried and fever has ended before returning to daycare/school.",
+            "visual_features": [
+                "Small, oval gray vesicles on a red base",
+                "Symmetrical involvement of hands and feet",
+                "Painful oral erosions"
+            ]
+        },
+        "Heat Rash": {
+            "risk_level": "Low",
+            "advice": "Also called miliaria; it occurs when sweat ducts are blocked, trapping sweat beneath the skin.",
+            "cautions": "Can cause intense stinging or itching. Avoid heavy creams that can block pores further.",
+            "complications": "Secondary bacterial infection (staphylococcal) causing pustules.",
+            "solutions": "Cooling the skin, calamine lotion, and Wearing loose, breathable cotton clothing.",
+            "doctor_advice": "See a doctor if the skin develops pus, increased swelling, or if you feel unwell (fever).",
+            "symptoms": "Clusters of small, red, prickly bumps or tiny clear blisters in areas of sweating.",
+            "prevention": "Stay in cool environments, wear loose clothing, and avoid heavy body oils.",
+            "locations": "Neck, shoulders, chest, and skin folds.",
+            "diagnosis": "Based on the appearance of the rash in the setting of heat or excessive sweating.",
+            "immediate_actions": "Take a cool bath and move to an air-conditioned or fan-cooled room.",
+            "lifestyle": "Sleep in a cool room and choose lightweight fabrics like linen or cotton.",
+            "visual_features": [
+                "Multiple tiny red papules (miliaria rubra)",
+                "Minute clear droplets (miliaria crystallina)",
+                "Intense erythema (redness) in affected area"
+            ]
+        },
+        "Hemangioma": {
+            "risk_level": "Low",
+            "advice": "A benign (non-cancerous) bright red birthmark (strawberry mark) made of extra blood vessels in the skin.",
+            "cautions": "Rapid growth in the first few months is common, followed by slow disappearance (involution) over years.",
+            "complications": "Ulceration (bleeding/pain) and potential vision/breathing issues if near eyes or airway.",
+            "solutions": "Most need no treatment. Options include oral beta-blockers (propranolol) to shrink them if necessary.",
+            "doctor_advice": "See a specialist for any hemangioma that is growing fast, ulcers, or is near a vital organ (eye/mouth).",
+            "symptoms": "A bright red, spongy-looking nodule that appears in the first few weeks of life.",
+            "prevention": "No known prevention; they are a common vascular birthmark in infants.",
+            "locations": "Face, scalp, chest, and back.",
+            "diagnosis": "Diagnosed by clinical appearance and history of rapid neonatal growth.",
+            "immediate_actions": "Consult a pediatrician to decide if the lesion requires monitoring or early treatment.",
+            "lifestyle": "Keep the area protected from trauma; use a barrier ointment if it starts to ulcerate.",
+            "visual_features": [
+                "Bright red, raised 'strawberry' appearance",
+                "Blanchable with pressure (early stages)",
+                "Gradual grayish fading as it involutes"
+            ]
+        },
+        "Herpes Simplex": {
+            "risk_level": "Moderate",
+            "advice": "Common viral infection causing small, painful blisters (cold sores or genital herpes) caused by HSV-1 or HSV-2.",
+            "cautions": "Highly contagious during an outbreak; avoid skin-to-skin contact and sharing items like lip balm.",
+            "complications": "Recurrent outbreaks, eye infections (herpetic keratitis), and rare but severe encephalitis.",
+            "solutions": "Antiviral medications (acyclovir, valacyclovir) to reduce duration and severity of outbreaks.",
+            "doctor_advice": "Consult a doctor for frequent outbreaks or if the sores are near your eyes.",
+            "symptoms": "Tingling or burning sensation followed by clusters of small fluid-filled blisters on a red base.",
+            "prevention": "Avoid contact with active sores; use sun protection as UV light can trigger cold sores.",
+            "locations": "Lips, mouth, genitals, and sometimes fingers (herpetic whitlow).",
+            "diagnosis": "Clinical appearance; confirmed by viral swab (PCR) of the lesion.",
+            "immediate_actions": "Avoid touching the sores and start antiviral treatment at the first sign of tingling.",
+            "lifestyle": "Manage stress and maintain a healthy immune system to prevent recurrences.",
+            "visual_features": [
+                "Grouped vesicles on an erythematous base",
+                "Scabbing or crusting as blisters heal",
+                "Punctuated erosions"
+            ]
+        },
+        "Hidradenitis Suppurativa": {
+            "risk_level": "Moderate",
+            "advice": "A chronic skin condition causing painful bumps and tunnels under the skin, usually in areas where skin rubs together.",
+            "cautions": "Often mistaken for recurring boils. Requires long-term management by a specialist.",
+            "complications": "Chronic drainage, scarring, sinus tracts (tunnels), and restricted movement.",
+            "solutions": "Topical and oral antibiotics, biologics (adalimumab), and in severe cases, surgical debridement.",
+            "doctor_advice": "See a dermatologist for any recurring, painful nodules in the armpits or groin.",
+            "symptoms": "Painful bumps, abscesses that rupture, and leaking fluid with an odor.",
+            "prevention": "Maintain a healthy weight and quit smoking, as these are major risk factors.",
+            "locations": "Armpits, groin, under the breasts, and between the buttocks.",
+            "diagnosis": "Clinical history and physical exam; based on the location and recurrence of nodules.",
+            "immediate_actions": "Apply warm compresses to aid drainage and avoid shaving the affected areas.",
+            "lifestyle": "Wear loose clothing, use antibacterial washes, and manage weight/smoking.",
+            "visual_features": [
+                "Deep-seated painful nodules",
+                "Double-headed comedones (blackheads)",
+                "Hypertrophic (thick) scarring and tunnels"
+            ]
+        },
+        "Hives": {
+            "risk_level": "Moderate",
+            "advice": "Itchy raised welts (Urticaria) caused by histamine release. Can be triggered by allergies, stress, or temp changes.",
+            "cautions": "Seek immediate help if you have trouble breathing, swelling in the throat, or feel faint (anaphylaxis).",
+            "complications": "Severe allergic reaction (Anaphylaxis) and chronic hives (lasting >6 weeks).",
+            "solutions": "Oral antihistamines (cetirizine, loratadine), calamine lotion, and avoidance of triggers.",
+            "doctor_advice": "See an allergist if hives recur frequently or if you suspect a specific food/medicine trigger.",
+            "symptoms": "Red or skin-colored raised welts, intense itching, blanching (center turns white when pressed).",
+            "prevention": "Keep a food/activity diary to identify triggers and avoid known allergens.",
+            "locations": "Can appear anywhere on the body, including face, limbs, and torso.",
+            "diagnosis": "Clinical examination; allergy skin tests or blood tests (IgE) if chronic.",
+            "immediate_actions": "Take an over-the-counter antihistamine and apply a cool compress to the itchy areas.",
+            "lifestyle": "Wear loose cotton clothing and avoid hot showers which can worsen the itch.",
+            "visual_features": [
+                "Erythematous edematous wheals",
+                "Borders that shift or migrate over hours",
+                "Blanching on pressure",
+                "Varying sizes from millimeters to large plaques"
+            ]
+        },
+        "Hyperhidrosis": {
+            "risk_level": "Low",
+            "advice": "A condition characterized by abnormally excessive sweating that's not necessarily related to heat or exercise.",
+            "cautions": "Can lead to social anxiety and skin maceration, which increases the risk of infections.",
+            "complications": "Fungal infections (athlete's foot) and bacterial infections (pitted keratolysis).",
+            "solutions": "Clinical strength antiperspirants, Botox injections, or iontophoresis.",
+            "doctor_advice": "Consult a dermatologist if sweating disrupts your daily activities or occurs at night.",
+            "symptoms": "Visible sweating, clammy palms, and frequent need to change clothes.",
+            "prevention": "Use strong antiperspirants and choose moisture-wicking fabrics.",
+            "locations": "Palms, soles of feet, armpits, and face.",
+            "diagnosis": "Patient history; sometimes a minor starch-iodine test to identify areas of sweat.",
+            "immediate_actions": "Use absorbent foot powders and wear leather or breathable shoes.",
+            "lifestyle": "Wear natural fibers like cotton and practice stress-management techniques.",
+            "visual_features": [
+                "Visible beads of sweat",
+                "Macerated (whitish, soggy) skin in affected areas",
+                "Dermatitis/inflammation from moisture"
+            ]
+        },
+        "Ichthyosis Vulgaris": {
+            "risk_level": "Low",
+            "advice": "An inherited skin disorder in which dead skin cells accumulate in thick, dry scales on the surface.",
+            "cautions": "Condition usually worsens in cold, dry weather and improves in warm, humid weather.",
+            "complications": "Secondary infections from skin cracks, and overheating due to impaired sweating.",
+            "solutions": "Alpha hydroxy acids (lactic acid, glycolic acid) and retinoids to help shed skin cells.",
+            "doctor_advice": "Consult a doctor if heavy moisturizers don't improve the scaling or if the skin looks infected.",
+            "symptoms": "Fine, 'fish-scale' scaling, dry and thickened skin. Often associated with atopic dermatitis.",
+            "prevention": "Genetic condition; focus on preventing flares with proper skin hydration.",
+            "locations": "Most severe on the shins, but can affect the trunk and arms. Faces are usually spared.",
+            "diagnosis": "Based on the appearance of scales and patient/family history.",
+            "immediate_actions": "Use heavy, urea-based or lactic acid-based moisturizers immediately after bathing.",
+            "lifestyle": "Take daily baths to soak and hydrate the skin; use a humidifier in the home.",
+            "visual_features": [
+                "Fine, tile-like scales",
+                "White, gray, or brown scale color",
+                "Accentuated palm lines (hyperlinear palms)"
+            ]
+        },
+        "Impetigo": {
+            "risk_level": "Moderate",
+            "advice": "Highly contagious bacterial infection (Staph/Strep). Common in children. Requires prescription antibiotics.",
+            "cautions": "Keep child home from school until 24 hours after starting antibiotics and sores are covered.",
+            "complications": "Kidney inflammation (post-strep glomerulonephritis), cellulitis, and scarring.",
+            "solutions": "Topical antibiotic ointment (mupirocin) or oral antibiotics for widespread cases.",
+            "doctor_advice": "Consult doctor immediately for any red sore that develops a honey-colored crust.",
+            "symptoms": "Red sores that quickly rupture, ooze for a few days, and then form a honey-colored crust.",
+            "prevention": "Regular hand washing, keeping skin injuries clean/covered, and not sharing personal items.",
+            "locations": "Commonly around the nose and mouth, but can spread to limbs.",
+            "diagnosis": "Usually diagnosed by appearance; wound culture if infection is recurrent or resistant.",
+            "immediate_actions": "Gently wash the area with mild soap and water. Apply a bandage. See a doctor.",
+            "lifestyle": "Wash the infected person's clothes, towels, and bedding in hot water every day.",
+            "visual_features": [
+                "Honey-colored yellowish crusts",
+                "Erythematous erosions",
+                "Small satellite lesions",
+                "Often perinasal or perioral"
+            ]
+        },
+        "Insect Bites": {
+            "risk_level": "Moderate",
+            "advice": "Common skin reactions to bites or stings from insects like mosquitoes, fleas, or bedbugs.",
+            "cautions": "Watch for signs of infection (pus/heat) or systemic symptoms like fever or joint pain.",
+            "complications": "Cellulitis, Lyme disease (from ticks), and severe allergic reactions.",
+            "solutions": "Hydrocortisone cream, antihistamines, and cool compresses.",
+            "doctor_advice": "Consult a doctor if you develop a target-shaped rash (tick bite) or have widespread hives.",
+            "symptoms": "Red, itchy bumps with a central puncture mark; sometimes swelling and tenderness.",
+            "prevention": "Use insect repellent (DEET), wear long sleeves, and avoid areas with high insect activity.",
+            "locations": "Exposed skin like arms, legs, and neck.",
+            "diagnosis": "Based on the appearance of the lesion and history of exposure.",
+            "immediate_actions": "Wash the area with soap and water; avoid scratching to prevent infection.",
+            "lifestyle": "Check for ticks after being outdoors and use bedbug-proof mattress covers if traveling.",
+            "visual_features": [
+                "Erythematous (red) papule",
+                "Central punctum (point of entry)",
+                "Wheal-and-flare reaction"
+            ]
+        },
+        "Intertrigo": {
+            "risk_level": "Low",
+            "advice": "Inflammation of the skin caused by friction and moisture in skin folds.",
+            "cautions": "Often becomes infected with yeast (Candida) or bacteria if not kept dry.",
+            "complications": "Secondary yeast infection and painful skin breakdown (erosions).",
+            "solutions": "Keeping the area dry, using barrier ointments (zinc oxide), and antifungal creams if infected.",
+            "doctor_advice": "See a doctor if the rash develops an odor, becomes very painful, or shows bright red spots.",
+            "symptoms": "Red, raw, and itchy skin in areas where skin touches skin.",
+            "prevention": "Dry skin folds thoroughly after bathing and wear moisture-wicking clothing.",
+            "locations": "Armpits, under breasts, groin, and between stomach folds.",
+            "diagnosis": "Physical examination; skin scraping for yeast if necessary.",
+            "immediate_actions": "Apply a barrier cream and try to separate skin folds to allow air circulation.",
+            "lifestyle": "Manage weight if applicable and choose loose-fitting cotton underwear.",
+            "visual_features": [
+                "Mirror-image erythema (redness on both sides of a fold)",
+                "Satellite pustules (if yeast is present)",
+                "Macerated or 'raw-meat' appearance"
+            ]
+        },
+        "Jock Itch": {
+            "risk_level": "Low",
+            "advice": "A fungal infection (tinea cruris) that causes a red, itchy rash in the warm, moist areas of the groin.",
+            "cautions": "Often spreads from athlete's foot; be sure to treat both areas if both are affected.",
+            "complications": "Secondary bacterial infection and chronic skin discoloration.",
+            "solutions": "Antifungal creams, sprays, or powders used consistently for 2 weeks.",
+            "doctor_advice": "Consult a doctor if the rash is painful, oozing, or doesn't clear with OTC antifungals.",
+            "symptoms": "Red, scaly patches with a slightly raised border that may spread to the thighs but spares the scrotum.",
+            "prevention": "Keep the groin area dry, change underwear daily, and don't share towels.",
+            "locations": "Inner thighs, groin, and buttocks.",
+            "diagnosis": "Visual inspection; KOH prep to confirm the presence of fungus.",
+            "immediate_actions": "Apply an OTC antifungal cream and switch to loose cotton boxers.",
+            "lifestyle": "Dry the groin thoroughly before dressing and wash gym clothes after every use.",
+            "visual_features": [
+                "Sharply demarcated red rash",
+                "Active scaling at the border",
+                "Central clearing as the patch expands"
+            ]
+        },
+        "Keloids": {
+            "risk_level": "Low",
+            "advice": "An overgrown scar that rises significantly above the skin and is much larger than the original wound.",
+            "cautions": "Surgical removal alone often results in the keloid returning even larger. Not cancerous.",
+            "complications": "Itching, pain, and restricted movement if near a joint.",
+            "solutions": "Steroid injections to flatten the scar, silicone sheets, and laser treatments.",
+            "doctor_advice": "See a dermatologist for treatment options if the scar is itchy or bothersome.",
+            "symptoms": "A thick, raised, firm, and shiny scar that expands beyond the original injury.",
+            "prevention": "Avoid unnecessary piercings or surgery if you have a known history of keloid formation.",
+            "locations": "Chest, shoulders, earlobes, and back.",
+            "diagnosis": "Physical examination based on the characteristic appearance of the scar.",
+            "immediate_actions": "Apply silicone gel or sheets early in the healing process of a wound.",
+            "lifestyle": "Wear loose clothing to avoid irritation and protect the scar from sun exposure which can darken it.",
+            "visual_features": [
+                "Raised, firm, rubbery plaque",
+                "Expansion beyond borders of initial injury",
+                "Smooth, shiny surface"
+            ]
+        },
+        "Keratoacanthoma": {
+            "risk_level": "Moderate",
+            "advice": "A rapid-growing skin tumor that resembles squamous cell carcinoma. It often resolves on its own but excision is recommended.",
+            "cautions": "Because it looks identical to SCC, all such lesions should be treated by a professional.",
+            "complications": "Local tissue destruction due to rapid growth or uncertainty in diagnosis versus SCC.",
+            "solutions": "Surgical excision is the standard. Other options include cryosurgery or intralesional injections.",
+            "doctor_advice": "Seek immediate medical attention for any fast-growing skin nodule with a central plug.",
+            "symptoms": "A fast-growing, dome-shaped nodule with a central keratinous horn. Usually painless.",
+            "prevention": "Limit sun exposure and use protective measures against UV radiation.",
+            "locations": "Face, neck, arms, and back of hands.",
+            "diagnosis": "Excisional biopsy is necessary to differentiate from invasive SCC.",
+            "immediate_actions": "Schedule an urgent dermatology appointment due to the rapid growth rate.",
+            "lifestyle": "Strict sun protection to prevent future skin cancers.",
+            "visual_features": [
+                "Dome-shaped nodule",
+                "Central keratin-filled crater (mini-volcano appearance)",
+                "Rapid growth over weeks"
+            ]
+        },
+        "Keratosis Pilaris": {
+            "risk_level": "Low",
+            "advice": "A common, harmless skin condition (often called 'chicken skin') caused by keratin buildup in hair follicles.",
+            "cautions": "Picking at the bumps can lead to scarring or infection. It tends to improve with age.",
+            "complications": "Minor cosmetic concern and occasional itching.",
+            "solutions": "Moisturizers containing urea, salicylic acid, or lactic acid to help exfoliate and soften.",
+            "doctor_advice": "See a doctor for persistent itching or if the skin looks very red and inflamed.",
+            "symptoms": "Small, painless bumps that feel like sandpaper; sometimes surrounded by mild redness.",
+            "prevention": "Maintain skin moisture; there is no permanent cure as it is often genetic.",
+            "locations": "Backs of upper arms, thighs, and buttocks.",
+            "diagnosis": "Based on the characteristic 'sandpaper' texture and location of the bumps.",
+            "immediate_actions": "Apply a thick, exfoliating moisturizer twice daily.",
+            "lifestyle": "Avoid harsh soaps and take short, lukewarm showers to prevent drying the skin further.",
+            "visual_features": [
+                "Follicular-based papules (bumps at hair follicles)",
+                "Rough, sandpaper-like texture",
+                "Faint erythema (redness) around bumps"
+            ]
+        },
+        "Lamellar Ichthyosis": {
+            "risk_level": "Moderate",
+            "advice": "A rare but severe genetic condition where babies are born with a 'collodion' membrane that sheds into large scales.",
+            "cautions": "Requires lifelong specialized skin care. Patients are prone to infections and dehydration.",
+            "complications": "Ectropion (eyelids turning out), alopecia (hair loss), and impaired thermoregulation.",
+            "solutions": "High doses of moisturizers and oral retinoids (acitretin) under specialist supervision.",
+            "doctor_advice": "Lifelong monitoring by a dermatologist specializing in genetic skin disorders.",
+            "symptoms": "Large, dark, plate-like scales covering most of the body. Skin feels very tight.",
+            "prevention": "Inherited condition; genetic counseling is recommended for families.",
+            "locations": "Generalized involvement covering the entire body surface.",
+            "diagnosis": "Clinical features confirmed by skin biopsy and genetic testing.",
+            "immediate_actions": "Apply prescribed emollient therapy frequently to prevent skin cracking.",
+            "lifestyle": "Keep the environment humid and avoid overheating as sweating is limited.",
+            "visual_features": [
+                "Large, dark, plate-like scales",
+                "Taut (stretched) skin appearance",
+                "Fissures (cracks) between scales"
+            ]
+        },
+        "Lichen Planus": {
+            "risk_level": "Moderate",
+            "advice": "An inflammatory condition that can affect skin, hair, nails, and mucous membranes (mouth).",
+            "cautions": "May be associated with Hepatitis C. Lesions in the mouth can occasionally become cancerous.",
+            "complications": "Significant scarring (especially on the scalp/nails) and persistent oral ulcers.",
+            "solutions": "Topical and oral steroids, phototherapy, or immunosuppressive drugs.",
+            "doctor_advice": "See a doctor for itchy, flat-topped purple bumps or white lacy patches in the mouth.",
+            "symptoms": "The 6 P's: Planar (flat-topped), Purple, Polygonal, Pruritic (itchy), Papules, and Plaques.",
+            "prevention": "No known prevention; manage stress and avoid skin trauma.",
+            "locations": "Wrists, ankles, lower back, and inside the mouth.",
+            "diagnosis": "Visual inspection of lesions and 'Wickham striae'; confirmed by skin biopsy.",
+            "immediate_actions": "Use cool compresses to manage itching and avoid scratching the bumps.",
+            "lifestyle": "Maintain good oral hygiene; avoid spicy or acidic foods if mouth is involved.",
+            "visual_features": [
+                "Polygonal, flat-topped purple papules",
+                "Wickham striae (fine white lacy patterns)",
+                "Shiny surface on lesions"
+            ]
+        },
+        "Lichen Simplex Chronicus": {
+            "risk_level": "Low",
+            "advice": "A skin condition characterized by chronic itching and scratching, which leads to thick, leathery (lichenified) skin.",
+            "cautions": "Breaking the 'itch-scratch cycle' is the most critical part of treatment.",
+            "complications": "Secondary bacterial infection and permanent skin changes.",
+            "solutions": "High-potency topical steroids, covering the area to prevent scratching, and anti-itch medications.",
+            "doctor_advice": "Consult a dermatologist if you can't stop scratching certain areas of skin.",
+            "symptoms": "A thick, leathery patch of skin that is intensely itchy, especially at night.",
+            "prevention": "Avoid scratching minor skin irritations to prevent the cycle from starting.",
+            "locations": "Nape of neck, ankles, wrists, and groin area.",
+            "diagnosis": "Physical exam showing accentuated skin lines (lichenification).",
+            "immediate_actions": "Apply a thick moisturizer and cover the area with a bandage to prevent scratching.",
+            "lifestyle": "Keep fingernails trimmed short and identify stress factors that may increase itching.",
+            "visual_features": [
+                "Exaggerated skin markings/lines",
+                "Thickened, leathery plaque",
+                "Hyperpigmentation (darkening) from chronic rubbing"
+            ]
+        },
+        "Lipomas": {
+            "risk_level": "Low",
+            "advice": "Benign (non-cancerous) fatty tumors that grow slowly just under the skin.",
+            "cautions": "Usually harmless; they only need removal if they become painful or grow very large.",
+            "complications": "Compression of nearby nerves (causing pain) and cosmetic concern.",
+            "solutions": "Monitoring, surgical excision, or liposuction for removal.",
+            "doctor_advice": "See a doctor for any new or growing lump to confirm it is a lipoma and not something else.",
+            "symptoms": "A soft, doughy lump that moves easily with slight finger pressure. Painless unless pushing on a nerve.",
+            "prevention": "No known prevention; they are a common type of soft tissue tumor.",
+            "locations": "Shoulders, neck, back, and arms.",
+            "diagnosis": "Physical examination; ultrasound or biopsy if the lump feels firm or deep.",
+            "immediate_actions": "Avoid trying to 'massage away' or squeeze the lump.",
+            "lifestyle": "Monitor the lump for changes in size or consistency.",
+            "visual_features": [
+                "Subcutaneous, soft mobile mass",
+                "Normal overlying skin",
+                "Slow-growing or stable appearance"
+            ]
+        },
+        "Livedo Reticularis": {
+            "risk_level": "Moderate",
+            "advice": "A condition causing a lacy, net-like pattern of reddish-blue discoloration on the skin.",
+            "cautions": "Often harmless when caused by cold (physiologic), but can indicate underlying vascular issues.",
+            "complications": "Blood clots (thrombosis) or skin ulcers if caused by an underlying autoimmune disease.",
+            "solutions": "Rewarming the skin; treating the underlying condition if the pattern is persistent.",
+            "doctor_advice": "See a doctor if the pattern is permanent, painful, or associated with skin sores.",
+            "symptoms": "Net-like or mottled appearance of the skin, most visible when cold.",
+            "prevention": "Keep the body warm and avoid exposure to cold environments.",
+            "locations": "Legs, thighs, and sometimes arms.",
+            "diagnosis": "Visual examination; blood tests for autoimmune disorders (like Lupus) if persistent.",
+            "immediate_actions": "Warm up the body and see if the pattern disappears.",
+            "lifestyle": "Wear warm clothing and avoid smoking, which can worsen circulation.",
+            "visual_features": [
+                "Net-like (reticulated) cyanosis",
+                "Broken or unbroken purplish rings",
+                "Worsens with cold exposure"
+            ]
+        },
+        "Lupus": {
+            "risk_level": "High",
+            "advice": "A systemic autoimmune disease. Skin-only (discoid) or systemic (SLE) forms require expert medical management.",
+            "cautions": "Extreme sun sensitivity. UV exposure can flare not just the skin but also internal organ disease.",
+            "complications": "Scarring alopecia, permanent skin discoloration, and internal organ damage (kidneys, heart).",
+            "solutions": "Anti-malarials (hydroxychloroquine), topical steroids, and systemic immunosuppressants.",
+            "doctor_advice": "Seek medical review for any butterfly-shaped rash on the face or coin-shaped scarring sores.",
+            "symptoms": "Butterfly rash across cheeks, sun-sensitive rashes, joint pain, and fatigue.",
+            "prevention": "Strict UV avoidance: high-SPF sunscreen, UPF clothing, and avoiding mid-day sun.",
+            "locations": "Face (malar area), scalp, ears, and sun-exposed chest/arms.",
+            "diagnosis": "Skin biopsy and detailed blood work (ANA, anti-dsDNA, etc.).",
+            "immediate_actions": "Wear a wide-brimmed hat and avoid all direct sun exposure until evaluated by a doctor.",
+            "lifestyle": "Quit smoking (worsens lupus) and maintain regular follow-ups with rheumatology.",
+            "visual_features": [
+                "Malar 'butterfly' rash (sparing nasal folds)",
+                "Discoid lesions (thick, scaly, scarring patches)",
+                "Heliotrope rash (on eyes in some overlaps)"
+            ]
+        },
+        "Melanoma": {
+            "risk_level": "Critical",
+            "advice": "The most dangerous form of skin cancer. Early detection and surgical removal are key to survival.",
+            "cautions": "Follow the ABCDE rule. Any change in an existing mole or a new suspicious spot requires immediate biopsy.",
+            "complications": "Metastasis to internal organs (lungs, liver, brain) and lymph nodes. Can be fatal.",
+            "solutions": "Wide surgical excision, lymph node mapping, and potentially immunotherapy or targeted therapy.",
+            "doctor_advice": "Urgent consultation is mandatory for any lesion meeting the ABCDE criteria.",
+            "symptoms": "Growth of an existing mole, changing shape/color, itchiness, or bleeding.",
+            "prevention": "Regular skin self-exams, professional checks, and avoidance of excessive UV light/tanning.",
+            "locations": "Can occur anywhere, including areas not exposed to the sun (soles, nails).",
+            "diagnosis": "Full excisional biopsy; staging via imaging or sentinel lymph node biopsy if invasive.",
+            "immediate_actions": "Do not wait. Schedule an appointment with a dermatologist or specialist today.",
+            "lifestyle": "Lifelong sun protection and regular professional skin monitoring.",
+            "visual_features": [
+                "Asymmetry (uneven halves)",
+                "Irregular or notched borders",
+                "Multiple colors (tan, brown, black, red, blue, or white)",
+                "Large diameter (>6mm)",
+                "Evolution (changes in size, shape, or color over time)"
+            ]
+        },
+        "Melasma": {
+            "risk_level": "Low",
+            "advice": "A common skin condition that causes brown or gray-brown patches, usually on the face. Often called the 'mask of pregnancy.'",
+            "cautions": "Sun exposure is the primary trigger. Even a small amount of sun can cause melasma to return after it has faded.",
+            "complications": "Significant psychological distress and social anxiety; no physical health risks.",
+            "solutions": "Sun protection is the most important treatment. Topical creams (hydroquinone, retinoids, azelaic acid) and chemical peels.",
+            "doctor_advice": "Consult a dermatologist for a customized treatment plan, especially if it is pregnancy-related.",
+            "symptoms": "Symmetrical, dark-colored patches on the face, especially the cheeks, bridge of the nose, forehead, and upper lip.",
+            "prevention": "Strict sun protection: broad-spectrum SPF 30+ sunscreen daily and wearing wide-brimmed hats.",
+            "locations": "Cheeks, upper lip, chin, and forehead.",
+            "diagnosis": "Visual examination; Wood's lamp examination help determine the depth of pigmentation.",
+            "immediate_actions": "Apply a high-quality physical sunblock immediately and avoid any harsh facial scrubs.",
+            "lifestyle": "Use gentle, fragrance-free skincare products. Avoid hormonal triggers if possible.",
+            "visual_features": [
+                "Symmetrical hyperpigmented patches",
+                "Irregular, 'geographic' borders",
+                "Color ranging from light brown to muddy gray"
+            ]
+        },
+        "Milia": {
+            "risk_level": "Low",
+            "advice": "Small, white, firm bumps that often appear on the face. They are tiny cysts filled with keratin.",
+            "cautions": "Do not try to squeeze or pop them like pimples; they are deep and have no opening to the surface.",
+            "complications": "Inflammation or scarring if aggressively squeezed at home.",
+            "solutions": "Often resolve on their own. Professional extraction by a dermatologist or use of topical retinoids.",
+            "doctor_advice": "Consult a professional if they are cosmetically bothersome or don't resolve on their own.",
+            "symptoms": "Small (1-2mm), pearly white or yellowish bumps on the skin. Usually not itchy or painful.",
+            "prevention": "Regular exfoliation and using light, non-comedogenic facial moisturizers.",
+            "locations": "Common around the eyes, cheeks, and nose.",
+            "diagnosis": "Visual inspection by a healthcare provider.",
+            "immediate_actions": "Stop using heavy, oil-based facial creams that may be clogging pores.",
+            "lifestyle": "Maintain a consistent, gentle skincare routine and avoid sun damage.",
+            "visual_features": [
+                "Small, pearly-white papules",
+                "Firm to the touch",
+                "Well-defined, non-inflammatory borders"
+            ]
+        },
+        "Molluscum Contagiosum": {
+            "risk_level": "Low",
+            "advice": "This is a viral infection that is usually harmless and resolves on its own over time.",
+            "cautions": "The virus is highly contagious. Avoid sharing towels, razors, or athletic equipment.",
+            "complications": "Secondary bacterial infection from scratching, or conjunctivitis if near the eyes.",
+            "solutions": "Most resolve without treatment. Options include cryotherapy, curettage, or topical therapies.",
+            "doctor_advice": "See a doctor if the bumps are widespread, painful, or in sensitive areas.",
+            "symptoms": "Small, firm, painless bumps that may become itchy or red.",
+            "prevention": "Avoid direct skin contact with infected persons and do not share personal items.",
+            "locations": "Anywhere on the body; face, trunk, and extremities are common in children.",
+            "diagnosis": "Visual inspection of the characteristic bumps.",
+            "immediate_actions": "Do not pick or scratch the bumps to prevent spreading them to other body parts.",
+            "lifestyle": "Keep the bumps covered with clothing or a bandage to prevent transmission.",
+            "visual_features": [
+                "Pearly or flesh-colored papules",
+                "Central dimple (umbilication)",
+                "Small, dome-shaped growths (2-5mm)"
+            ]
+        },
+        "Moles (Nevi)": {
+            "risk_level": "Low",
+            "advice": "Common skin growths (melanocytic nevi) that are usually harmless. Most people have between 10 and 40 moles.",
+            "cautions": "Monitor moles for the ABCDEs: Asymmetry, Border irregularity, Color changes, Diameter >6mm, and Evolution.",
+            "complications": "Potential for development into melanoma (skin cancer), especially with changing moles.",
+            "solutions": "Monitoring and surgical excision if there are signs of atypical change (dysplastic nevi).",
+            "doctor_advice": "Consult a dermatologist for any mole that starts to bleed, itch, or change rapidly.",
+            "symptoms": "A small, brown or tan spot on the skin. Can be flat or raised.",
+            "prevention": "Practice sun safety: use sunscreen, wear protective clothing, and avoid tanning beds.",
+            "locations": "Anywhere on the body; often on sun-exposed areas.",
+            "diagnosis": "Visual inspection by a professional; dermoscopy and biopsy if suspicious.",
+            "immediate_actions": "Take a photo of the mole next to a ruler to track its size over time.",
+            "lifestyle": "Perform monthly skin self-exams to check for new or changing spots.",
+            "visual_features": [
+                "Uniform color (brown, tan, or black)",
+                "Round or oval shape",
+                "Well-defined, regular borders"
+            ]
+        },
+        "Nummular Dermatitis": {
+            "risk_level": "Low",
+            "advice": "A type of eczema characterized by coin-shaped, itchy, and sometimes oozing patches of skin.",
+            "cautions": "Can be triggered by dry skin, minor injuries, or sensitivity to certain metals (like nickel).",
+            "complications": "Secondary bacterial infection (Staph) and severe itching leading to skin breakdown.",
+            "solutions": "High-potency topical steroids, thick moisturizers, and oral antihistamines.",
+            "doctor_advice": "See a dermatologist for persistent coin-shaped rashes that don't respond to moisturizing.",
+            "symptoms": "Itchy, round, red patches that may be scaly or have small blisters.",
+            "prevention": "Prevent skin dryness, use gentle cleansers, and avoid skin trauma.",
+            "locations": "Most common on the arms and legs.",
+            "diagnosis": "Visual examination; skin scraping (KOH) to rule out ringworm if the center is clear.",
+            "immediate_actions": "Apply a thick, unscented moisturizer to the area multiple times a day.",
+            "lifestyle": "Avoid long, hot showers and wear soft, natural fabrics like cotton.",
+            "visual_features": [
+                "Well-defined coin-shaped plaques",
+                "Small vesicles or crusting (active stage)",
+                "No central clearing (distinguishes from ringworm)"
+            ]
+        },
+        "Paronychia": {
+            "risk_level": "Low",
+            "advice": "An infection of the skin around a fingernail or toenail. Can be acute (bacterial) or chronic (yeast).",
+            "cautions": "If the area is very swollen and painful, it may require drainage by a doctor.",
+            "complications": "Abscess formation and potential damage to the nail plate.",
+            "solutions": "Warm water soaks, topical or oral antibiotics (for acute), and antifungals (for chronic).",
+            "doctor_advice": "Consult a doctor if the infection spreads or if there is a visible collection of pus.",
+            "symptoms": "Redness, swelling, and tenderness in the skin around the nail.",
+            "prevention": "Avoid biting nails, picking at cuticles, and keeping hands submerged in water for too long.",
+            "locations": "Around fingernails or toenails.",
+            "diagnosis": "Diagnosed by clinical appearance; culture of pus to identify the specific bug.",
+            "immediate_actions": "Soak the finger in warm water for 15 minutes three times a day.",
+            "lifestyle": "Wear gloves for wet work and use moisturizing hand cream to prevent skin cracks.",
+            "visual_features": [
+                "Erythematous, swollen nail fold",
+                "Visible pus collection (abscess)",
+                "Distortion of the nail in chronic cases"
+            ]
+        },
+        "Pediculosis": {
+            "risk_level": "Low",
+            "advice": "An infestation of lice (head, body, or pubic) that feed on human blood and cause intense itching.",
+            "cautions": "Highly contagious through head-to-head contact or sharing personal items like hats or combs.",
+            "complications": "Secondary bacterial infection from intense scratching and social distress.",
+            "solutions": "Topical treatments (permethrin), fine-tooth combing to remove nits, and washing bedding in hot water.",
+            "doctor_advice": "Consult a doctor if OTC treatments fail or if the child is very young.",
+            "symptoms": "Intense itching, visible lice, and tiny white 'nits' (eggs) glued to hair shafts.",
+            "prevention": "Avoid sharing brushes, hats, or earphones; regular screening in school settings.",
+            "locations": "Scalp (head lice) or body and pubic areas.",
+            "diagnosis": "Visual detection of live lice or nits in the hair or on clothing.",
+            "immediate_actions": "Begin treatment with a lice-killing shampoo and wash all recently used linens in hot water.",
+            "lifestyle": "Inform school or daycare and check all household members for infestation.",
+            "visual_features": [
+                "Live crawling insects",
+                "Small, white, oval nits near the scalp",
+                "Excoriations (scratch marks) and inflammation"
+            ]
+        },
+        "Pemphigus Vulgaris": {
+            "risk_level": "Critical",
+            "advice": "A life-threatening autoimmune disease causing severe blistering of the skin and mucous membranes (mouth).",
+            "cautions": "Requires immediate hospitalization in severe cases. Fatal if left untreated due to infection and dehydration.",
+            "complications": "Sepsis, severe electrolyte imbalance, and widespread painful erosions.",
+            "solutions": "High-dose corticosteroids and biologics (rituximab) are the current standard of care.",
+            "doctor_advice": "Seek immediate emergency care for painful blisters in the mouth that spread to the skin.",
+            "symptoms": "Extremely painful sores in the mouth followed by fragile, flaccid blisters on the skin.",
+            "prevention": "Not preventable; caused by the body's immune system attacking its own skin-binding proteins.",
+            "locations": "Mouth, scalp, face, and torso. Can affect all mucous membranes.",
+            "diagnosis": "Nikolsky sign (positive), skin biopsy, and immunofluorescence blood tests.",
+            "immediate_actions": "Go to an emergency department or specialist urgently.",
+            "lifestyle": "Requires lifelong specialist monitoring and often long-term immunosuppression.",
+            "visual_features": [
+                "Flaccid, easily ruptured blisters",
+                "Painful raw erosions",
+                "Positive Nikolsky sign (skin shears with friction)"
+            ]
+        },
+        "Perioral Dermatitis": {
+            "risk_level": "Low",
+            "advice": "An inflammatory skin rash around the mouth, often consisting of tiny red bumps and scaling.",
+            "cautions": "Triggered or worsened by topical steroid use; avoid applying hydrocortisone to the face.",
+            "complications": "Significant facial redness and social distress; potential scarring from picking.",
+            "solutions": "Gentle skincare, oral or topical antibiotics (metronidazole, tetracycline), and stopping steroids.",
+            "doctor_advice": "Consult a dermatologist if you have a persistent rash around the mouth or eyes.",
+            "symptoms": "Small red papules, sometimes with tiny pustules, and a clearing right around the lip border.",
+            "prevention": "Avoid heavy facial creams and topical steroids on the face.",
+            "locations": "Around the mouth, nose, and eyes (periocular).",
+            "diagnosis": "Clinical appearance; distinguishing it from acne or rosacea is key.",
+            "immediate_actions": "Stop using all facial products except a very gentle cleanser and water.",
+            "lifestyle": "Identify if toothpaste with fluoride or heavy night creams are triggers.",
+            "visual_features": [
+                "Clusters of small red papules",
+                "Spare zone (clear skin) immediately around the lips",
+                "Mild peeling or scaling"
+            ]
+        },
+        "Photoaging": {
+            "risk_level": "Low",
+            "advice": "Premature aging of the skin caused by repeated exposure to ultraviolet (UV) radiation from the sun.",
+            "cautions": "Increases the risk of all types of skin cancer, including life-threatening melanoma.",
+            "complications": "Wrinkles, leathery skin, and development of precancerous actinic keratoses.",
+            "solutions": "Sun protection, topical retinoids (tretinoin), and aesthetic procedures like lasers or chemical peels.",
+            "doctor_advice": "See a dermatologist for periodic skin checks if you have a history of heavy sun exposure.",
+            "symptoms": "Deep wrinkles, dark 'liver' spots, and a yellow or leathery texture to the skin.",
+            "prevention": "Strict sun protection: SPF 30+, hats, and avoiding peak sun hours.",
+            "locations": "Face, neck, backs of hands, and chest.",
+            "diagnosis": "Clinical examination based on visual signs of sun damage.",
+            "immediate_actions": "Start a daily broad-spectrum sunscreen habit immediately.",
+            "lifestyle": "Adopt a skincare routine including antioxidants (Vitamin C) and sun-protective clothing.",
+            "visual_features": [
+                "Solar lentigines (age spots)",
+                "Deep coarse wrinkles",
+                "Telangiectasias (broken capillaries)"
+            ]
+        },
+        "Pityriasis Rosea": {
+            "risk_level": "Low",
+            "advice": "A common, harmless inflammatory skin rash that starts with a large 'herald patch' followed by many smaller spots.",
+            "cautions": "Often mistaken for ringworm, but it does not respond to antifungal creams. It is self-limiting.",
+            "complications": "Occasional intense itching and post-inflammatory hyperpigmentation.",
+            "solutions": "Reassurance (it goes away on its own in 6-12 weeks), topical steroids for itch, and sun exposure.",
+            "doctor_advice": "See a doctor if the rash lasts longer than 3 months or if it is very itchy.",
+            "symptoms": "One large oval scaly patch (herald patch) followed by multiple smaller scaly pink oval spots.",
+            "prevention": "No known prevention; it is thought to be triggered by a common virus (HHV-6 or HHV-7).",
+            "locations": "Chest, back (Christmas tree pattern), and abdomen.",
+            "diagnosis": "Diagnosed by the unique 'Christmas tree' distribution on the trunk.",
+            "immediate_actions": "Don't panic; it is not contagious and will resolve without treatment.",
+            "lifestyle": "Use lukewarm baths and stay cool to avoid irritating the itch.",
+            "visual_features": [
+                "Herald patch (2-10 cm scaly oval)",
+                "Smaller secondary papules in 'Christmas tree' distribution",
+                "Fine 'collarette' scale around borders"
+            ]
+        },
+        "Poison Ivy": {
+            "risk_level": "Moderate",
+            "advice": "An allergic contact dermatitis (Rhus dermatitis) caused by contact with urushiol oil from poison ivy, oak, or sumac.",
+            "cautions": "Urushiol oil can stay on surfaces or pet fur for months. Avoid smoke from burning poison ivy.",
+            "complications": "Secondary bacterial infection (from scratching) and severe systemic reactions.",
+            "solutions": "Washing the oil off immediately, topical steroids, and oral steroids for severe cases.",
+            "doctor_advice": "See a doctor if the rash is on your face/eyes or covers more than 25% of your body.",
+            "symptoms": "Intense itching, redness, swelling, and blisters that often appear in linear (straight line) patterns.",
+            "prevention": "Learn to identify the plants ('leaves of three, let them be') and wear protective clothing.",
+            "locations": "Any area that contacted the plant oil.",
+            "diagnosis": "Clinical examination based on the linear arrangement of blisters and history of exposure.",
+            "immediate_actions": "Wash the affected skin and any clothing/tools with soap and water immediately.",
+            "lifestyle": "Use barrier creams (Tecnu) before going into high-risk areas.",
+            "visual_features": [
+                "Linear (line-like) arrangement of vesicles",
+                "Erythematous (red) edematous base",
+                "Intense blistering (bullae)"
+            ]
+        },
+        "Polymorphic Light Eruption": {
+            "risk_level": "Moderate",
+            "advice": "A common form of 'sun poisoning' or sensitivity, causing an itchy rash after exposure to sunlight.",
+            "cautions": "Usually occurs in early spring or summer when skin is first exposed to intense sun.",
+            "complications": "Discomfort and social embarrassment; potential for secondary infection from scratching.",
+            "solutions": "Sun protection, gradually increasing sun exposure (hardening), and topical steroids.",
+            "doctor_advice": "Consult a dermatologist for testing (phototesting) to confirm the diagnosis.",
+            "symptoms": "Itchy, red bumps or plaques that appear within hours or days of sun exposure.",
+            "prevention": "Wears protective clothing and use high-SPF, broad-spectrum sunscreen.",
+            "locations": "Sun-exposed areas like the chest, neck, and arms.",
+            "diagnosis": "Patient history and clinical appearance; phototesting if diagnosis is in doubt.",
+            "immediate_actions": "Stay out of the sun and apply a cool compress to the rash.",
+            "lifestyle": "Plan outdoor activities for early morning or late evening when UV levels are lower.",
+            "visual_features": [
+                "Polymorphic (variable) appearance: papules, plaques, or blisters",
+                "Symmetrical distribution on sun-exposed sites",
+                "Sparing of shaded areas (like under the chin)"
+            ]
+        },
+        "Psoriasis": {
+            "risk_level": "Moderate",
+            "advice": "A chronic autoimmune condition that speeds up the growth cycle of skin cells, leading to thick, scaly patches.",
+            "cautions": "Can overlap with psoriatic arthritis. Avoid triggers like stress, smoking, and infections.",
+            "complications": "Psoriatic arthritis (joint damage), increased risk of cardiovascular disease, and metabolic syndrome.",
+            "solutions": "Topical steroids, vitamin D analogues, phototherapy, and systemic biologics.",
+            "doctor_advice": "See a doctor if scales are widespread or if you have joint stiffness/pain.",
+            "symptoms": "Red patches of skin covered with thick, silvery scales; dry, cracked skin; and itching or burning.",
+            "prevention": "Maintain a healthy lifestyle and avoid known triggers to reduce flare frequency.",
+            "locations": "Elbows, knees, scalp, and lower back.",
+            "diagnosis": "Physical examination; skin biopsy helps differentiate from other scaly conditions.",
+            "immediate_actions": "Apply a thick moisturizer to soften scales and avoid picking at them.",
+            "lifestyle": "Manage stress, maintain a healthy weight, and use sunlight in moderation (phototherapy).",
+            "visual_features": [
+                "Well-defined erythematous plaques",
+                "Silvery-white micaceous scales",
+                "Auspitz sign (pinpoint bleeding when scales are removed)"
+            ]
+        },
+        "Psoriatic Arthritis": {
+            "risk_level": "High",
+            "advice": "An inflammatory arthritis associated with psoriasis. Can cause permanent joint damage if not treated early.",
+            "cautions": "Always report joint pain, stiffness, or swelling to your dermatologist if you have psoriasis.",
+            "complications": "Joint deformity, loss of function, and chronic pain.",
+            "solutions": "NSAIDs for pain, and DMARDs or biologics to prevent joint destruction.",
+            "doctor_advice": "Requires specialized care from a rheumatologist alongside a dermatologist.",
+            "symptoms": "Swollen 'sausage-like' fingers or toes (dactylitis), morning stiffness, and back pain.",
+            "prevention": "Early detection and aggressive treatment of underlying psoriasis can reduce risk.",
+            "locations": "Fingere joints, toes, wrists, and the spine (sacroiliitis).",
+            "diagnosis": "Clinical history, imaging (X-rays/MRI), and blood tests to rule out rheumatoid arthritis.",
+            "immediate_actions": "Schedule a rheumatology consultation if you have joint pain and skin psoriasis.",
+            "lifestyle": "Regular low-impact exercise and weight management to reduce joint stress.",
+            "visual_features": [
+                "Swelling of an entire digit (sausage digit)",
+                "Nail pitting and crumbling (onychodystrophy)",
+                "Redness and swelling over joints"
+            ]
+        },
+        "Purpura": {
+            "risk_level": "High",
+            "advice": "Purple-colored spots (bruising) on the skin caused by blood vessels leaking or bursting under the surface.",
+            "cautions": "Large areas of purpura (ecchymosis) or pinpoint spots (petechiae) can indicate serious blood or clotting disorders.",
+            "complications": "Internal bleeding or organ damage if part of a systemic disease (like vasculitis).",
+            "solutions": "Treating the underlying cause; sometimes requires steroids or immunosuppressants.",
+            "doctor_advice": "Seek immediate medical care for any purple spots that do not turn white when pressed (non-blanching).",
+            "symptoms": "Purple, red, or brownish spots that do not fade with pressure. Can be flat or raised.",
+            "prevention": "No specific prevention; manage blood pressure and avoid medications that cause bleeding if possible.",
+            "locations": "Most common on the legs and arms.",
+            "diagnosis": "Based on the non-blanching characteristic; blood tests and potential skin biopsy.",
+            "immediate_actions": "Press a clear glass against the spot to see if it pales; if it doesn't, see a doctor promptly.",
+            "lifestyle": "Be careful to avoid minor skin trauma if you have fragile blood vessels (actinic purpura).",
+            "visual_features": [
+                "Non-blanching purple/red lesions",
+                "Petechiae (pinpoint) vs Ecchymosis (large bruises)",
+                "Palpable (raised) if inflammation is present (vasculitis)"
+            ]
+        },
+        "Pyogenic Granuloma": {
+            "risk_level": "Moderate",
+            "advice": "A common, benign skin growth that is small, red, and often oozes or bleeds easily.",
+            "cautions": "Despite the name, it is not infectious (pyogenic) or a true granuloma; it is a vascular growth.",
+            "complications": "Frequent heavy bleeding from minor trauma and recurrence if not completely removed.",
+            "solutions": "Surgical excision, curettage, or laser treatment to remove the lesion completely.",
+            "doctor_advice": "Consult a dermatologist for a rapidly growing, bleeding red bump to rule out other conditions.",
+            "symptoms": "A fast-growing red, purple, or brown-black bump that bleeds with very little pressure.",
+            "prevention": "No known prevention; often triggered by minor skin injuries or hormonal changes (pregnancy).",
+            "locations": "Hands, fingers, face, and lips.",
+            "diagnosis": "Clinical appearance and history of rapid growth; confirmed by biopsy after removal.",
+            "immediate_actions": "Apply firm pressure to stop any bleeding and see a doctor for removal.",
+            "lifestyle": "Avoid picking at the lesion and keep it covered with a bandage until it can be treated.",
+            "visual_features": [
+                "Erythematous (red) vascular papule",
+                "Often surrounded by a 'collar' of scale",
+                "Moist or eroded surface"
+            ]
+        },
+        "Rashes": {
+            "risk_level": "Moderate",
+            "advice": "A broad term for any inflammatory skin change that alters the color, appearance, or texture of the skin.",
+            "cautions": "Rashes can be caused by allergies, infections, heat, or underlying systemic diseases. Seek ER care for a high fever + rash.",
+            "complications": "Secondary bacterial infection (from scratching) and skin thickening or scarring.",
+            "solutions": "Treatment depends on the cause; common options include moisturizers, topical steroids, and antihistamines.",
+            "doctor_advice": "Consult a doctor if the rash is painful, widespread, or fails to improve within a week.",
+            "symptoms": "Redness, bumps, scales, or blisters; can be localized or generalized.",
+            "prevention": "Avoid known allergens, maintain skin hydration, and use gentle, fragrance-free products.",
+            "locations": "Can occur on any part of the body.",
+            "diagnosis": "Based on the rash's appearance, location, and associated symptoms.",
+            "immediate_actions": "Wash the area gently and apply a cool, damp cloth if it is itchy or burning.",
+            "lifestyle": "Maintain a symptom log to help identify triggers like specific soaps or foods.",
+            "visual_features": [
+                "Erythema (redness)",
+                "Various morphologies: papules, macules, or vesicles",
+                "Scaly or smooth surface"
+            ]
+        },
+        "Raynaud's Phenomenon": {
+            "risk_level": "Moderate",
+            "advice": "A condition in which smaller arteries that supply blood to your skin narrow, limiting blood circulation to affected areas.",
+            "cautions": "Can be a standalone condition (primary) or a sign of an underlying autoimmune disease like Lupus or Scleroderma (secondary).",
+            "complications": "Skin ulcers or even gangrene (tissue death) if blood flow is severely restricted for long periods.",
+            "solutions": "Keeping the body warm, managing stress, and medications like calcium channel blockers to open blood vessels.",
+            "doctor_advice": "Consult a doctor if your fingers turn white/blue when cold, especially if ulcers develop.",
+            "symptoms": "Fingers or toes turning white, then blue, then red. Numbness or a 'pins and needles' sensation.",
+            "prevention": "Dress warmly in cold weather, wear gloves when handling cold items, and avoid smoking.",
+            "locations": "Fingers and toes; occasionally the nose and ears.",
+            "diagnosis": "Based on patient history and cold-stimulation tests; blood work for secondary causes.",
+            "immediate_actions": "Move to a warmer environment and gently wiggle fingers/toes to encourage blood flow.",
+            "lifestyle": "Avoid sudden temperature changes and use hand warmers during outdoor activities.",
+            "visual_features": [
+                "White (pallor) due to vasospasm",
+                "Blue (cyanosis) due to lack of oxygen",
+                "Red (rubor) during rewarming"
+            ]
+        },
+        "Ringworm": {
+            "risk_level": "Moderate",
+            "advice": "A common fungal infection that responds well to antifungal treatments. It is contagious!",
+            "cautions": "Keep the area clean and dry. Avoid sharing personal items with others.",
+            "complications": "Secondary bacterial infection or permanent hair loss in scalp cases (tinea capitis).",
+            "solutions": "Topical antifungal creams (clotrimazole, terbinafine). Oral meds for severe cases.",
+            "doctor_advice": "Consult a doctor if the rash does not improve after 2 weeks of over-the-counter treatment.",
+            "symptoms": "Ring-shaped, red, itchy rash with clearer skin in the center.",
+            "prevention": "Keep skin dry, wear shoes in public showers, and avoid contact with infected animals.",
+            "locations": "Body (tinea corporis), scalp, groin (jock itch), or feet (athlete's foot).",
+            "diagnosis": "Clinical examination or KOH prep skin scraping.",
+            "immediate_actions": "Apply an OTC antifungal cream. Wash hands thoroughly after touching the area.",
+            "lifestyle": "Wear loose, breathable clothing and avoid tight synthetic fabrics.",
+            "visual_features": [
+                "Circular rash with raised borders",
+                "Central clearing (skin looks healthier in the middle)",
+                "Scaly, red, or silvery patches"
+            ]
+        },
+        "Rosacea": {
+            "risk_level": "Low",
+            "advice": "A chronic condition that primarily affects the face. Identifying and avoiding triggers is key.",
+            "cautions": "Avoid harsh skincare products and spicy foods or alcohol if they trigger flushing.",
+            "complications": "Ocular rosacea (eye damage) or thickened skin on the nose (rhinophyma).",
+            "solutions": "Gentle skin care, sun protection, and prescription topical or oral treatments.",
+            "doctor_advice": "See a dermatologist for persistent redness or if your eyes feel gritty or irritated.",
+            "symptoms": "Persistent facial redness, visible blood vessels, and acne-like bumps.",
+            "prevention": "Sun protection and identifying individual triggers (heat, stress, certain foods).",
+            "locations": "Central face: cheeks, nose, forehead, and chin.",
+            "diagnosis": "Clinical examination based on symptoms and skin appearance.",
+            "immediate_actions": "Use a gentle, non-soap cleanser and apply broad-spectrum sunscreen.",
+            "lifestyle": "Keep a diary to track triggers and use soothing, cool compresses.",
+            "visual_features": [
+                "Persistent facial erythema (redness)",
+                "Telangiectasia (visible tiny blood vessels)",
+                "Papules and pustules on the face"
+            ]
+        },
+        "Scabies": {
+            "risk_level": "Moderate",
+            "advice": "A highly contagious infestation caused by mites. Entire households usually require treatment.",
+            "cautions": "Intense itching often worsens at night. It can spread quickly in group settings.",
+            "complications": "Secondary bacterial infections (impetigo) from scratching, which can lead to kidney issues.",
+            "solutions": "Prescription scabicide creams (permethrin) or oral medication (ivermectin).",
+            "doctor_advice": "Seek medical diagnosis immediately if you suspect scabies to prevent a wider outbreak.",
+            "symptoms": "Severe itching, thin burrow tracks on the skin, and a pimple-like rash.",
+            "prevention": "Avoid direct skin contact with infected persons and wash bedding in hot water.",
+            "locations": "Finger webs, wrists, elbows, armpits, waistline, and genitalia.",
+            "diagnosis": "Skin scraping to look for mites, eggs, or fecal matter under a microscope.",
+            "immediate_actions": "Wash all recently used clothing and bedding at 60°C. Notify close contacts.",
+            "lifestyle": "Apply treatment to the entire body from the neck down and leave on for 8-14 hours.",
+            "visual_features": [
+                "Tiny, wavy, thread-like burrows",
+                "Small red itchy papules",
+                "Crusting in severe cases (Norwegian scabies)"
+            ]
+        },
+        "Scales": {
+            "risk_level": "Low",
+            "advice": "Thin, dry flakes of skin that represent lost outer layers of the epidermis.",
+            "cautions": "Scales are a symptom of many conditions, including psoriasis, eczema, and fungal infections.",
+            "complications": "Can lead to skin cracks (fissures) and secondary infections if skin is not protected.",
+            "solutions": "Thick moisturizers, exfoliating creams (containing urea or lactic acid), and treating the underlying cause.",
+            "doctor_advice": "See a doctor if scaling is widespread, associated with intense redness, or affects your sleep.",
+            "symptoms": "Visible white or gray flakes on the skin; skin may feel rough or dry.",
+            "prevention": "Keep skin hydrated and avoid harsh detergents or extremely hot showers.",
+            "locations": "Can occur anywhere, but common on legs, elbows, and scalp.",
+            "diagnosis": "Visual examination; biopsy or skin scraping if the cause is unclear.",
+            "immediate_actions": "Apply a thick emollient immediately after a 5-minute lukewarm bath.",
+            "lifestyle": "Use a humidifier in dry indoor environments to help maintain skin moisture.",
+            "visual_features": [
+                "Silver-white or yellowish flakes",
+                "Dry, cracked surface",
+                "Accumulated keratinized skin cells"
+            ]
+        },
+        "Scars": {
+            "risk_level": "Low",
+            "advice": "The body's natural way of healing and replacing lost or damaged skin. Most scars are flat and pale.",
+            "cautions": "Sunkissed (tanned) scars may permanently darken; keep healing scars protected from the sun.",
+            "complications": "Hypertrophic scars (raised), keloids, or atrophic (pitted) scars like those from acne.",
+            "solutions": "Silicone gels/sheets, laser therapy, and chemical peels to improve appearance.",
+            "doctor_advice": "Consult a doctor if a scar becomes very thick, itchy, or restricts your movement.",
+            "symptoms": "Changes in skin texture, color, and sometimes a lack of hair growth in the area.",
+            "prevention": "Proper wound care (cleaning and keeping moist) and avoiding picking at scabs.",
+            "locations": "Anywhere a skin injury has occurred.",
+            "diagnosis": "Based on the history of injury and clinical appearance of the skin.",
+            "immediate_actions": "Keep new wounds clean and use a sterile ointment to prevent a thick scab from forming.",
+            "lifestyle": "Use high-SPF sunscreen on scars for at least a year after injury to prevent darkening.",
+            "visual_features": [
+                "Altered skin texture (smooth or rough)",
+                "Hypopigmentation (lighter) or hyperpigmentation (darker)",
+                "Absence of normal skin markings"
+            ]
+        },
+        "Scleroderma": {
+            "risk_level": "High",
+            "advice": "A group of rare diseases that involve the hardening and tightening of the skin and connective tissues.",
+            "cautions": "Can be localized (skin only) or systemic (affecting heart, lungs, and kidneys).",
+            "complications": "Digital ulcers, pulmonary hypertension, and organ failure in systemic forms.",
+            "solutions": "Moisturizers, immunosuppressants, and medications to improve blood flow.",
+            "doctor_advice": "Contact a doctor if you experience fingers turning white/blue in the cold and skin thickening.",
+            "symptoms": "Hard, thick patches of skin, Raynaud's phenomenon, and joint stiffness.",
+            "prevention": "No known prevention; managed through stress reduction and warmth.",
+            "locations": "Fingers, hands, face, and occasionally internal organs.",
+            "diagnosis": "Skin biopsy, antibody testing (Scl-70, centromere), and capillaroscopy.",
+            "immediate_actions": "Keep extremities warm to manage Raynaud's and use heavy emollients.",
+            "lifestyle": "Stop smoking, avoid cold temperatures, and monitor for shortness of breath.",
+            "visual_features": [
+                "Shiny, taut (tight) skin",
+                "Loss of hair over affected areas",
+                "Mouth-opening restriction (microstomia)"
+            ]
+        },
+        "Seborrheic Dermatitis": {
+            "risk_level": "Low",
+            "advice": "A common inflammatory skin condition that causes flaky, white-to-yellowish scales on oily areas.",
+            "cautions": "Can be persistent and often flares up in cold weather or during times of stress.",
+            "complications": "Secondary fungal or bacterial infection in the affected areas.",
+            "solutions": "Anti-dandruff shampoos (ketoconazole, zinc pyrithione) and mild topical steroids for flares.",
+            "doctor_advice": "Consult a doctor if the rash is very itchy, becomes red and painful, or doesn't improve with OTC shampoos.",
+            "symptoms": "Skin flakes (dandruff), greasy skin covered with flaky scales, and mild redness and itching.",
+            "prevention": "Regular use of medicated shampoos and maintaining a healthy scalp hygiene routine.",
+            "locations": "Scalp, face (eyebrows/nose), chest, and ears.",
+            "diagnosis": "Based on the characteristic appearance and location of the rash.",
+            "immediate_actions": "Use an over-the-counter anti-dandruff shampoo and avoid heavy hair oils.",
+            "lifestyle": "Manage stress and avoid using harsh, alcohol-based skin products.",
+            "visual_features": [
+                "Greasy, yellowish scales",
+                "Pink to red patches",
+                "Ill-defined borders"
+            ]
+        },
+        "Seborrheic Keratosis": {
+            "risk_level": "Low",
+            "advice": "A benign skin growth common in older adults. It is not cancerous and does not become cancerous.",
+            "cautions": "Avoid picking at them as they can bleed or become infected. Consult a doctor for confirmation to rule out melanoma.",
+            "complications": "Irritation, itching, or minor bleeding from clothing friction.",
+            "solutions": "No treatment needed unless for cosmetic reasons. Options include cryosurgery or curettage.",
+            "doctor_advice": "Consult a doctor if you see many growths suddenly appear, or if a single growth changes rapidly.",
+            "symptoms": "Waxy, scaly, slightly raised growths that look 'stuck on' the skin. Usually painless.",
+            "prevention": "No known prevention as they are largely genetic/age-related.",
+            "locations": "Face, neck, chest, back, and shoulders.",
+            "diagnosis": "Visual inspection by a dermatologist; biopsy if it resembles skin cancer.",
+            "immediate_actions": "Verify with a professional that the lesion is benign.",
+            "lifestyle": "Harmless; no lifestyle changes required.",
+            "visual_features": [
+                "Stuck-on waxy appearance",
+                "Well-defined borders",
+                "Color ranging from light tan to black",
+                "Verrucous (warty) texture"
+            ]
+        },
+        "Shingles": {
+            "risk_level": "Moderate",
+            "advice": "Reactivation of the chickenpox virus. Antiviral treatment is most effective when started early.",
+            "cautions": "The rash can be extremely painful. Avoid contact with others, especially pregnant women and newborns.",
+            "complications": "Postherpetic neuralgia (long-term nerve pain) or vision loss if it affects the eye.",
+            "solutions": "Antiviral drugs (acyclovir), pain relievers, and cool compresses.",
+            "doctor_advice": "Seek medical care within 72 hours of the rash starting to reduce the risk of long-term pain.",
+            "symptoms": "Painful rash on one side of the face or body, tingling/burning sensation, and blisters.",
+            "prevention": "Get the shingles vaccine (Shingrix) if you are over 50 or at risk.",
+            "locations": "Often follows a nerve pathway (dermatome) on the torso or face.",
+            "diagnosis": "Based on the appearance and distribution of the rash.",
+            "immediate_actions": "Keep the rash covered and dry. Rest and manage pain with OTC medications.",
+            "lifestyle": "Wear loose cotton clothing and use calamine lotion for itching.",
+            "visual_features": [
+                "Fluid-filled blisters on a red base",
+                "Unilateral distribution (only on one side of the body)",
+                "Grouped vesicles along a nerve line"
+            ]
+        },
+        "Skin Abscess": {
+            "risk_level": "Moderate",
+            "advice": "A painful collection of pus under the skin, usually caused by a bacterial infection (like Staph).",
+            "cautions": "Do not attempt to 'pop' or squeeze the abscess at home, as this can push the infection deeper.",
+            "complications": "Spread of infection (cellulitis), scarring, and potential blood infection (sepsis) if left untreated.",
+            "solutions": "Incision and drainage (I&D) by a professional, and oral antibiotics if necessary.",
+            "doctor_advice": "Seek medical care if the abscess is extremely painful, growing rapidly, or associated with a fever.",
+            "symptoms": "A firm, red, warm, and tender lump. May have a white or yellow 'head' of pus.",
+            "prevention": "Maintain good hygiene, wash hands frequently, and avoid sharing personal items like razors.",
+            "locations": "Back, chest, buttocks, and armpits.",
+            "diagnosis": "Clinical examination; culture of the pus to identify the specific bacteria (including MRSA).",
+            "immediate_actions": "Apply warm, moist compresses for 20 minutes several times a day to encourage drainage.",
+            "lifestyle": "Keep the area clean and covered with a sterile bandage if it starts to drain.",
+            "visual_features": [
+                "Erythematous, fluctuant (squishy) nodule",
+                "Central pointed area (pointing)",
+                "Surrounding warmth and swelling"
+            ]
+        },
+        "Skin Cancer": {
+            "risk_level": "High",
+            "advice": "A generic classification. This could represent BCC, SCC, or Melanoma. Professional evaluation is essential.",
+            "cautions": "Any suspicious skin lesion should be evaluated by a dermatologist. Do not ignore changes.",
+            "complications": "Local invasion, disfigurement, or metastasis depending on the specific cancer type.",
+            "solutions": "Surgical removal (excision, Mohs), radiation, or topical treatments depending on diagnosis.",
+            "doctor_advice": "Schedule an annual full-body skin exam and consult a doctor for any new or changing spots.",
+            "symptoms": "New growths, sores that won't heal, or changes in existing moles.",
+            "prevention": "Sun avoidance, high SPF sunscreen, and protective clothing.",
+            "locations": "Most frequent in sun-exposed areas but possible anywhere on the body.",
+            "diagnosis": "Clinical examination and skin biopsy.",
+            "immediate_actions": "Consult a dermatologist for a definitive diagnosis.",
+            "lifestyle": "Strict sun protection and regular skin monitoring.",
+            "visual_features": [
+                "Asymmetrical growth",
+                "Irregular borders",
+                "Changing color or size",
+                "Ulceration or bleeding"
+            ]
+        },
+        "Skin Tags": {
+            "risk_level": "Low",
+            "advice": "Small, soft, flesh-colored growths that hang off the skin by a thin stalk (peduncle).",
+            "cautions": "Harmless and not contagious; they only need removal if they are irritated or for cosmetic reasons.",
+            "complications": "Irritation or bleeding if they get caught on clothing or jewelry.",
+            "solutions": "Removal by a doctor using cryotherapy, snip excision, or electrocautery.",
+            "doctor_advice": "Consult a doctor if a skin tag becomes painful, bleeds, or changes color (turning black).",
+            "symptoms": "Small, skin-colored or brownish growths that are soft to the touch.",
+            "prevention": "No known prevention; they are more common in areas of skin-on-skin friction.",
+            "locations": "Neck, eyelids, armpits, and groin.",
+            "diagnosis": "Visual examination by a healthcare provider.",
+            "immediate_actions": "Avoid trying to 'tie off' or cut skin tags at home, as this can lead to infection or bleeding.",
+            "lifestyle": "Wear smooth fabrics to reduce friction in areas where you are prone to skin tags.",
+            "visual_features": [
+                "Small fleshy papule on a stalk",
+                "Soft, compressible texture",
+                "Uniform color matches surrounding skin"
+            ]
+        },
+        "Spider Angioma": {
+            "risk_level": "Low",
+            "advice": "A common vascular lesion characterized by a central red spot with radiating 'legs' of small blood vessels.",
+            "cautions": "Multiple spider angiomas can sometimes be a sign of underlying liver disease or hormone changes.",
+            "complications": "Minor cosmetic concern; usually asymptomatic.",
+            "solutions": "No treatment needed; laser therapy or electrocautery for cosmetic removal.",
+            "doctor_advice": "Consult a doctor if you suddenly develop many spider angiomas or have other symptoms like jaundice.",
+            "symptoms": "A red spot that pales when pressed and has tiny vessels radiating outward like a spider's legs.",
+            "prevention": "No known prevention; common during pregnancy or with certain medications.",
+            "locations": "Face, neck, upper chest, and arms.",
+            "diagnosis": "Physical examination based on the characteristic 'spider' appearance and blanching.",
+            "immediate_actions": "Monitor for any new lesions or changes in liver health.",
+            "lifestyle": "Protect the skin from the sun to prevent other vascular skin changes.",
+            "visual_features": [
+                "Central red arteriole (dot)",
+                "Radiating telangiectatic vessels",
+                "Blanches (turns white) when pressed centrally"
+            ]
+        },
+        "Squamous Cell Carcinoma": {
+            "risk_level": "High",
+            "advice": "Second most common skin cancer. Can metastasize if not treated promptly.",
+            "cautions": "High risk in immunocompromised patients. Any persistent, scaly, crusty patch should be biopsies.",
+            "complications": "Metastasis to lymph nodes or other organs, local invasion, and recurrence.",
+            "solutions": "Mohs surgery, excision, radiation therapy, or topical treatment for early lesions (SCC in situ).",
+            "doctor_advice": "Seek medical care for any suspicious sore, scaly patch, or raised growth that persists.",
+            "symptoms": "Firm, red nodule, or a flat lesion with a scaly, crusted surface.",
+            "prevention": "Avoid peak sun hours, use high-SPF sunscreen, and wear protective clothing.",
+            "locations": "Face, ears, lips, scalp, hands, and other sun-exposed areas.",
+            "diagnosis": "Visual skin examination followed by punch, shave, or excisional biopsy.",
+            "immediate_actions": "Schedule a dermatology appointment and avoid further sun exposure to the area.",
+            "lifestyle": "Rigorous sun protection and regular dermatologist follow-ups.",
+            "visual_features": [
+                "Opaque or scaly red papule",
+                "Central ulceration or bleeding",
+                "Crusty or horny surface texture",
+                "Firm, indurated base"
+            ]
+        },
+        "Sunburn": {
+            "risk_level": "Low",
+            "advice": "Red, painful, and sometimes blistered skin caused by overexposure to ultraviolet (UV) rays from the sun.",
+            "cautions": "Repeated sunburns significantly increase the lifetime risk of all types of skin cancer.",
+            "complications": "Pain, dehydration, and second-degree burns with blistering. Premature skin aging.",
+            "solutions": "Cool baths, aloe vera gel, and moisturizing. Use Ibuprofen for pain and inflammation.",
+            "doctor_advice": "Consult a doctor for severe blistering, fever, chills, or widespread pain.",
+            "symptoms": "Red, warm, and tender skin that may peel after a few days.",
+            "prevention": "Use broad-spectrum SPF 30+ sunscreen, wear protective clothing, and seek shade.",
+            "locations": "Any area of skin exposed to the sun.",
+            "diagnosis": "Clinical appearance and history of recent sun exposure.",
+            "immediate_actions": "Get out of the sun immediately and apply cool compresses to the affected areas.",
+            "lifestyle": "Make sun protection a daily habit, even on cloudy days.",
+            "visual_features": [
+                "Diffuse erythema (redness)",
+                "Warmth to the touch",
+                "Superficial peeling (desquamation)"
+            ]
+        },
+        "Telangiectasia": {
+            "risk_level": "Low",
+            "advice": "A condition in which small, widened blood vessels cause threadlike red lines or patterns on the skin.",
+            "cautions": "While usually harmless, they can be associated with rosacea, liver disease, or certain genetic disorders.",
+            "complications": "Minor cosmetic concern and occasional mild itching.",
+            "solutions": "Laser therapy or intense pulsed light (IPL) to close the tiny blood vessels.",
+            "doctor_advice": "See a dermatologist for evaluation if the pattern is spreading or associated with facial flushing.",
+            "symptoms": "Thin red or bluish lines that blanch (disappear) when pressed.",
+            "prevention": "Protect skin from the sun and avoid triggers like extreme heat or alcohol if related to rosacea.",
+            "locations": "Face (cheeks and nose), neck, and legs.",
+            "diagnosis": "Visual examination; they have a characteristic appearance and blanching response.",
+            "immediate_actions": "Use sunblock daily to prevent more visible vessels from forming.",
+            "lifestyle": "Avoid harsh skincare products that can irritate sensitive facial skin.",
+            "visual_features": [
+                "Non-palpable red or blue thread-like vessels",
+                "Branching or linear pattern",
+                "Blanching on pressure"
+            ]
+        },
+        "Tinea Versicolor": {
+            "risk_level": "Low",
+            "advice": "A common fungal infection that causes small, discolored patches. It is not contagious.",
+            "cautions": "The patches may become more visible after sun exposure as they do not tan.",
+            "complications": "Mainly cosmetic concerns; recurrence is common especially in humid weather.",
+            "solutions": "Topical antifungal shampoos (selenium sulfide), lotions, or creams.",
+            "doctor_advice": "Consult a doctor if the rash is widespread or does not respond to OTC antifungals.",
+            "symptoms": "Painless patches of skin that are lighter or darker than the surrounding area.",
+            "prevention": "Avoid excessive heat and sweating; use antifungal washes periodically if prone to it.",
+            "locations": "Most common on the chest, back, neck, and upper arms.",
+            "diagnosis": "Visual inspection or KOH prep showing 'spaghetti and meatballs' fungus pattern.",
+            "immediate_actions": "Apply an OTC antifungal lotion or shampoo to the affected areas.",
+            "lifestyle": "Keep skin dry and avoid heavy, oily skincare products.",
+            "visual_features": [
+                "Oval, finely scaling patches",
+                "Hypopigmented or hyperpigmented spots",
+                "Well-demarcated edges"
+            ]
+        },
+        "Ulcers": {
+            "risk_level": "High",
+            "advice": "Open sores on the skin that fail to heal properly, often due to poor circulation or underlying medical conditions.",
+            "cautions": "Ulcers are prone to deep infection and should never be ignored. They often require specialized wound care.",
+            "complications": "Cellulitis, bone infection (osteomyelitis), and potential limb loss in severe diabetic cases.",
+            "solutions": "Wound debridement, compression therapy, specialized dressings, and managing blood sugar/circulation.",
+            "doctor_advice": "Seek immediate care for any non-healing sore, especially if it is painful, red, or draining pus.",
+            "symptoms": "An open wound that may be shallow or deep, often with surrounding redness and swelling.",
+            "prevention": "Manage chronic conditions like diabetes, avoid smoking, and protect skin from trauma.",
+            "locations": "Lower legs, ankles, and feet.",
+            "diagnosis": "Physical examination; ultrasound and blood tests to check circulation and glucose levels.",
+            "immediate_actions": "Keep the wound clean, covered with a sterile bandage, and see a doctor promptly.",
+            "lifestyle": "Elevate legs to improve circulation and wear comfortable, properly-fitting shoes.",
+            "visual_features": [
+                "Open skin defect with visible basement tissue",
+                "Variable bed appearance (pink, yellow, or black)",
+                "Surrounding induration (firmness) and erythema"
+            ]
+        },
+        "Urticaria Pigmentosa": {
+            "risk_level": "Moderate",
+            "advice": "The most common form of cutaneous mastocytosis, causing itchy, brown or tan spots on the skin.",
+            "cautions": "Rubbing or scratching the spots can cause them to become hive-like (Darier's sign). Avoid triggers like heat.",
+            "complications": "Widespread hives and, in rare cases, a severe allergic reaction (anaphylaxis).",
+            "solutions": "Antihistamines to control itching and avoiding known triggers like certain medications or extreme cold.",
+            "doctor_advice": "Consult a dermatologist or allergist for management and to rule out systemic involvement.",
+            "symptoms": "Brownish-red spots that itch intensely when rubbed or exposed to warmth.",
+            "prevention": "Avoid known triggers like hot baths, vigorous rubbing, and certain pain relievers like aspirin.",
+            "locations": "Chest, back, and limbs; less common on the face.",
+            "diagnosis": "Clinical examination (Positive Darier's sign); confirmed by skin biopsy showing increased mast cells.",
+            "immediate_actions": "Avoid rubbing the spots and see a specialist for a long-term management plan.",
+            "lifestyle": "Maintain a list of safe medications to avoid triggering mast cell release.",
+            "visual_features": [
+                "Red-brown macules or papules",
+                "Positive Darier's sign (wheal formation when rubbed)",
+                "Often symmetrically distributed"
+            ]
+        },
+        "Vesicles": {
+            "risk_level": "Moderate",
+            "advice": "Small, fluid-filled blisters (less than 1 cm in size) that develop on the surface of the skin.",
+            "cautions": "Vesicles can be a sign of many things, from simple friction to viral infections like shingles or herpes.",
+            "complications": "Bacterial infection (impetigo) if the blisters break and are not kept clean.",
+            "solutions": "Keep the area clean, avoid popping the blisters, and treat the underlying cause.",
+            "doctor_advice": "Consult a doctor if the blisters are painful, spreading rapidly, or associated with a fever.",
+            "symptoms": "Small, clear fluid-filled bumps that may be itchy or painful.",
+            "prevention": "Protect skin from friction and avoid contact with others if a viral cause is suspected.",
+            "locations": "Anywhere on the skin; often on hands, feet, or face.",
+            "diagnosis": "Diagnosis is based on the appearance, location, and history of the blisters.",
+            "immediate_actions": "Do not pop the blisters. Clean with mild soap and cover with a sterile bandage.",
+            "lifestyle": "Identify triggers like new detergents or exposure to certain plants.",
+            "visual_features": [
+                "Small, clear fluid-filled sacs",
+                "Clustered or scattered arrangement",
+                "Fragile, thin-walled surface"
+            ]
+        },
+        "Vitiligo": {
+            "risk_level": "Moderate",
+            "advice": "A condition in which the skin loses its pigment-producing cells (melanocytes), resulting in white patches.",
+            "cautions": "White patches are extremely prone to sunburn. Psychological support may be helpful due to social impact.",
+            "complications": "Severe sunburn, eye inflammation (uveitis), and association with other autoimmune diseases.",
+            "solutions": "Phototherapy (UVB), topical corticosteroids, calcineurin inhibitors, or depigmentation of remaining skin.",
+            "doctor_advice": "Consult a dermatologist early as treatments are more effective on newly developed patches.",
+            "symptoms": "Loss of skin color in patches, premature whitening of hair on scalp, eyelashes, or eyebrows.",
+            "prevention": "No known prevention; focus on protecting affected skin from damage.",
+            "locations": "Face, hands, genitalia, and areas around body openings.",
+            "diagnosis": "Visual inspection, sometimes using a Wood's lamp (UV light) to highlight depigmented areas.",
+            "immediate_actions": "Apply high-SPF (50+) sunscreen to depigmented patches when outdoors.",
+            "lifestyle": "Use camouflage makeup if desired; ensure adequate Vitamin D intake as sun exposure is limited.",
+            "visual_features": [
+                "Depigmented (chalk-white) patches",
+                "Symmetrical distribution (non-segmental type)",
+                "Convex (rounded) borders"
+            ]
+        },
+        "Warts": {
+            "risk_level": "Low",
+            "advice": "Benign skin growths caused by HPV. They often disappear on their own but can take years.",
+            "cautions": "They are contagious and can spread through direct contact or shared surfaces.",
+            "complications": "Secondary infection, localized pain (plantar warts), or destructive growth around nails.",
+            "solutions": "Salicylic acid, cryotherapy (freezing), or laser therapy.",
+            "doctor_advice": "See a doctor if warts are painful, bleeding, spreading rapidly, or for cosmetic removal.",
+            "symptoms": "Rough, skin-colored, or brown bumps. Can be flat, round, or cauliflower-like.",
+            "prevention": "Avoid touching others' warts, wear flip-flops in locker rooms, and keep skin healthy.",
+            "locations": "Commonly on hands (common warts), feet (plantar warts), or face (flat warts).",
+            "diagnosis": "Visual examination by a healthcare provider.",
+            "immediate_actions": "Avoid picking or biting at warts. Keep them covered to prevent spreading.",
+            "lifestyle": "Keep hands and feet dry, as HPV thrives in moist environments.",
+            "visual_features": [
+                "Verrucous (rough) surface",
+                "Small black dots (clotted blood vessels)",
+                "Flesh-colored or grayish papules"
+            ]
+        }
+    }
+}

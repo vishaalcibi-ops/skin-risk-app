@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Your Routine | Skin_Risk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .routine-step { 
+            display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 1rem; transition: all 0.3s;
+        }
+        .routine-step:hover { background: rgba(255,255,255,0.07); border-color: var(--primary); transform: translateX(5px); }
+        .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+        .routine-section-title { font-size: 1.1rem; color: white; margin: 2rem 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-bar">
+            <div class="logo">
+                <i class="fa-solid fa-sparkles text-gradient"></i>
+                <span>Skin <span class="text-gradient">Routine</span></span>
+            </div>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i class="fa-solid fa-circle-user"></i></a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="glass-panel p-4 animate-slide-up" style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.1));">
+                <h1 class="h3" style="color: white; margin: 0;">Personalized Plan</h1>
+                <p class="text-muted small mt-2">Based on your recent <strong class="text-info">{{ condition }}</strong> analysis.</p>
+            </div>
+
+            <div class="routine-section-title"><i class="fa-solid fa-sun text-warning"></i> Morning Routine</div>
+            {% for step in routine.morning %}
+            <div class="routine-step animate-fade-up" style="animation-delay: {{ loop.index0 * 0.1 }}s">
+                <div class="step-num">{{ loop.index }}</div>
+                <div class="step-content">
+                    <div style="color: white; font-weight: 500;">{{ step }}</div>
+                </div>
+                <i class="fa-regular fa-circle-check ms-auto text-muted"></i>
+            </div>
+            {% endfor %}
+
+            <div class="routine-section-title"><i class="fa-solid fa-moon text-info"></i> Evening Routine</div>
+            {% for step in routine.evening %}
+            <div class="routine-step animate-fade-up" style="animation-delay: {{ 0.3 + loop.index0 * 0.1 }}s">
+                <div class="step-num">{{ loop.index }}</div>
+                <div class="step-content">
+                    <div style="color: white; font-weight: 500;">{{ step }}</div>
+                </div>
+                <i class="fa-regular fa-circle-check ms-auto text-muted"></i>
+            </div>
+            {% endfor %}
+
+            <div class="glass-panel p-4 mt-5 text-center">
+                <i class="fa-solid fa-lightbulb text-warning mb-2" style="font-size: 1.5rem;"></i>
+                <p class="text-muted small">Consistency is key! Follow this routine daily for at least 4 weeks to see significant improvement.</p>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="/dashboard" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="/history" class="bottom-nav-item"><i class="fa-solid fa-clock-rotate-left"></i><span>History</span></a>
+            <a href="/diary" class="bottom-nav-item"><i class="fa-solid fa-book-medical"></i><span>Diary</span></a>
+            <a href="/routine" class="bottom-nav-item active"><i class="fa-solid fa-sparkles"></i><span>Routine</span></a>
+            <a href="/profile" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+        </nav>
+    </div>
+</body>
+</html>

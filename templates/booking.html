@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Book Consultation | Skin_Risk</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,16 +13,16 @@
 
 <body class="result-page">
     <div class="app-container">
-        <header class="navbar">
+        <!-- Android Top Bar -->
+        <header class="top-bar">
             <div class="logo">
                 <i class="fa-solid fa-microscope text-gradient"></i>
-                <a href="/dashboard" style="color: inherit;">Skin_<span class="text-gradient">Risk</span></a>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
-            <nav class="nav-links">
-                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-                <a href="/booking" class="active"><i class="fa-solid fa-calendar-check"></i> Consultations</a>
-                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </nav>
+            <div class="top-actions">
+                <a href="/profile" style="color: var(--text-main); font-size: 1.2rem;"><i
+                        class="fa-solid fa-circle-user"></i></a>
+            </div>
         </header>
 
         <main class="result-container animate-slide-up">
@@ -80,6 +81,30 @@
                 </div>
             </div>
         </main>
+
+        <!-- Android Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="/dashboard" class="bottom-nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="/history" class="bottom-nav-item">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History</span>
+            </a>
+            <a href="/pharmacy" class="bottom-nav-item">
+                <i class="fa-solid fa-capsules"></i>
+                <span>Pharmacy</span>
+            </a>
+            <a href="/academy" class="bottom-nav-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Academy</span>
+            </a>
+            <a href="/profile" class="bottom-nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
     </div>
 
     <style>
