@@ -28,13 +28,37 @@
         }
     </script>
     <div class="app-container">
+        <!-- Desktop Navbar -->
+        <header class="navbar desktop-only">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+            <nav class="nav-links">
+                {% if current_user.is_authenticated %}
+                <span class="user-welcome"><i class="fa-solid fa-circle-user"></i> Hi, {{ current_user.name or
+                    current_user.email.split('@')[0] }}</span>
+                <a href="/dashboard"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/diary"><i class="fa-solid fa-book-medical"></i> Diary</a>
+                <a href="/routine"><i class="fa-solid fa-sparkles"></i> Routine</a>
+                <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
+                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                {% else %}
+                <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                <a href="/signup"><i class="fa-solid fa-user-plus"></i> Signup</a>
+                {% endif %}
+            </nav>
+        </header>
+
         <!-- Android Top Bar -->
-        <header class="top-bar">
+        <header class="top-bar mobile-only">
             <div class="logo">
                 <i class="fa-solid fa-microscope text-gradient"></i>
                 <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
             <div class="header-search">
+
                 <form action="/search" method="GET" style="display: flex; width: 100%;">
                     <input type="text" name="q" placeholder="Search..." class="search-input">
                     <button type="submit" class="search-sub-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -107,7 +131,21 @@
                     </form>
                 </div>
 
-                <!-- AI Symptom Checker Quiz -->
+                <!-- Graphic side element -->
+            <div class="hero-graphic">
+                <div class="glass-orb orb-1"></div>
+                <div class="glass-orb orb-2"></div>
+                <a href="/technology" class="floating-card metric-card" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-brain text-gradient"></i>
+                    <div class="metric-info">
+                        <h4>MobileNetV2</h4>
+                        <p>Powered by Transfer Learning</p>
+                    </div>
+                </a>
+            </div>
+        </main>
+        <section class="features-section" style="width: 100%; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem;">
+            <!-- AI Symptom Checker Quiz -->
                 <div class="glass-panel p-4 mt-5 animate-slide-up" id="symptomQuizCard"
                     style="border: 1px solid var(--secondary); background: rgba(6, 182, 212, 0.05);">
                     <div id="quiz-intro">
@@ -254,22 +292,12 @@
                 </div>
             </div>
 
-            <!-- Graphic side element -->
-            <div class="hero-graphic">
-                <div class="glass-orb orb-1"></div>
-                <div class="glass-orb orb-2"></div>
-                <a href="/technology" class="floating-card metric-card" style="text-decoration: none; color: inherit;">
-                    <i class="fa-solid fa-brain text-gradient"></i>
-                    <div class="metric-info">
-                        <h4>MobileNetV2</h4>
-                        <p>Powered by Transfer Learning</p>
-                    </div>
-                </a>
-            </div>
-        </main>
+            
+        </section>
+
 
         <!-- Android Bottom Navigation -->
-        <nav class="bottom-nav">
+        <nav class="bottom-nav mobile-only">
             <a href="/dashboard" class="bottom-nav-item active">
                 <i class="fa-solid fa-house"></i>
                 <span>Home</span>

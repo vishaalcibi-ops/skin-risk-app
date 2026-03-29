@@ -13,7 +13,31 @@
 
 <body>
     <div class="app-container">
-        <header class="top-bar">
+                <!-- Desktop Navbar -->
+        <header class="navbar desktop-only">
+            <div class="logo">
+                <i class="fa-solid fa-microscope text-gradient"></i>
+                <span>Skin_<span class="text-gradient">Risk</span></span>
+            </div>
+            <nav class="nav-links">
+                {% if current_user and current_user.is_authenticated %}
+                <span class="user-welcome"><i class="fa-solid fa-circle-user"></i> Hi, {{ current_user.name or
+                    current_user.email.split('@')[0] }}</span>
+                <a href="/dashboard"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+                <a href="/diary"><i class="fa-solid fa-book-medical"></i> Diary</a>
+                <a href="/routine"><i class="fa-solid fa-sparkles"></i> Routine</a>
+                <a href="/profile"><i class="fa-solid fa-user"></i> Profile</a>
+                <a href="/logout" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                {% else %}
+                <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                <a href="/signup"><i class="fa-solid fa-user-plus"></i> Signup</a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <!-- Android Top Bar -->
+        <header class="top-bar mobile-only">
             <div class="logo">
                 <a href="/dashboard" style="color: inherit;"><i class="fa-solid fa-chevron-left"></i></a>
                 <span>Notifications</span>
@@ -60,7 +84,7 @@
         </main>
 
         <!-- Android Bottom Navigation -->
-        <nav class="bottom-nav">
+        <nav class="bottom-nav mobile-only">
             <a href="/dashboard" class="bottom-nav-item">
                 <i class="fa-solid fa-house"></i>
                 <span>Home</span>
