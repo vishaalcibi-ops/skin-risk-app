@@ -1469,3 +1469,14 @@ body.auth-page-bg::before {
         margin: 0 auto;
     }
 }
+
+@media (min-width: 769px) {
+    .hero-graphic {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        position: relative !important;
+    }
+}
