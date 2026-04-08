@@ -4,6 +4,7 @@ from PIL import Image
 import os
 import json
 import hashlib
+import cv2
 
 # Ensure TF logging is minimal
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -159,11 +160,40 @@ def bias_scores_with_features(raw_scores, features, image_hash_shift):
     return scores
 
 
+def is_acceptable_skin_image(image_path, threshold=0.02):
+    """
+    Checks if the image contains a minimum percentage of skin-colored pixels.
+    Returns True if it's likely a skin image, False otherwise.
+    """
+    img = cv2.imread(image_path)
+    if img is None:
+        return False
+        
+    # Convert to YCrCb color space
+    ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    
+    # Generic skin color bounds in YCrCb
+    lower_bound = np.array([0, 133, 77], dtype=np.uint8)
+    upper_bound = np.array([255, 173, 127], dtype=np.uint8)
+    
+    mask = cv2.inRange(ycrcb, lower_bound, upper_bound)
+    skin_pixels = cv2.countNonZero(mask)
+    total_pixels = img.shape[0] * img.shape[1]
+    
+    if total_pixels == 0:
+        return False
+        
+    return (skin_pixels / total_pixels) >= threshold
+
+
 def predict_condition(image_path):
     """
     Predicts the skin condition using model output + image feature analysis.
     Returns the class, confidence, risk, and all clinical metadata.
     """
+    if not is_acceptable_skin_image(image_path):
+        raise ValueError("The uploaded image does not appear to be a relevant medical photo. Please upload a clear picture of the skin condition.")
+
     model = load_prediction_model()
     processed_image = preprocess_image(image_path)
     raw_predictions = model.predict(processed_image, verbose=0)
