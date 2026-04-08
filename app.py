@@ -507,7 +507,6 @@ def send_message():
     else:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-1.5-flash', system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
             
             # Fetch context history up to the last 20 messages to save tokens
             previous_messages = ChatMessage.query.filter_by(user_id=current_user.id).order_by(ChatMessage.timestamp.asc()).all()[-20:]
@@ -519,9 +518,33 @@ def send_message():
                 role = "user" if m.sender == "User" else "model"
                 history.append({"role": role, "parts": [m.content]})
             
-            chat = model.start_chat(history=history)
-            response = chat.send_message(content)
-            response_content = response.text
+            # Intelligent Failover: Try multiple model identifiers in case of regional 404/rejection
+            possible_models = ['gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-pro']
+            response_content = None
+            
+            for m_name in possible_models:
+                try:
+                    # Initialize model
+                    if m_name == 'gemini-pro':
+                         # gemini-pro (legacy) handles system instructions differently
+                         model = genai.GenerativeModel('gemini-pro')
+                         persona = "You are Dr. Sarah, a professional AI Dermatologist. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns."
+                         chat = model.start_chat(history=history)
+                         response = chat.send_message(f"{persona}\n\nUser Question: {content}")
+                    else:
+                         model = genai.GenerativeModel(m_name, system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
+                         chat = model.start_chat(history=history)
+                         response = chat.send_message(content)
+                    
+                    response_content = response.text
+                    break # Success!
+                except Exception as e:
+                    if "404" in str(e) or "not found" in str(e).lower():
+                        continue
+                    raise e
+            
+            if not response_content:
+                 response_content = "Sorry, I'm having trouble connecting to my AI brain at the moment (Regional Configuration Error)."
         except Exception as e:
             response_content = f"Sorry, my AI brain encountered an error: {str(e)}"
     

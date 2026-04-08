@@ -215,7 +215,6 @@ def predict_condition(image_path):
     if api_key and genai:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-1.5-flash-latest')
             
             disease_val = f'"{demo_disease}"' if demo_disease else '"String: Detected Disease Name"'
             conf_val = "99.9" if demo_disease else "<Float: 50.0 to 99.9>"
@@ -248,8 +247,24 @@ STRICT JSON OUTPUT ONLY:
   "visual_features": ["String: visual trait 1", "String: visual trait 2"]
 }}'''
             img = Image.open(image_path)
-            # Send to Gemini
-            response = model.generate_content([prompt, img])
+            
+            # Intelligent Failover: Try multiple Vision-capable models
+            vision_models = ['gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-pro-vision']
+            response = None
+            
+            for v_name in vision_models:
+                try:
+                    model = genai.GenerativeModel(v_name)
+                    response = model.generate_content([prompt, img])
+                    if response: break
+                except Exception as e:
+                    if "404" in str(e) or "not found" in str(e).lower():
+                        continue
+                    raise e
+            
+            if not response:
+                raise ValueError("Could not find a compatible Gemini Vision model in your region.")
+
             text = response.text.strip()
             
             # Clean markdown formatting if present
