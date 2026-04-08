@@ -506,6 +506,8 @@ def send_message():
          response_content = "Hello! I am missing the 'google-generativeai' package. Please install it."
     else:
         try:
+            # Sanitize API key
+            api_key = api_key.strip()
             genai.configure(api_key=api_key)
             
             # Fetch context history up to the last 20 messages to save tokens
@@ -513,38 +515,36 @@ def send_message():
             
             history = []
             for m in previous_messages:
-                # Exclude the current message we just sent, passing it into send_message directly
                 if m.id == user_msg.id: continue
                 role = "user" if m.sender == "User" else "model"
                 history.append({"role": role, "parts": [m.content]})
             
-            # Intelligent Failover: Try multiple model identifiers in case of regional 404/rejection
-            possible_models = ['gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-pro']
+            # Intelligent Failover: Try multiple model identifiers with full prefixes
+            possible_models = ['models/gemini-1.5-flash', 'models/gemini-1.5-flash-latest', 'models/gemini-pro', 'gemini-1.5-flash', 'gemini-pro']
             response_content = None
             
             for m_name in possible_models:
                 try:
                     # Initialize model
-                    if m_name == 'gemini-pro':
-                         # gemini-pro (legacy) handles system instructions differently
-                         model = genai.GenerativeModel('gemini-pro')
-                         persona = "You are Dr. Sarah, a professional AI Dermatologist. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns."
+                    if 'pro' in m_name and '1.5' not in m_name:
+                         model = genai.GenerativeModel(m_name)
+                         persona = "You are Dr. Sarah, a professional AI Dermatologist."
                          chat = model.start_chat(history=history)
                          response = chat.send_message(f"{persona}\n\nUser Question: {content}")
                     else:
-                         model = genai.GenerativeModel(m_name, system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
+                         model = genai.GenerativeModel(m_name, system_instruction="You are Dr. Sarah, a professional AI Dermatologist.")
                          chat = model.start_chat(history=history)
                          response = chat.send_message(content)
                     
                     response_content = response.text
                     break # Success!
                 except Exception as e:
-                    if "404" in str(e) or "not found" in str(e).lower():
-                        continue
-                    raise e
+                    # Logging the error internally for debugging if needed
+                    print(f"Failed to use model {m_name}: {e}")
+                    continue # Try the next one regardless of error type
             
             if not response_content:
-                 response_content = "Sorry, I'm having trouble connecting to my AI brain at the moment (Regional Configuration Error)."
+                 response_content = "Sorry, I'm having trouble connecting to my AI brain. Please ensure your GEMINI_API_KEY is correct in the Render Environment settings and has 'Generative Language API' enabled."
         except Exception as e:
             response_content = f"Sorry, my AI brain encountered an error: {str(e)}"
     

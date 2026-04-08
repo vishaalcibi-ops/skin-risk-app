@@ -214,6 +214,8 @@ def predict_condition(image_path):
     api_key = os.environ.get('GEMINI_API_KEY')
     if api_key and genai:
         try:
+            # Sanitize API key
+            api_key = api_key.strip()
             genai.configure(api_key=api_key)
             
             disease_val = f'"{demo_disease}"' if demo_disease else '"String: Detected Disease Name"'
@@ -248,8 +250,8 @@ STRICT JSON OUTPUT ONLY:
 }}'''
             img = Image.open(image_path)
             
-            # Intelligent Failover: Try multiple Vision-capable models
-            vision_models = ['gemini-1.5-flash', 'gemini-1.5-flash-latest', 'gemini-pro-vision']
+            # Intelligent Failover: Try multiple Vision-capable models with full prefixes
+            vision_models = ['models/gemini-1.5-flash', 'models/gemini-1.5-flash-latest', 'models/gemini-pro-vision', 'gemini-1.5-flash', 'gemini-pro-vision']
             response = None
             
             for v_name in vision_models:
@@ -258,12 +260,11 @@ STRICT JSON OUTPUT ONLY:
                     response = model.generate_content([prompt, img])
                     if response: break
                 except Exception as e:
-                    if "404" in str(e) or "not found" in str(e).lower():
-                        continue
-                    raise e
+                    print(f"Failed to use Vision model {v_name}: {e}")
+                    continue
             
             if not response:
-                raise ValueError("Could not find a compatible Gemini Vision model in your region.")
+                raise ValueError("Could not find a compatible Gemini Vision model in your region. Check your API key and permissions.")
 
             text = response.text.strip()
             
