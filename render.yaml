@@ -8,3 +8,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.13
+      - key: GEMINI_API_KEY
+        value: AIzaSyD0N2UhPLVCDu2dH4pkLc3_JUpAuxD8O7A
