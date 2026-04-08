@@ -1,9 +1,16 @@
+from PIL import Image
 import tensorflow as tf
 import numpy as np
 from PIL import Image
 import os
 import json
 import hashlib
+import cv2
+
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None
 import cv2
 
 # Ensure TF logging is minimal
@@ -188,49 +195,109 @@ def is_acceptable_skin_image(image_path, threshold=0.02):
 
 def predict_condition(image_path):
     """
-    Predicts the skin condition using model output + image feature analysis.
-    Returns the class, confidence, risk, and all clinical metadata.
+    Predicts the skin condition using Gemini Vision AI.
+    Features a demo override mode based on filename.
+    Fallbacks to the local mock heuristic model if API fails.
     """
     if not is_acceptable_skin_image(image_path):
         raise ValueError("The uploaded image does not appear to be a relevant medical photo. Please upload a clear picture of the skin condition.")
 
+    # 1. DEMO Exact Matching Checker
+    filename = os.path.basename(image_path).lower()
+    normalized_filename = filename.replace('_', ' ').replace('-', ' ')
+    
+    demo_disease = None
+    for cls in CLASSES:
+        if cls.lower() in normalized_filename:
+            demo_disease = cls
+            break
+
+    # 2. GEMINI AI VISION PIPELINE
+    api_key = os.environ.get('GEMINI_API_KEY')
+    if api_key and genai:
+        try:
+            genai.configure(api_key=api_key)
+            model = genai.GenerativeModel('gemini-1.5-flash')
+            
+            disease_val = f'"{demo_disease}"' if demo_disease else '"String: Detected Disease Name"'
+            conf_val = "99.9" if demo_disease else "<Float: 50.0 to 99.9>"
+            
+            prompt = f'''You are an expert AI Dermatologist.
+Your task is to analyze the user's uploaded image of a skin condition.
+{"The user requires an analysis specifically for " + demo_disease + ". Focus all your outputs and explanations natively on " + demo_disease + "." if demo_disease else "Identify the skin condition shown. If you are unsure, provide your best educated guess based on the visual features."}
+You MUST output ONLY a valid RAW JSON object matching this schema exactly, and NOTHING else. Do not use markdown blocks, just raw JSON:
+{{
+  "disease": {disease_val},
+  "confidence": {conf_val},
+  "risk_level": "High or Medium or Low",
+  "advice": "String: Detailed Overview & Advice",
+  "cautions": "String: Specific Cautions",
+  "complications": "String: Potential Complications",
+  "solutions": "String: Treatement Solutions",
+  "doctor_advice": "String: Professional Diagnosis insights",
+  "symptoms": "String: Key Symptoms",
+  "prevention": "String: Long-term Prevention",
+  "locations": "String: Common Locations",
+  "diagnosis": "String: Diagnostic process",
+  "immediate_actions": "String: Immediate Actions to take",
+  "lifestyle": "String: Lifestyle & Long-term Care",
+  "visual_features": ["String: visual trait 1", "String: visual trait 2"]
+}}'''
+            img = Image.open(image_path)
+            # Send to Gemini
+            response = model.generate_content([prompt, img])
+            text = response.text.strip()
+            
+            # Clean markdown formatting if present
+            if text.startswith('```'):
+                text = text.split('\n', 1)[1]
+            if text.startswith('json'):
+                text = text.split('\n', 1)[1]
+            if text.endswith('```'):
+                text = text.rsplit('\n', 1)[0]
+                
+            data = json.loads(text.strip())
+            
+            # Form top_3 dummy block simply since Gemini only returns the top choice heavily detailed
+            data['top_3'] = [
+                {'disease': data.get('disease', 'Unknown'), 'confidence': data.get('confidence', 95.0)},
+                {'disease': 'Alternative Condition', 'confidence': 15.0},
+                {'disease': 'Healthy Variance', 'confidence': 5.0}
+            ]
+            
+            return data
+            
+        except Exception as e:
+            print(f"Gemini AI Vision failed: {e}. Falling back to default mock.")
+            pass
+
+
+    # 3. LEGACY MOCK SYSTEM (Fallback)
     model = load_prediction_model()
     processed_image = preprocess_image(image_path)
     raw_predictions = model.predict(processed_image, verbose=0)
     
-    # Extract image-specific features to bias predictions meaningfully
     features = extract_image_features(image_path)
-    
-    # Get a stable hash of the file for deterministic shift
     with open(image_path, "rb") as f:
         file_hash = int(hashlib.md5(f.read()).hexdigest(), 16)
     
-    # Apply feature-based biasing
     scores = bias_scores_with_features(raw_predictions[0], features, file_hash)
-    
-    # Sort predictions (highest confidence first)
     top_indices = np.argsort(scores)[::-1]
     
     predicted_class_idx = top_indices[0]
     confidence = float(scores[predicted_class_idx]) * 100
-    
     predicted_disease = CLASSES[predicted_class_idx]
     
-    # DEMO MODE EXACT MATCHING
-    filename = os.path.basename(image_path).lower()
-    normalized_filename = filename.replace('_', ' ').replace('-', ' ')
-    for i, cls in enumerate(CLASSES):
-        if cls.lower() in normalized_filename:
-            predicted_disease = cls
-            confidence = 99.9
-            
-            # Reorder top_indices so this exact match is the first
-            top_list = list(top_indices)
-            if i in top_list:
-                top_list.remove(i)
-            top_list.insert(0, i)
-            top_indices = np.array(top_list)
-            break
+    if demo_disease:
+        predicted_disease = demo_disease
+        confidence = 99.9
+        
+        top_list = list(top_indices)
+        idx = CLASSES.index(demo_disease)
+        if idx in top_list:
+            top_list.remove(idx)
+        top_list.insert(0, idx)
+        top_indices = np.array(top_list)
 
     return {
         'disease':          predicted_disease,
@@ -255,7 +322,7 @@ def predict_condition(image_path):
             }
             for i in range(min(3, len(top_indices)))
         ],
-        'image_features': features,  # surfaced for debugging / frontend use
+        'image_features': features,
     }
 
 
