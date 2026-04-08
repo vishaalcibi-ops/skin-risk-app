@@ -130,7 +130,7 @@
             <div class="history-grid mt-4">
                 {% for scan in scans %}
                 <div class="glass-panel info-item history-card" data-id="{{ scan.id }}" data-url="{{ scan.image_url }}"
-                    data-date="{{ scan.timestamp.strftime('%Y-%m-%d %H:%M') }}">
+                    data-date="{{ scan.timestamp.strftime('%Y-%m-%d %H:%M') if scan.timestamp else 'Unknown' }}">
                     <div class="history-content">
                         <div class="selection-checkbox">
                             <input type="checkbox" class="scan-select" value="{{ scan.id }}">
@@ -142,7 +142,7 @@
                             <div class="history-header">
                                 <span class="risk-badge badge-{{ scan.risk_level.lower() }}">{{ scan.risk_level }}
                                     Risk</span>
-                                <span class="history-date">{{ scan.timestamp.strftime('%Y-%m-%d %H:%M') }}</span>
+                                <span class="history-date">{{ scan.timestamp.strftime('%Y-%m-%d %H:%M') if scan.timestamp else 'Unknown' }}</span>
                             </div>
                             <h3>{{ scan.disease }}</h3>
                             <div class="history-stats">

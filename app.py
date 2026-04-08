@@ -270,8 +270,11 @@ def history():
     user_scans = Scan.query.filter_by(user_id=current_user.id).order_by(Scan.timestamp.desc()).all()
     
     # Prepare data for Chart.js
-    labels = [scan.timestamp.strftime("%b %d") for scan in reversed(user_scans)]
-    confidence_data = [scan.confidence for scan in reversed(user_scans)]
+    labels = []
+    confidence_data = []
+    for scan in reversed(user_scans):
+        labels.append(scan.timestamp.strftime("%b %d") if scan.timestamp else "N/A")
+        confidence_data.append(scan.confidence if scan.confidence else 0)
     
     # Simple risk score mapping: High=3, Medium=2, Low=1
     risk_map = {'High': 3, 'Medium': 2, 'Low': 1}
