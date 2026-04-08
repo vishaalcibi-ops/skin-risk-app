@@ -494,17 +494,35 @@ def send_message():
     # Save user message
     user_msg = ChatMessage(content=content, sender='User', user_id=current_user.id)
     db.session.add(user_msg)
+    # Commit user message so it has an ID, though we don't strictly need it to
+    db.session.commit()
     
-    # Simple deterministic "Doctor" response logic
-    bot_responses = [
-        "I understand. Looking at your data, I recommend monitoring that area for another week.",
-        "That's a valid concern. Have you noticed any itching or redness in that specific spot?",
-        "I've updated your care plan based on this. Please check the 'Advice' section in your latest scan.",
-        "It's good that you're tracking this. Consistency is key for early detection."
-    ]
-    
-    import random
-    response_content = random.choice(bot_responses)
+    # Google Gemini AI Integration
+    api_key = os.environ.get('GEMINI_API_KEY')
+    if not api_key:
+         response_content = "Hello! My AI brain is currently disconnected (Missing GEMINI_API_KEY). Please add your key to my .env configuration file so I can assist you!"
+    elif not genai:
+         response_content = "Hello! I am missing the 'google-generativeai' package. Please install it."
+    else:
+        try:
+            genai.configure(api_key=api_key)
+            model = genai.GenerativeModel('gemini-1.5-flash', system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
+            
+            # Fetch context history up to the last 20 messages to save tokens
+            previous_messages = ChatMessage.query.filter_by(user_id=current_user.id).order_by(ChatMessage.timestamp.asc()).all()[-20:]
+            
+            history = []
+            for m in previous_messages:
+                # Exclude the current message we just sent, passing it into send_message directly
+                if m.id == user_msg.id: continue
+                role = "user" if m.sender == "User" else "model"
+                history.append({"role": role, "parts": [m.content]})
+            
+            chat = model.start_chat(history=history)
+            response = chat.send_message(content)
+            response_content = response.text
+        except Exception as e:
+            response_content = f"Sorry, my AI brain encountered an error: {str(e)}"
     
     doctor_msg = ChatMessage(content=response_content, sender='Doctor', user_id=current_user.id)
     db.session.add(doctor_msg)
@@ -514,7 +532,7 @@ def send_message():
         'status': 'success',
         'user_message': user_msg.content,
         'doctor_message': doctor_msg.content,
-        'timestamp': doctor_msg.timestamp.strftime("%I:%M %p")
+        'timestamp': doctor_msg.timestamp.strftime("%I:%M %p") if doctor_msg.timestamp else "N/A"
     })
 
 @app.route('/quick-chat', methods=['GET'])
