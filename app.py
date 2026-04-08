@@ -507,7 +507,7 @@ def send_message():
     else:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-pro', system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
+            model = genai.GenerativeModel('gemini-1.5-flash', system_instruction="You are a helpful, professional AI Dermatologist named Dr. Sarah. You exist inside the Skin Risk app. Help the user understand their skin conditions, but advise them to see a real doctor for major concerns.")
             
             # Fetch context history up to the last 20 messages to save tokens
             previous_messages = ChatMessage.query.filter_by(user_id=current_user.id).order_by(ChatMessage.timestamp.asc()).all()[-20:]
