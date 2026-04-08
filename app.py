@@ -519,32 +519,37 @@ def send_message():
                 role = "user" if m.sender == "User" else "model"
                 history.append({"role": role, "parts": [m.content]})
             
-            # Intelligent Failover: Try multiple model identifiers with full prefixes
-            possible_models = ['models/gemini-1.5-flash', 'models/gemini-1.5-flash-latest', 'models/gemini-pro', 'gemini-1.5-flash', 'gemini-pro']
-            response_content = None
-            
-            for m_name in possible_models:
-                try:
-                    # Initialize model
-                    if 'pro' in m_name and '1.5' not in m_name:
-                         model = genai.GenerativeModel(m_name)
-                         persona = "You are Dr. Sarah, a professional AI Dermatologist."
-                         chat = model.start_chat(history=history)
-                         response = chat.send_message(f"{persona}\n\nUser Question: {content}")
-                    else:
-                         model = genai.GenerativeModel(m_name, system_instruction="You are Dr. Sarah, a professional AI Dermatologist.")
-                         chat = model.start_chat(history=history)
-                         response = chat.send_message(content)
-                    
-                    response_content = response.text
-                    break # Success!
-                except Exception as e:
-                    last_error = str(e)
-                    print(f"Failed to use model {m_name}: {e}")
-                    continue
-            
-            if not response_content:
-                 response_content = f"Sorry, I'm having trouble connecting to my AI brain. (Final Attempt Error: {last_error}). Please ensure the GEMINI_API_KEY in Render is your NEW key and not the one ending in D8O7A."
+            # Dynamic Model Discovery: Find the first working model for this specific key
+            valid_model_name = None
+            try:
+                available_models = genai.list_models()
+                for m in available_models:
+                    if 'generateContent' in m.supported_generation_methods:
+                        # Prefer 1.5-flash if available, but take anything that works
+                        if 'gemini-1.5-flash' in m.name:
+                             valid_model_name = m.name
+                             break
+                        if not valid_model_name and 'gemini' in m.name:
+                             valid_model_name = m.name
+            except Exception as e:
+                print(f"Error listing models: {e}")
+                # Fallback to hardcoded list if listing fails
+                valid_model_name = 'models/gemini-1.5-flash'
+
+            # Initialize and Send
+            try:
+                model = genai.GenerativeModel(valid_model_name)
+                # Apply persona via prompt if it's the first message
+                if not history:
+                    chat = model.start_chat(history=[])
+                    response = chat.send_message(f"You are Dr. Sarah, a professional AI Dermatologist. Help the user understand their skin conditions.\n\nUser Question: {content}")
+                else:
+                    chat = model.start_chat(history=history)
+                    response = chat.send_message(content)
+                
+                response_content = response.text
+            except Exception as e:
+                response_content = f"Sorry, I'm having trouble connecting to my AI brain. (Model: {valid_model_name}, Error: {str(e)}). Please ensure your key is valid."
         except Exception as e:
             response_content = f"Sorry, my AI brain encountered an error: {str(e)}"
     

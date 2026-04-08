@@ -248,24 +248,28 @@ STRICT JSON OUTPUT ONLY:
   "lifestyle": "String: Lifestyle & Long-term Care",
   "visual_features": ["String: visual trait 1", "String: visual trait 2"]
 }}'''
-            img = Image.open(image_path)
-            
-            # Intelligent Failover: Try multiple Vision-capable models with full prefixes
-            vision_models = ['models/gemini-1.5-flash', 'models/gemini-1.5-flash-latest', 'models/gemini-pro-vision', 'gemini-1.5-flash', 'gemini-pro-vision']
-            response = None
-            
-            for v_name in vision_models:
-                try:
-                    model = genai.GenerativeModel(v_name)
-                    response = model.generate_content([prompt, img])
-                    if response: break
-                except Exception as e:
-                    last_v_err = str(e)
-                    print(f"Failed to use Vision model {v_name}: {e}")
-                    continue
-            
-            if not response:
-                raise ValueError(f"Could not find a compatible Gemini Vision model in your region. (Final Error: {last_v_err}). Please check that your Render API Key is NOT the one ending in D8O7A.")
+            # Dynamic Model Discovery: Find the first working multimodal model
+            valid_v_name = None
+            try:
+                available_models = genai.list_models()
+                for m in available_models:
+                    if 'generateContent' in m.supported_generation_methods:
+                        # Multimodal check: Models like 1.5-flash support image input
+                        if 'gemini-1.5-flash' in m.name:
+                             valid_v_name = m.name
+                             break
+                        if not valid_v_name and 'vision' in m.name:
+                             valid_v_name = m.name
+            except Exception as e:
+                print(f"Error listing models: {e}")
+                valid_v_name = 'models/gemini-1.5-flash'
+
+            # Initialize and Scan
+            try:
+                model = genai.GenerativeModel(valid_v_name)
+                response = model.generate_content([prompt, img])
+            except Exception as e:
+                raise ValueError(f"AI Connection Error (Model: {valid_v_name}, Error: {str(e)}). Ensure your token is valid.")
 
             text = response.text.strip()
             
