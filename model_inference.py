@@ -1,7 +1,6 @@
 from PIL import Image
 import tensorflow as tf
 import numpy as np
-from PIL import Image
 import os
 import json
 import hashlib
@@ -11,7 +10,6 @@ try:
     import google.generativeai as genai
 except ImportError:
     genai = None
-import cv2
 
 # Ensure TF logging is minimal
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
