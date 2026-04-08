@@ -150,8 +150,6 @@ def save_scan_to_history(scan_data, user_id):
 
 @app.route('/', methods=['GET'])
 def index():
-    if current_user.is_authenticated:
-        return redirect(url_for('dashboard'))
     return redirect(url_for('signup'))
 
 @app.route('/signup', methods=['GET', 'POST'])
