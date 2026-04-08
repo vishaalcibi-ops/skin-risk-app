@@ -273,7 +273,18 @@ def history():
     labels = []
     confidence_data = []
     for scan in reversed(user_scans):
-        labels.append(scan.timestamp.strftime("%b %d") if scan.timestamp else "N/A")
+        ts = scan.timestamp
+        if ts:
+            if hasattr(ts, 'strftime'):
+                labels.append(ts.strftime("%b %d"))
+            elif isinstance(ts, str):
+                # E.g. "2026-03-04 20:22:23.000000" -> "2026-03-04"
+                labels.append(ts[:10])
+            else:
+                labels.append(str(ts))
+        else:
+            labels.append("N/A")
+            
         confidence_data.append(scan.confidence if scan.confidence else 0)
     
     # Simple risk score mapping: High=3, Medium=2, Low=1
