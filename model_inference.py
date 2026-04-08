@@ -215,7 +215,7 @@ def predict_condition(image_path):
     if api_key and genai:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash-latest')
             
             disease_val = f'"{demo_disease}"' if demo_disease else '"String: Detected Disease Name"'
             conf_val = "99.9" if demo_disease else "<Float: 50.0 to 99.9>"
