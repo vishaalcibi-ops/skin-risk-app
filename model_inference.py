@@ -221,10 +221,16 @@ def predict_condition(image_path):
             conf_val = "99.9" if demo_disease else "<Float: 50.0 to 99.9>"
             
             prompt = f'''You are an expert AI Dermatologist.
-Your task is to analyze the user's uploaded image of a skin condition.
-{"The user requires an analysis specifically for " + demo_disease + ". Focus all your outputs and explanations natively on " + demo_disease + "." if demo_disease else "Identify the skin condition shown. If you are unsure, provide your best educated guess based on the visual features."}
-You MUST output ONLY a valid RAW JSON object matching this schema exactly, and NOTHING else. Do not use markdown blocks, just raw JSON:
+Your task is to analyze the user's uploaded image.
+
+CRITICAL STEP 1: VERIFICATION
+First, determine if this image is actually a photo of human skin with a potential medical condition. 
+If the image is a wallpaper, a landscape, text, a car, or any non-medical image, you MUST set "is_medical_image" to false below.
+
+STRICT JSON OUTPUT ONLY:
 {{
+  "is_medical_image": <true or false>,
+  "reject_reason": "Only if medical image is false",
   "disease": {disease_val},
   "confidence": {conf_val},
   "risk_level": "High or Medium or Low",
@@ -256,6 +262,11 @@ You MUST output ONLY a valid RAW JSON object matching this schema exactly, and N
                 
             data = json.loads(text.strip())
             
+            # --- New Hardened Rejection Check ---
+            if not data.get("is_medical_image", True):
+                reason = data.get("reject_reason", "This image does not appear to be a medical skin photo.")
+                raise ValueError(f"AI System Rejection: {reason}")
+            # ------------------------------------            
             # Form top_3 dummy block simply since Gemini only returns the top choice heavily detailed
             data['top_3'] = [
                 {'disease': data.get('disease', 'Unknown'), 'confidence': data.get('confidence', 95.0)},
