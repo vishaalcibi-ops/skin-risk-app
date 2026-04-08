@@ -539,12 +539,12 @@ def send_message():
                     response_content = response.text
                     break # Success!
                 except Exception as e:
-                    # Logging the error internally for debugging if needed
+                    last_error = str(e)
                     print(f"Failed to use model {m_name}: {e}")
-                    continue # Try the next one regardless of error type
+                    continue
             
             if not response_content:
-                 response_content = "Sorry, I'm having trouble connecting to my AI brain. Please ensure your GEMINI_API_KEY is correct in the Render Environment settings and has 'Generative Language API' enabled."
+                 response_content = f"Sorry, I'm having trouble connecting to my AI brain. (Final Attempt Error: {last_error}). Please ensure the GEMINI_API_KEY in Render is your NEW key and not the one ending in D8O7A."
         except Exception as e:
             response_content = f"Sorry, my AI brain encountered an error: {str(e)}"
     

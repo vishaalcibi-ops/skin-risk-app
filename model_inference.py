@@ -260,11 +260,12 @@ STRICT JSON OUTPUT ONLY:
                     response = model.generate_content([prompt, img])
                     if response: break
                 except Exception as e:
+                    last_v_err = str(e)
                     print(f"Failed to use Vision model {v_name}: {e}")
                     continue
             
             if not response:
-                raise ValueError("Could not find a compatible Gemini Vision model in your region. Check your API key and permissions.")
+                raise ValueError(f"Could not find a compatible Gemini Vision model in your region. (Final Error: {last_v_err}). Please check that your Render API Key is NOT the one ending in D8O7A.")
 
             text = response.text.strip()
             
