@@ -1,8 +1,9 @@
+import google.generativeai as genai
 import os
 import json
 import re
 from datetime import datetime
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from dotenv import load_dotenv
@@ -528,7 +529,7 @@ def send_message():
     db.session.add(doctor_msg)
     db.session.commit()
     
-    return json.dumps({
+    return jsonify({
         'status': 'success',
         'user_message': user_msg.content,
         'doctor_message': doctor_msg.content,

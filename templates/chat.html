@@ -334,6 +334,14 @@
                             container.scrollTop = container.scrollHeight;
                         }
                     }, 1000 + Math.random() * 1000);
+                })
+                .catch(err => {
+                    removeTyping();
+                    const drWrap = document.createElement('div');
+                    drWrap.className = 'msg-wrapper doctor';
+                    drWrap.innerHTML = `<div class="msg doctor animate-fade-in" style="background: var(--risk-high); color: white;">Sorry, I'm having trouble connecting to my AI brain. Please try again in a moment.</div>`;
+                    container.appendChild(drWrap);
+                    container.scrollTop = container.scrollHeight;
                 });
         }
 
