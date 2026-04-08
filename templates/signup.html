@@ -12,6 +12,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* ===== CROSS-PLATFORM BACKGROUND FIX ===== */
+
+        /* Base: works for all platforms */
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            width: 100%;
+        }
+
+        /* PC / Desktop background (fixed attachment) */
+        body.auth-page-bg {
+            background-image: url('{{ url_for("static", filename="medical_bg.png") }}');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #071428; /* fallback if image fails */
+        }
+
+        /* Android / Mobile: fixed attachment breaks on mobile browsers */
+        /* Use a pseudo-element trick for smooth mobile background */
+        @media (max-width: 768px) {
+            body.auth-page-bg {
+                background-attachment: scroll;
+                background-image: none; /* remove from body on mobile */
+                position: relative;
+            }
+
+            body.auth-page-bg::before {
+                content: '';
+                position: fixed;        /* fixed to viewport */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('{{ url_for("static", filename="medical_bg.png") }}');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                z-index: -1;            /* behind all content */
+                will-change: transform; /* GPU-accelerated on Android */
+                filter: brightness(1.1) saturate(1.2); /* make image pop on mobile */
+            }
+        }
+
+        /* Ensure auth card sits above the pseudo-element */
+        .app-container, .auth-container-wrapper, .auth-card-alt {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== KEY FIX: Override solid dark backgrounds on auth page ===== */
+        /* .app-container in style.css has background: var(--darker-bg) which blocks the image */
+        .app-container {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        /* Make top-bar semi-transparent so background peeks through */
+        .top-bar {
+            background: rgba(7, 14, 28, 0.6) !important;
+            backdrop-filter: blur(12px) !important;
+        }
+
+        /* Make navbar transparent too on desktop */
+        .navbar {
+            background: rgba(7, 14, 28, 0.6) !important;
+            backdrop-filter: blur(12px) !important;
+        }
+    </style>
 </head>
 
 <body class="auth-page-bg">
@@ -36,8 +109,8 @@
             </div>
         </header>
 
-                <div class="auth-container-wrapper" style="min-height: calc(100vh - 120px); display: flex; align-items: center; justify-content: center; padding: 2rem 0;">
-            <div class="auth-card-alt animate-slide-up" style="width: 100%; max-width: 450px; margin: 0 auto; box-shadow: 0 15px 50px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15); background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px);">
+                <div class="auth-container-wrapper" style="min-height: calc(100vh - 120px); display: flex; align-items: center; justify-content: center; padding: 2rem 0; background: transparent;">
+            <div class="auth-card-alt animate-slide-up" style="width: 100%; max-width: 450px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,180,216,0.35), 0 15px 50px rgba(0,0,0,0.5); border: 1px solid rgba(0,180,216,0.4); background: rgba(7, 20, 40, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
     
             <h1 class="auth-title-alt">Create <span class="text-gradient">Account</span></h1>
             <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">
