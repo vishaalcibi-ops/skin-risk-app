@@ -31,7 +31,7 @@
         <!-- Desktop Navbar -->
         <header class="navbar desktop-only">
             <div class="logo">
-                <i class="fa-solid fa-microscope text-gradient"></i>
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="logo-img">
                 <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
             <nav class="nav-links">
@@ -54,7 +54,7 @@
         <!-- Android Top Bar -->
         <header class="top-bar mobile-only">
             <div class="logo">
-                <i class="fa-solid fa-microscope text-gradient"></i>
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" class="logo-img">
                 <span>Skin_<span class="text-gradient">Risk</span></span>
             </div>
             <div class="header-search">
@@ -88,9 +88,11 @@
                 </div>
                 {% endif %}
                 {% endwith %}
+                <div class="production-hero-container mb-4">
+                    <img src="{{ url_for('static', filename='hero.png') }}" alt="Skin Risk AI Hero" class="official-hero-img">
+                </div>
                 <h1 class="hero-title">Early Detection for <br /><span class="text-gradient">Healthier Skin</span></h1>
-                <p class="hero-subtitle">Upload an image of your skin concern. Our advanced AI will analyze it to
-                    identify potential diseases and estimate your risk level instantly.</p>
+                <p class="hero-subtitle">Instant AI analysis for 100+ conditions. Clinical-grade insights delivered privately to your device.</p>
 
                 {% if current_user.is_authenticated and weather %}
                 <div class="weather-tracker-card glass-panel mb-4 animate-slide-up"
