@@ -288,14 +288,15 @@ def history():
             
         confidence_data.append(scan.confidence if scan.confidence else 0)
     
-    # Simple risk score mapping: High=3, Medium=2, Low=1
-    risk_map = {'High': 3, 'Medium': 2, 'Low': 1}
+    # Simple risk score mapping: Critical/High=3, Moderate/Medium=2, Low=1
+    risk_map = {'Critical': 3, 'High': 3, 'Moderate': 2, 'Medium': 2, 'Low': 1}
     risk_data = [risk_map.get(scan.risk_level, 1) for scan in reversed(user_scans)]
 
     return render_template('history.html', scans=user_scans, 
                            labels=json.dumps(labels), 
                            confidence_data=json.dumps(confidence_data),
                            risk_data=json.dumps(risk_data))
+
 
 @app.route('/pharmacy', methods=['GET'])
 @login_required

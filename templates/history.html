@@ -140,13 +140,13 @@
                         </div>
                         <div class="history-details">
                             <div class="history-header">
-                                <span class="risk-badge badge-{{ scan.risk_level.lower() }}">{{ scan.risk_level }}
+                                <span class="risk-badge badge-{{ (scan.risk_level or 'Low').lower() }}">{{ scan.risk_level or 'Low' }}
                                     Risk</span>
-                                <span class="history-date">{{ scan.timestamp }}</span>
+                                <span class="history-date">{{ scan.timestamp or 'N/A' }}</span>
                             </div>
                             <h3>{{ scan.disease }}</h3>
                             <div class="history-stats">
-                                <span>Confidence: <strong>{{ scan.confidence }}%</strong></span>
+                                <span>Confidence: <strong>{{ scan.confidence or 0.0 }}%</strong></span>
                             </div>
                         </div>
                     </div>
@@ -162,6 +162,7 @@
                     Scanning</a>
             </div>
             {% endif %}
+            </main>
             <!-- Android Bottom Navigation -->
             <nav class="bottom-nav mobile-only">
                 <a href="/dashboard" class="bottom-nav-item">
@@ -354,15 +355,9 @@
         const labels = {{ labels | safe }};
         const confData = {{ confidence_data | safe }};
         const riskData = {{ risk_data | safe }};
-        {% else %}
-        // Sample data for demo
-        const labels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
-        const confData = [92, 88, 95, 89, 97];
-        const riskData = [3, 2, 2, 1, 1];
-        {% endif %}
 
         const ctx = document.getElementById('progressChart').getContext('2d');
-        if (labels.length < 2 && {% if scans %}true{% else %} false{% endif %}) {
+        if (labels.length < 2) {
             document.getElementById('noDataMessage').style.display = 'block';
             document.getElementById('progressChart').style.opacity = '0.1';
         }
@@ -409,28 +404,30 @@
         const checkboxes = document.querySelectorAll('.scan-select');
         const comparisonArea = document.getElementById('comparisonArea');
 
-        compareBtn.addEventListener('click', () => {
-            const selected = Array.from(checkboxes)
-                .filter(cb => cb.checked)
-                .map(cb => cb.closest('.history-card'));
+        if (compareBtn) {
+            compareBtn.addEventListener('click', () => {
+                const selected = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.closest('.history-card'));
 
-            if (selected.length !== 2) {
-                alert('Please select exactly two scans to compare.');
-                return;
-            }
+                if (selected.length !== 2) {
+                    alert('Please select exactly two scans to compare.');
+                    return;
+                }
 
-            selected.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+                selected.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
 
-            document.getElementById('imgBefore').src = selected[0].dataset.url;
-            document.getElementById('dateBefore').innerText = selected[0].dataset.date;
-            document.getElementById('imgAfter').src = selected[1].dataset.url;
-            document.getElementById('dateAfter').innerText = selected[1].dataset.date;
+                document.getElementById('imgBefore').src = selected[0].dataset.url;
+                document.getElementById('dateBefore').innerText = selected[0].dataset.date;
+                document.getElementById('imgAfter').src = selected[1].dataset.url;
+                document.getElementById('dateAfter').innerText = selected[1].dataset.date;
 
-            comparisonArea.style.display = 'block';
-            comparisonArea.scrollIntoView({ behavior: 'smooth' });
-        });
+                comparisonArea.style.display = 'block';
+                comparisonArea.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
         // Disease Distribution Pie Chart
-        {% if scans %}
         const diseaseFreq = {};
         {% for scan in scans %}
         diseaseFreq["{{ scan.disease }}"] = (diseaseFreq["{{ scan.disease }}"] || 0) + 1;
@@ -458,10 +455,30 @@
             }
         });
         {% else %}
-        document.getElementById('noPieData').style.display = 'block';
-        {% endif %}
+        // Sample data for demo
+        const demoLabels = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
+        const demoConfData = [92, 88, 95, 89, 97];
+        const demoRiskData = [3, 2, 2, 1, 1];
+        
+        const demoCtx = document.getElementById('progressChart').getContext('2d');
+        new Chart(demoCtx, {
+            type: 'line',
+            data: {
+                labels: demoLabels,
+                datasets: [
+                    { label: 'Confidence (%)', data: demoConfData, borderColor: '#6366f1', fill: true },
+                    { label: 'Risk level', data: demoRiskData, borderColor: '#f43f5e', tension: 0 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+        
+        if (document.getElementById('noPieData')) {
+            document.getElementById('noPieData').style.display = 'block';
+        }
         {% endif %}
     </script>
+
 </body>
 
 </html>
